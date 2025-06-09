@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moringa Observational Study Blueprint</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background: #4a148c;
+            color: #fff;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+        section {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #4a148c;
+            margin-top: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 0.5rem;
+            text-align: left;
+        }
+        th {
+            background: #e1bee7;
+        }
+        .checklist span {
+            margin-right: 0.5rem;
+        }
+        .done {
+            color: green;
+        }
+        .contact {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            font-size: 0.9rem;
+        }
+        .topnav {
+            background: #e1bee7;
+            text-align: center;
+            padding: 0.5rem 0;
+            position: sticky;
+            top: 0;
+        }
+        .topnav a {
+            margin: 0 1rem;
+            color: #4a148c;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .btn {
+            display: inline-block;
+            margin: 0.5rem 1rem 0;
+            padding: 0.6rem 1.2rem;
+            background: #4a148c;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 1rem 0;
+        }
+        .timeline div {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+        .timeline div:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 0;
+            width: 100%;
+            height: 2px;
+            background: #4a148c;
+            z-index: -1;
+        }
+        .timeline span {
+            background: #e1bee7;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Moringa Observational Study – Master Implementation Blueprint</h1>
+        <p>Version 1.1 • Compiled by Tengu Muna, CRO</p>
+        <div class="contact">Questions? Email 👉 <a href="mailto:tengu.muna@ach-clinical.com">tengu.muna@ach-clinical.com</a></div>
+    </header>
+
+    <nav class="topnav">
+        <a href="#snapshot">Snapshot</a>
+        <a href="#pm">PM</a>
+        <a href="#safety">Safety</a>
+        <a href="#docs">Docs</a>
+        <a href="#risks">Risks</a>
+    </nav>
+
+    <section id="snapshot">
+        <h2>1. Protocol Snapshot</h2>
+        <table>
+            <tr><th>Parameter</th><th>Detail</th></tr>
+            <tr><td>Design</td><td>Prospective, single‑arm, remote ePRO study (FACIT‑F, PROMIS‑29, PSQI‑S)</td></tr>
+            <tr><td>Sites</td><td>3–5 diverse U.S. sites (academic + community + FQHC)</td></tr>
+            <tr><td>Participants</td><td>N=60 female breast‑cancer survivors, 6–12 mo post‑chemotherapy</td></tr>
+            <tr><td>Dose / Duration</td><td>2 × 500 mg Moringa capsules daily for 12 weeks</td></tr>
+            <tr><td>Primary Endpoint</td><td>FACIT‑Fatigue change (Baseline → Week 12)</td></tr>
+            <tr><td>Enrollment Window</td><td>Weeks 8–20 (~12 wks)</td></tr>
+            <tr><td>DB Lock → Final Report</td><td>Weeks 35–41</td></tr>
+        </table>
+    </section>
+
+    <section id="pm">
+        <h2>2. Project Management Overview</h2>
+        <ul>
+            <li><strong>Codex Dashboard:</strong> Live milestone tracker, budget variance, query aging, diversity KPI pie.</li>
+            <li><strong>Budget:</strong> USD $181 k incl. 10 % contingency.</li>
+            <li><strong>Critical Path:</strong> IRB approval → Site contract → Dynamic REDCap build → FPI.</li>
+        </ul>
+    </section>
+
+    <div class="timeline">
+        <div><span>Start-Up</span></div>
+        <div><span>Enrollment</span></div>
+        <div><span>Lock</span></div>
+        <div><span>Report</span></div>
+    </div>
+
+    <section>
+        <h2>3. Data Strategy</h2>
+        <ul>
+            <li><strong>Platform:</strong> REDCap Cloud; 1 dynamic visit form.</li>
+            <li><strong>Source:</strong> ePRO = source; site eCRFs limited to AE verification & bottle counts.</li>
+            <li><strong>QC:</strong> Auto range & missing edits; weekly query cycle; lock after SAE recon.</li>
+            <li><strong>Archive:</strong> REDCap “Offline ZIP” + SHA‑256 hash stored in TMF.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>4. Monitoring Framework</h2>
+        <table>
+            <tr><th>Visit</th><th>Mode</th><th>When</th><th>Focus</th></tr>
+            <tr><td>SIV</td><td>Remote</td><td>Pre‑enroll</td><td>Training, ePRO demo, IP SOP</td></tr>
+            <tr><td>Bi‑Weekly Remote</td><td>Dashboard</td><td>Wk 9–32</td><td>ePRO % complete, AE/deviations</td></tr>
+            <tr><td>Interim On‑Site</td><td>Physical</td><td>Wk 14 (±1)</td><td>10 % SDV, consent check, IP log</td></tr>
+            <tr><td>Close‑Out</td><td>Remote</td><td>Post‑LPLV</td><td>Reconciliation, archive hand‑off</td></tr>
+        </table>
+        <p>KPIs: ≥ 90 % ePRO completion • Query aging &lt; 7 days • CAPA closure &lt; 30 days.</p>
+    </section>
+
+    <section>
+        <h2>5. IP Supply & Accountability</h2>
+        <ul>
+            <li>GMP lot COA, HDPE 120‑caps bottles, ambient FedEx 2‑Day with TempTale.</li>
+            <li>Site storage 15‑25 °C; daily min/max; bottle IDs logged in REDCap.</li>
+            <li>Returns reconciled at Week 12; site destroys or ships to depot.</li>
+        </ul>
+    </section>
+
+    <section id="safety">
+        <h2>6. Safety Management Plan</h2>
+        <table>
+            <tr><th>Component</th><th>Detail</th></tr>
+            <tr><td>AE Capture</td><td>ePRO free‑text → site confirmation</td></tr>
+            <tr><td>Coding</td><td>MedDRA v26 PT/SOC</td></tr>
+            <tr><td>SAE Definition</td><td>Any event requiring hospitalization, life‑threatening, death, or judged supplement‑related</td></tr>
+            <tr><td>Reporting Timelines</td><td>SAE initial ≤ 24 h; follow‑up ≤ 5 days</td></tr>
+            <tr><td>Medical Review</td><td>SAE narrative signed by Medical Lead (PI Eq.)</td></tr>
+            <tr><td>Signal Monitoring</td><td>Monthly CRO + Medical Lead review; threshold ≥ 5 related AEs triggers safety CAPA</td></tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>7. Statistical Analysis Plan Summary</h2>
+        <ul>
+            <li><strong>Primary Analysis:</strong> Paired t‑test; confirm normality (Shapiro).</li>
+            <li><strong>Secondary:</strong> LMM with fixed effects = visit; random intercept = participant.</li>
+            <li><strong>Safety:</strong> AE counts by PT and severity.</li>
+            <li><strong>Interim Data Cut (Week 20):</strong> Descriptive enrollment & adherence only.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>8. TMF Structure</h2>
+        <ul>
+            <li><strong>Study-Level:</strong> Protocol, approvals, contracts, DMP, SAP, SMP, Monitoring reports, CAPA, IP docs.</li>
+            <li><strong>Site-Level Binder:</strong> IRB letters, signed ICFs, Delegation log, IP logs, monitoring letters, close-out.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>9. Patient Materials Package</h2>
+        <ul>
+            <li>8-page ICF (grade 8 readability).</li>
+            <li>Wallet-size contact card.</li>
+            <li>Survey FAQ sheet.</li>
+        </ul>
+    </section>
+
+    <section id="docs">
+        <h2>10. Document Inventory Matrix</h2>
+        <table>
+            <tr><th>Doc</th><th>Version</th><th>Storage</th><th>Appendix</th></tr>
+            <tr><td>Protocol</td><td>v1.4</td><td>TMF 1.1</td><td>A</td></tr>
+            <tr><td>ICF</td><td>v1.0</td><td>TMF 2.2</td><td>I</td></tr>
+            <tr><td>Project Mgmt Plan</td><td>v1.0</td><td>TMF 1.3</td><td>B</td></tr>
+            <tr><td>DMP</td><td>v1.0</td><td>TMF 5.1</td><td>C</td></tr>
+            <tr><td>Edit‑Check CSV</td><td>v1.0</td><td>TMF 5.1</td><td>C</td></tr>
+            <tr><td>SAP</td><td>v0.1</td><td>TMF 5.2</td><td>G</td></tr>
+            <tr><td>Safety Mgmt Plan</td><td>v1.0</td><td>TMF 4.1</td><td>F</td></tr>
+            <tr><td>Monitoring Plan</td><td>v1.0</td><td>TMF 6.1</td><td>D</td></tr>
+            <tr><td>IP Plan</td><td>v1.0</td><td>TMF 8.1</td><td>E</td></tr>
+            <tr><td>TMF Index</td><td>v1.0</td><td>TMF 0</td><td>H</td></tr>
+            <tr><td>Patient Packet</td><td>v1.0</td><td>TMF 2.2</td><td>I</td></tr>
+        </table>
+        <a href="docs/protocol_v1.4.pdf" class="btn">Download Full Protocol PDF</a>
+        <a href="docs/patient_packet_v1.0.pdf" class="btn">Download Patient Packet PDF</a>
+    </section>
+
+    <section>
+        <h2>11. Governance & Roles</h2>
+        <table>
+            <tr><th>Role</th><th>Name</th><th>Start Date</th><th>Key KPIs</th></tr>
+            <tr><td>Sponsor Exec</td><td>CEO</td><td>D‑0</td><td>Budget sign‑off, risk approval</td></tr>
+            <tr><td>Medical Lead</td><td>TBD</td><td>D‑0 +7</td><td>SAE review ≤ 24 h</td></tr>
+            <tr><td>CRO / PM</td><td>TENGU</td><td>Continuous</td><td>Milestone on‑time %, query closure 72 h</td></tr>
+            <tr><td>CRA</td><td>TBD</td><td>SIV</td><td>Monitoring KPI adherence</td></tr>
+            <tr><td>Data Manager</td><td>TBD</td><td>UAT start</td><td>Zero critical DB errors</td></tr>
+            <tr><td>Statistician</td><td>TBD</td><td>Interim</td><td>SAP finalization by Week 30</td></tr>
+        </table>
+    </section>
+
+    <section id="risks">
+        <h2>12. Top Risks & Mitigations</h2>
+        <ol>
+            <li><strong>IRB Delay</strong> – Parallel sponsor budget approval; weekly chase.</li>
+            <li><strong>Recruitment Lag</strong> – Diversity outreach ads; contingency site.</li>
+            <li><strong>SAE Cluster</strong> – Trigger Safety CAPA & Medical Lead review.</li>
+        </ol>
+    </section>
+
+    <section>
+        <h2>13. Action Checklist</h2>
+        <p class="checklist"><span>☐</span>Sponsor signs Master Blueprint</p>
+        <p class="checklist"><span>☐</span>IRB package submitted</p>
+        <p class="checklist"><span>☐</span>REDCap UAT passed</p>
+        <p class="checklist"><span>☐</span>Codex dashboard live</p>
+        <p class="checklist"><span>☐</span>SIV scheduled</p>
+    </section>
+
+    <footer style="text-align:center; padding:1rem 0; background:#eee;">
+        Appendices:
+        <a href="docs/protocol_v1.4.pdf">A Protocol v1.4</a> •
+        <a href="docs/pm_plan_v1.0.pdf">B PM Plan &amp; Gantt</a> •
+        <a href="docs/dmp_v1.0.pdf">C DMP &amp; Edit-Checks</a> •
+        <a href="docs/monitoring_plan_v1.0.pdf">D Monitoring Plan</a> •
+        <a href="docs/ip_plan_v1.0.pdf">E IP Plan</a> •
+        <a href="docs/safety_mgmt_plan_v1.0.pdf">F Safety Mgmt Plan</a> •
+        <a href="docs/sap_v0.1.pdf">G SAP Draft</a> •
+        <a href="docs/tmf_index_v1.0.pdf">H TMF Index</a> •
+        <a href="docs/patient_packet_v1.0.pdf">I Patient Materials</a>
+        <div style="margin-top:0.5rem;">© 2025 Herbal Goodness • Built by Codex Portal</div>
+    </footer>
+</body>
+</html>
