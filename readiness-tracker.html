@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Country/Regulatory Readiness Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f5f7fa;
+      color: #333;
+    }
+    header, footer {
+      background: linear-gradient(to right, #7e5700, #d6a300);
+      color: white;
+      text-align: center;
+      padding: 1.5rem 1rem;
+    }
+    main {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+    }
+    input, select, textarea, button {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .instructions {
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: 0.2rem;
+    }
+    .cta {
+      background: #fff3cd;
+      padding: 1rem;
+      text-align: center;
+      margin: 2rem 0;
+      border: 1px solid #ffeeba;
+    }
+    .cta a {
+      background: #ffc107;
+      color: black;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .output {
+      margin-top: 2rem;
+      background: #ffffff;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .feedback-section {
+      margin-top: 3rem;
+      padding: 1.5rem;
+      background: #e9f5ff;
+      border-left: 5px solid #0077cc;
+      border-radius: 6px;
+    }
+    .feedback-section h3 {
+      margin-top: 0;
+      color: #004b87;
+    }
+    .feedback-section p {
+      margin: 0.5rem 0 1rem;
+    }
+    .feedback-section a {
+      display: inline-block;
+      background: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 0.6rem 1.2rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Country/Regulatory Readiness Tracker</h1>
+    <p>Evaluate regulatory complexity, local barriers, and study activation potential.</p>
+    <p><a href="https://us06web.zoom.us/meeting/register/te8S_gONRUWBFEM_X1nhPQ" style="color:white; background:#ffc107; padding:6px 12px; border-radius:5px; text-decoration:none;">Join our Free Weekly AI-Soul-Tech Q&A</a></p>
+  </header>
+
+  <main>
+    <label for="country">Country:</label>
+    <input type="text" id="country" placeholder="e.g., Brazil" />
+    <p class="instructions">Enter the name of the country where your study will be launched.</p>
+
+    <label for="authority">Regulatory Authority:</label>
+    <input type="text" id="authority" placeholder="e.g., ANVISA, EMA" />
+    <p class="instructions">Enter the name of the primary regulatory body overseeing clinical trials for this country.</p>
+
+    <label for="submissionRequired">Is Regulatory Submission Required?</label>
+    <select id="submissionRequired">
+      <option>Yes</option>
+      <option>No</option>
+      <option>Pending Clarification</option>
+    </select>
+    <p class="instructions">Select whether your study requires approval submission to a national health authority.</p>
+
+    <label for="ethicsRequired">Local Ethics Review Required?</label>
+    <select id="ethicsRequired">
+      <option>Yes</option>
+      <option>No</option>
+      <option>Pending Clarification</option>
+    </select>
+    <p class="instructions">Indicate if ethics review by local or national IRB/EC is mandatory.</p>
+
+    <label for="contracts">Contracting Status:</label>
+    <select id="contracts">
+      <option>Completed</option>
+      <option>In Progress</option>
+      <option>Not Started</option>
+    </select>
+    <p class="instructions">Status of site contracts and legal agreements relevant to activation.</p>
+
+    <label for="shortages">Is Country Experiencing Medicine/Resource Shortages?</label>
+    <select id="shortages">
+      <option>Yes</option>
+      <option>No</option>
+      <option>Not Sure</option>
+    </select>
+    <p class="instructions">Identify if shortages may impact your clinical study setup.</p>
+
+    <label for="specialRequirements">Special Regulatory Requirements:</label>
+    <textarea id="specialRequirements" placeholder="e.g., Dual agency review, import licenses, central database uploads"></textarea>
+    <p class="instructions">Mention any unique or additional requirements beyond standard submission.</p>
+
+    <label for="barriers">Known Barriers to Activation:</label>
+    <textarea id="barriers" placeholder="e.g., Delayed ethics timelines, COVID-19 recovery restrictions"></textarea>
+    <p class="instructions">Describe roadblocks that may slow study setup in this region.</p>
+
+    <label for="readinessScore">Your Readiness Estimate (0–100):</label>
+    <input type="number" id="readinessScore" />
+    <p class="instructions">Score based on total picture. Consider all inputs and local knowledge.</p>
+
+    <button onclick="generateSummary()">Generate Readiness Summary</button>
+
+    <div class="output" id="readinessSummary" style="display:none">
+      <h2>📊 Country Readiness Overview</h2>
+      <p id="summaryDetails"></p>
+    </div>
+
+    <div class="feedback-section">
+      <h3>💬 Help Us Improve This Tool</h3>
+      <p>Your experience helps us shape a more effective and intuitive tracker for the global research community. Share what’s working well or suggest improvements to make this even more powerful.</p>
+      <a href="https://forms.gle/yezzdTtG9zPMwa3v6" target="_blank">Submit Feedback</a>
+    </div>
+
+    <div class="cta">
+      <p>✨ Join our Free AI-Soul-Tech Webinar Sundays at 10 a.m. CST where we explore clinical innovation with cosmic flow.</p>
+      <a href="https://us06web.zoom.us/meeting/register/te8S_gONRUWBFEM_X1nhPQ">Reserve My Spot</a>
+    </div>
+  </main>
+
+  <footer>
+    <p><em>"This is soul-coded strategy — where AI meets inner alignment and your vision becomes inevitable."</em></p>
+    <p>© 2025 Tengu Muna | Oracle Mentor & Visionary Flow Alchemist</p>
+    <p><a href="https://linktr.ee/achaibo" style="color:white;">Explore TENGU's Universe</a></p>
+    <p><a href="https://us06web.zoom.us/meeting/register/te8S_gONRUWBFEM_X1nhPQ" style="color:white; text-decoration: underline;">Join our Free Weekly AI-Soul-Tech Q&A</a></p>
+  </footer>
+
+  <script>
+    function generateSummary() {
+      const country = document.getElementById("country").value;
+      const authority = document.getElementById("authority").value;
+      const submission = document.getElementById("submissionRequired").value;
+      const ethics = document.getElementById("ethicsRequired").value;
+      const contracts = document.getElementById("contracts").value;
+      const shortages = document.getElementById("shortages").value;
+      const special = document.getElementById("specialRequirements").value;
+      const barriers = document.getElementById("barriers").value;
+      const score = document.getElementById("readinessScore").value;
+
+      const summary = `In ${country}, the regulatory authority is ${authority}. Submission required: ${submission}. Ethics review: ${ethics}. Contracting status: ${contracts}. Resource shortages: ${shortages}.\n\nSpecial Requirements: ${special || "None"}\nKnown Barriers: ${barriers || "None"}\n\nEstimated Readiness Score: ${score}/100.`;
+
+      document.getElementById("summaryDetails").innerText = summary;
+      document.getElementById("readinessSummary").style.display = "block";
+    }
+  </script>
+</body>
+</html>
