@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enrollment & Milestone Forecasting Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f4f4;
+      color: #333;
+    }
+    header, footer {
+      background: linear-gradient(to right, #004d7a, #008793);
+      color: white;
+      text-align: center;
+      padding: 1.5rem 1rem;
+    }
+    main {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+      background: white;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+    }
+    input, select, button, textarea {
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      width: 100%;
+      max-width: 500px;
+      box-sizing: border-box;
+    }
+    .instructions {
+      font-size: 0.9rem;
+      margin-top: 0.25rem;
+      color: #666;
+    }
+    .output {
+      margin-top: 2rem;
+      background: #e9f7ef;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid #c8e6c9;
+    }
+    .cta {
+      background: #fff3cd;
+      padding: 1rem;
+      text-align: center;
+      margin-top: 2rem;
+      border: 1px solid #ffeeba;
+    }
+    .cta a {
+      background: #ffc107;
+      color: black;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .feedback-section {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: #e9f5ff;
+      border-left: 5px solid #0077cc;
+      border-radius: 6px;
+    }
+    .feedback-section h2 {
+      margin-bottom: 0.5rem;
+      color: #004b87;
+    }
+    .feedback-section p {
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+    .feedback-section iframe {
+      width: 100%;
+      height: 800px;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Enrollment & Milestone Forecasting Tracker</h1>
+    <p>Track study enrollment milestones across global regions, spot risks early, and stay aligned with strategic goals.</p>
+    <p><a href="https://us06web.zoom.us/meeting/register/te8S_gONRUWBFEM_X1nhPQ" style="color:white; background:#ffc107; padding:6px 12px; border-radius:5px; text-decoration:none;">Join our Free Weekly AI-Soul-Tech Q&A</a></p>
+  </header>
+  <main>
+    <label for="region">Study Region:</label>
+    <select id="region">
+      <option>Africa</option>
+      <option>Asia Pacific</option>
+      <option>Europe</option>
+      <option>Latin America</option>
+      <option>Middle East</option>
+      <option>North America</option>
+    </select>
+    <p class="instructions">Select the region where your trial is active or planned.</p>
+
+    <label for="sites">Number of Sites:</label>
+    <input type="number" id="sites" placeholder="e.g., 15">
+    <p class="instructions">Enter total number of actively enrolling sites in the selected region.</p>
+
+    <label for="enrolled">Participants Enrolled to Date:</label>
+    <input type="number" id="enrolled" placeholder="e.g., 120">
+    <p class="instructions">Total number of subjects enrolled so far in this region.</p>
+
+    <label for="target">Regional Enrollment Target:</label>
+    <input type="number" id="target" placeholder="e.g., 200">
+    <p class="instructions">What is the planned enrollment goal for this region?</p>
+
+    <label for="daysRemaining">Days Remaining to LPO:</label>
+    <input type="number" id="daysRemaining" placeholder="e.g., 60">
+    <p class="instructions">How many days remain to reach last-patient-in milestone?</p>
+
+    <label for="avgEnrollment">Avg Weekly Enrollment Rate per Site:</label>
+    <input type="number" id="avgEnrollment" placeholder="e.g., 0.8">
+    <p class="instructions">Use historical performance or forecast projections.</p>
+
+    <button onclick="forecastProgress()">Forecast Milestone Risk</button>
+
+    <div class="output" id="result" style="display: none;">
+      <h2>Regional Milestone Summary:</h2>
+      <p id="enrollPercent"></p>
+      <p id="riskAlert"></p>
+    </div>
+
+    <div class="feedback-section">
+      <h2>💬 Help Us Improve This Tool</h2>
+      <p>We value your insights. Help us make this tool better for global study managers.</p>
+      <iframe src="https://forms.gle/rL2agMqf5auf4WfZ6" loading="lazy" allowfullscreen></iframe>
+    </div>
+
+    <div class="cta">
+      <p>✨ Stay aligned with strategy and speed. Join our Free Webinar Sundays at 10 a.m. CST</p>
+      <a href="https://us06web.zoom.us/meeting/register/te8S_gONRUWBFEM_X1nhPQ">Reserve My Spot</a>
+    </div>
+  </main>
+  <footer>
+    <p><em>"This is cosmic enrollment strategy — where metrics meet mission, and purpose fuels progress."</em></p>
+    <p>© 2025 Tengu Muna | Global Flow Catalyst & Data-Driven Visionary</p>
+    <p><a href="https://linktr.ee/achaibo" style="color:white;">Explore TENGU's Universe</a></p>
+    <p><a href="https://us06web.zoom.us/meeting/register/te8S_gONRUWBFEM_X1nhPQ" style="color:white; text-decoration: underline;">Join our Free Weekly AI-Soul-Tech Q&A</a></p>
+  </footer>
+  <script>
+    function forecastProgress() {
+      const sites = parseFloat(document.getElementById('sites').value);
+      const enrolled = parseFloat(document.getElementById('enrolled').value);
+      const target = parseFloat(document.getElementById('target').value);
+      const daysRemaining = parseFloat(document.getElementById('daysRemaining').value);
+      const avgEnrollment = parseFloat(document.getElementById('avgEnrollment').value);
+
+      const expected = sites * avgEnrollment * (daysRemaining / 7);
+      const shortfall = (target - enrolled) - expected;
+
+      const risk = shortfall > 0 ? `⚠️ At risk of missing enrollment by ~${Math.ceil(shortfall)} subjects.` : `✅ On track. Estimated surplus: ~${Math.abs(Math.ceil(shortfall))} subjects.`;
+      const percent = ((enrolled / target) * 100).toFixed(1);
+
+      document.getElementById('enrollPercent').innerText = `📊 Enrollment to date: ${enrolled} of ${target} (${percent}%)`;
+      document.getElementById('riskAlert').innerText = risk;
+      document.getElementById('result').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
