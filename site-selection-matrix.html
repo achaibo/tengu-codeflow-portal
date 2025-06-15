@@ -48,10 +48,12 @@
     function generateMatrix() {
       const table = document.getElementById("matrix-table");
       const tbody = table.querySelector("tbody");
-      const country = document.getElementById("countryInput").value;
-      if (country.trim() === "") return;
+      const countryField = document.getElementById("countryInput");
+      const country = countryField.value.trim();
+      if (country === "") return;
 
-      tbody.innerHTML = `<tr>
+      const row = document.createElement("tr");
+      row.innerHTML = `
         <td>${country}</td>
         <td>8</td>
         <td>12 weeks</td>
@@ -63,10 +65,11 @@
         <td>6</td>
         <td>10</td>
         <td>No</td>
-        <td>78%</td>
-      </tr>`;
+        <td>78%</td>`;
 
+      tbody.appendChild(row);
       table.style.display = "table";
+      countryField.value = "";
     }
 
     function exportTableToCSV(filename) {
@@ -94,7 +97,6 @@
 <header>
   <h1>Site Selection Matrix Tool</h1>
   <p>Strategic country readiness insights for global trial planning</p>
-  <p><a href="https://us06web.zoom.us/meeting/register/te8S_gONRUWBFEM_X1nhPQ" style="color: #ffcc00;">Join Our Free Weekly Webinar - Sundays @ 10 AM CST</a></p>
 </header>
 
 <div class="container">
@@ -154,6 +156,7 @@
     </thead>
     <tbody></tbody>
   </table>
+  <p class="note">Values shown are illustrative placeholders. Replace them with actual country data.</p>
 
   <h2>💬 Help Us Improve This Tool</h2>
   <div class="feedback-section">
@@ -162,16 +165,12 @@
     <a href="https://forms.gle/ruVDANznyt751JLY6" target="_blank">Submit Feedback</a>
   </div>
 
-  <div class="cta">
-    Join our AI-Soul-Tech Webinar Sundays at 10 a.m. CST — <a href="https://us06web.zoom.us/meeting/register/te8S_gONRUWBFEM_X1nhPQ">Register Here</a>
-  </div>
 </div>
 
 <footer>
   <p><em>"This is soul-coded strategy — where AI meets inner alignment and your vision becomes inevitable."</em></p>
   <p>&copy; 2025 Tengu Muna | Oracle Mentor & Visionary Flow Alchemist</p>
   <p><a href="https://linktr.ee/achaibo" style="color: #ffcc00;">Explore TENGU's Universe</a></p>
-  <p><a href="https://us06web.zoom.us/meeting/register/te8S_gONRUWBFEM_X1nhPQ" style="color: #ffcc00; text-decoration: underline;">Join Our Free Weekly Webinar</a></p>
 </footer>
 
 </body>
