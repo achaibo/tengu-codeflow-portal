@@ -1,232 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Genesis Grid Coaching</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clinical Operations GPT Copilots</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #0e0a1f;
-      color: #f3e8d5;
       margin: 0;
       padding: 0;
+      background: linear-gradient(to bottom right, #2196f3, #42a5f5);
+      color: #fff;
     }
-    .hero {
-      background: linear-gradient(135deg, #33210e, #c79b2b);
+    header {
       text-align: center;
-      padding: 4rem 2rem;
+      padding: 2rem 1rem;
     }
-    .hero h1 {
-      font-size: 2.8rem;
-      margin-bottom: 0.5rem;
-      color: #fff8e1;
+    header h1 {
+      font-size: 2.6rem;
+      font-weight: bold;
+      margin: 0;
+      text-transform: uppercase;
     }
-    .hero p {
+    header p {
       font-size: 1.3rem;
-      margin-bottom: 1.5rem;
+      margin-top: 1rem;
+      font-weight: 600;
     }
-    .btn {
-      background: #ffd700;
-      color: #000;
-      padding: 0.75rem 1.5rem;
-      margin: 0.5rem;
-      border: none;
+    .nav-bar {
+      margin-top: 1rem;
+    }
+    .nav-bar a {
+      color: #fff;
+      background-color: #ffc107;
+      text-decoration: none;
+      padding: 0.6rem 1.2rem;
       border-radius: 8px;
-      cursor: pointer;
+      font-weight: bold;
+    }
+    .tool-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.2rem;
+      padding: 2rem;
+    }
+    .tool {
+      background: #ffffff33;
+      border-radius: 12px;
+      padding: 1.2rem;
+      width: 240px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .tool h2 {
+      font-size: 1.3rem;
+      margin-bottom: 0.4rem;
+    }
+    .tool p {
+      font-size: 1rem;
+    }
+    .tool a {
+      display: inline-block;
+      margin-top: 0.6rem;
+      background: #1565c0;
+      color: #fff;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
       text-decoration: none;
       font-weight: bold;
     }
-    .membership-section {
-      padding: 3rem 2rem;
-    }
-    .membership {
-      background: #2b1c05;
-      margin: 2rem auto;
-      padding: 2rem;
-      border-radius: 12px;
-      max-width: 800px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      box-shadow: 0 0 15px #d4af37;
-    }
-    .membership img {
-      max-width: 300px;
-      border-radius: 12px;
-      margin-bottom: 1rem;
-    }
-    .membership h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #ffefc1;
-    }
-    .membership ul {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1rem 0;
-    }
-    .membership ul li {
-      padding: 0.4rem 0;
-    }
-    .footer {
+    footer {
       text-align: center;
-      background: linear-gradient(135deg, #1f1300, #523c12);
-      padding: 2rem;
-      font-size: 1rem;
-      color: #f3e8d5;
+      background: #0d47a1;
+      padding: 2rem 1rem;
+      color: #fff;
+      font-size: 0.95rem;
     }
-    .comparison, .faq, .cta {
-      max-width: 800px;
+    footer a {
+      color: #ffeb3b;
+      text-decoration: none;
+      margin: 0 0.6rem;
+      font-weight: bold;
+    }
+    .feedback-section {
       margin: 2rem auto;
-      padding: 2rem;
-      background: #2d1f09;
+      max-width: 800px;
+      padding: 1rem;
+      background-color: #ffffffcc;
       border-radius: 10px;
-      box-shadow: 0 0 10px #c9a73d;
+      color: #000;
     }
-    .comparison table {
-      width: 100%;
-      border-collapse: collapse;
+    .feedback-section h2 {
       text-align: center;
-      margin-top: 1rem;
     }
-    .comparison th, .comparison td {
-      padding: 0.5rem;
-      border: 1px solid #c9a73d;
-    }
-    .faq ul {
-      padding-left: 1.2rem;
-    }
-    .faq li {
-      margin-bottom: 0.8rem;
+    .feedback-section iframe {
+      width: 100%;
+      height: 800px;
+      border: none;
     }
   </style>
 </head>
 <body>
-  <div class="hero">
-    <h1>Align • Activate • Ascend</h1>
-    <p>AI Coaching with Tengu Muna – Where Clinical Mastery meets Cosmic Flow</p>
-    <a href="https://us06web.zoom.us/meeting/register/te8S_gONRUWBFEM_X1nhPQ" class="btn">Join Free Sunday Soul‑Tech Q&A</a>
-    <a href="#memberships" class="btn">Explore Memberships</a>
-  </div>
-
-  <div id="memberships" class="membership-section">
-    <div class="membership">
-      <img src="https://i.imgur.com/iW29JAk.jpeg" alt="Flow Collective">
-      <h2>Flow Collective – $79/month</h2>
-      <ul>
-        <li>✅ Weekly 60-min Group Zoom Call</li>
-        <li>✅ Replay Vault (private YouTube)</li>
-        <li>✅ Skool Level 1 Access</li>
-      </ul>
-      <a class="btn" href="https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-0R494776X8441451VNBG47QY">Subscribe Now</a>
+  <header>
+    <h1>CLINICAL OPERATIONS GPT COPILOTS</h1>
+    <p>Create Smart, Soulful, Strategic Clinical Systems ✨</p>
+    <div class="nav-bar">
+      <a href="https://us06web.zoom.us/meeting/register/te8S_gONRUWBFEM_X1nhPQ">🌟 Join Our Free Weekly AI-Soul-Tech Q&A</a>
     </div>
+  </header>
 
-    <div class="membership">
-      <img src="https://i.imgur.com/WplYNOw.jpeg" alt="Flow VIP">
-      <h2>Flow Collective+ VIP – $149/month</h2>
-      <ul>
-        <li>✅ Everything in Flow Collective</li>
-        <li>✅ 1x 15-min Hot-Seat/month (TidyCal)</li>
-        <li>✅ Tool-of-the-Month Walkthrough</li>
-        <li>✅ Skool Level 2 Access</li>
-      </ul>
-      <a class="btn" href="https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-0KP29978GR061492XNBG5KTY">Subscribe Now</a>
-    </div>
-
-    <div class="membership">
-      <img src="https://i.imgur.com/mAsOEaJ.jpeg" alt="Spark Session">
-      <h2>Spark Session – $297</h2>
-      <ul>
-        <li>✅ 60-min Deep Dive Call</li>
-        <li>✅ 1 Custom GPT in 24h</li>
-        <li>✅ Post-call PDF roadmap</li>
-      </ul>
-      <a class="btn" href="https://www.paypal.com/ncp/payment/XWLWMMNMG2DK6">Book Spark</a>
-    </div>
-
-    <div class="membership">
-      <img src="https://i.imgur.com/5N9JYkM.jpeg" alt="Momentum Builder">
-      <h2>Momentum Builder – $1,497</h2>
-      <ul>
-        <li>✅ 4x Weekly 60-min Calls</li>
-        <li>✅ GPT + Prompt Pack</li>
-        <li>✅ 30-day Skool DM Support</li>
-        <li>✅ 1 Roundtable Group Invite</li>
-      </ul>
-      <a class="btn" href="https://www.paypal.com/ncp/payment/66VC84E6XW7VN">Start Momentum</a>
-    </div>
+  <div class="tool-container">
+    <div class="tool"><h2>🌐 Global Study Strategist</h2><p>Protocol and oversight planning expert tool</p><a href="https://chatgpt.com/g/g-enjwrgSlD-jali-9-global-study-strategist">Explore</a></div>
+    <div class="tool"><h2>📊 DEI Strategy Guide</h2><p>Diversity planning for regulatory submissions</p><a href="https://chatgpt.com/g/g-6824b1d9218c8191b9106a67ad5a47be-jali-9-dei-strategy-guide">Explore</a></div>
+    <div class="tool"><h2>📌 Achaibo Trials Connector</h2><p>Global site + sponsor connection blueprint</p><a href="https://chatgpt.com/g/g-T9Zn5s5Zm-jali-9-achaibo-clinical-trials-connector">Explore</a></div>
+    <div class="tool"><h2>🌍 African Trials Navigator</h2><p>Map regulations, partners & DEI in Africa</p><a href="https://chatgpt.com/g/g-inIh52ChB-jali-9-african-clinical-trials-navigator">Explore</a></div>
+    <div class="tool"><h2>🧠 Ultimate ClinOps Toolbox</h2><p>Central hub for essential trial tools</p><a href="https://chatgpt.com/g/g-LwqaeeFjp-jali-9-ultimate-clinical-research-toolbox">Explore</a></div>
+    <div class="tool"><h2>📈 Clinical Career Compass</h2><p>Plan your rise in global clinical roles</p><a href="https://chatgpt.com/g/g-ytWsdFwQr-jali-9-clinical-career-compass">Explore</a></div>
+    <div class="tool"><h2>🌍 Global Grants Pathfinder</h2><p>Discover & apply for research funding worldwide</p><a href="https://chatgpt.com/g/g-359zPbMK3-the-global-bizgrowth-coach">Explore</a></div>
+    <div class="tool"><h2>🧬 IVDR & Precision Strategist</h2><p>Global IVDR + precision medicine planning</p><a href="https://chatgpt.com/g/g-6825fd6087bc8191abf07f00bd0ee509-jali-9-ivdr-precision-medicine-strategist">Explore</a></div>
+    <div class="tool"><h2>📜 EUCTR Navigator Tool</h2><p>Master the new EU CTR regulatory system</p><a href="https://chatgpt.com/g/g-682606af5c5481919fb04acffbefaab3-jali-9-euctr-navigator-tool">Explore</a></div>
+    <div class="tool"><h2>📣 Global R&R Strategizer</h2><p>Patient recruitment & retention solutions</p><a href="https://chatgpt.com/g/g-68260c5cf7b88191a0e7d62c311caa6a-jali-9-global-r-r-strategizer">Explore</a></div>
+    <div class="tool"><h2>🧪 Clinical Monitoring Strategist</h2><p>CRA visit planning & inspection readiness</p><a href="https://chatgpt.com/g/g-6827301435788191962e1aa7261f713d-jali-9-clinical-monitoring-strategist">Explore</a></div>
   </div>
 
-  <div class="comparison">
-    <h3>📊 Comparison Snapshot</h3>
-    <table>
-      <tr>
-        <th>Feature</th>
-        <th>Flow Collective</th>
-        <th>Flow+</th>
-        <th>Spark</th>
-        <th>Momentum</th>
-      </tr>
-      <tr>
-        <td>Weekly Calls</td>
-        <td>✅</td>
-        <td>✅ + Hot-Seat</td>
-        <td>❌</td>
-        <td>✅</td>
-      </tr>
-      <tr>
-        <td>Hot Seat</td>
-        <td>❌</td>
-        <td>✅</td>
-        <td>❌</td>
-        <td>❌</td>
-      </tr>
-      <tr>
-        <td>Custom GPT</td>
-        <td>❌</td>
-        <td>❌</td>
-        <td>✅</td>
-        <td>✅</td>
-      </tr>
-      <tr>
-        <td>Skool Level</td>
-        <td>L1</td>
-        <td>L2</td>
-        <td>Private</td>
-        <td>Private</td>
-      </tr>
-      <tr>
-        <td>Price</td>
-        <td>$79/mo</td>
-        <td>$149/mo</td>
-        <td>$297</td>
-        <td>$1,497</td>
-      </tr>
-    </table>
+  <div class="feedback-section">
+    <h2>💬 Your Thoughts Matter</h2>
+    <p style="text-align:center;">We value your insights. Help us improve this toolbox for the global clinical community.</p>
+    <iframe src="https://forms.gle/8qjmYQYBt3wsZgnZ8" loading="lazy" allowfullscreen></iframe>
   </div>
 
-  <div class="faq">
-    <h3>🙋🏾‍♀️ Frequently Asked Questions</h3>
-    <ul>
-      <li><strong>Can I cancel anytime?</strong><br>→ Yes—via PayPal or email.</li>
-      <li><strong>Do I need AI experience?</strong><br>→ No. All levels welcome.</li>
-      <li><strong>What if I miss a live call?</strong><br>→ Replay vault access within 24 hours.</li>
-      <li><strong>Does VIP include Spark?</strong><br>→ Spark is separate but discounts apply.</li>
-    </ul>
-  </div>
-
-  <div class="cta">
-    <p style="text-align:center; font-size:1.3rem;">✨ Ready to elevate your clinical genius & inner alignment?</p>
-    <div style="text-align:center;">
-      <a href="#memberships" class="btn">Choose Your Path</a>
-    </div>
-  </div>
-
-  <div class="footer">
-    <p><em>“This is soul-coded strategy—where AI meets inner alignment and your vision becomes inevitable.”</em></p>
-    <p>© 2025 Tengu Muna | Oracle Mentor & Visionary Flow Alchemist<br>No data collected. Payments processed via PayPal.</p>
-  </div>
+  <footer>
+    <p><em>“Where bold science meets soulful systems — you are leading the next evolution in global trials.”</em></p>
+    <p>© 2025 Tengu Muna | Global Flow Catalyst & Clinical Innovation Muse</p>
+    <p><a href="https://linktr.ee/achaibo">🌐 Explore TENGU's Universe</a> | <a href="https://us06web.zoom.us/meeting/register/te8S_gONRUWBFEM_X1nhPQ">Join Weekly AI-Soul-Tech Q&A</a></p>
+  </footer>
 </body>
 </html>
-
