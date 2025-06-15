@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Study Startup Timeline Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f8f9fa;
+      color: #333;
+    }
+    header, footer {
+      background: linear-gradient(to right, #7e5700, #d6a300);
+      color: white;
+      text-align: center;
+      padding: 1.5rem 1rem;
+    }
+    main {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+    }
+    input, select, button {
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      width: 100%;
+      max-width: 400px;
+    }
+    .instructions {
+      font-size: 0.9rem;
+      margin-top: 0.25rem;
+      color: #666;
+    }
+    .output {
+      margin-top: 2rem;
+      background: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .cta {
+      background: #fff3cd;
+      padding: 1rem;
+      text-align: center;
+      margin: 2rem 0;
+      border: 1px solid #ffeeba;
+    }
+    .cta a {
+      background: #ffc107;
+      color: black;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Global Study Startup Timeline Calculator</h1>
+    <p>Estimate activation timelines by region, authority, and complexity.</p>
+    <p><a href="https://us06web.zoom.us/meeting/register/te8S_gONRUWBFEM_X1nhPQ" style="color:white; background:#ffc107; padding:6px 12px; border-radius:5px; text-decoration:none;">Join our Free Weekly AI-Soul-Tech Q&A</a></p>
+  </header>
+  <main>
+    <label for="region">Region:</label>
+    <select id="region">
+      <option>EU</option>
+      <option>UK</option>
+      <option>APAC</option>
+      <option>Africa</option>
+      <option>LATAM</option>
+      <option>MENA</option>
+      <option>Eurasia</option>
+    </select>
+    <p class="instructions">Select the region for your study startup.</p>
+
+    <label for="authority">Regulatory Authority:</label>
+    <select id="authority">
+      <option>EMA</option>
+      <option>MHRA</option>
+      <option>NMPA</option>
+      <option>SAHPRA</option>
+      <option>ANVISA</option>
+    </select>
+    <p class="instructions">Choose the main regulatory body governing your country selection.</p>
+
+    <label for="country">Country:</label>
+    <input type="text" id="country" placeholder="e.g., Germany">
+    <p class="instructions">Enter the country of operation.</p>
+
+    <label for="submissionDate">Submission Date:</label>
+    <input type="date" id="submissionDate">
+    <p class="instructions">Select the date your regulatory submission was sent.</p>
+
+    <label for="startupMetric">Startup Complexity:</label>
+    <select id="startupMetric">
+      <option value="60">Expedited (60 days)</option>
+      <option value="90">Standard (90 days)</option>
+      <option value="120">High Complexity (120 days)</option>
+    </select>
+    <p class="instructions">Choose based on the expected complexity of your startup plan.</p>
+
+    <label for="localDelay">Local Delays (optional days):</label>
+    <input type="number" id="localDelay" placeholder="e.g., 15">
+    <p class="instructions">Add extra days for local contracting or ethics delays if known.</p>
+
+    <button onclick="calculateTimeline()">Calculate Forecast</button>
+
+    <div class="output" id="result" style="display: none;">
+      <h2>Forecasted Site Activation Date:</h2>
+      <p id="activationDate"></p>
+      <p id="durationSummary"></p>
+      <p id="regionalNotes"></p>
+    </div>
+
+    <h2>Your Thoughts Matter</h2>
+    <p>We value your insight to make this tool better for everyone.</p>
+    <p><a href="https://forms.gle/R14zBSNXCbkM8rAE9" target="_blank" style="color: #007BFF; text-decoration: underline;">Click here to provide your feedback</a></p>
+
+    <div class="cta">
+      <p>✨ Join our Free AI-Soul-Tech Webinar Sundays at 10 a.m. CST where we explore clinical innovation with cosmic flow.</p>
+      <a href="https://us06web.zoom.us/meeting/register/te8S_gONRUWBFEM_X1nhPQ">Reserve My Spot</a>
+    </div>
+  </main>
+  <footer>
+    <p><em>"This is soul-coded strategy — where AI meets inner alignment and your vision becomes inevitable."</em></p>
+    <p>© 2025 Tengu Muna | Oracle Mentor & Visionary Flow Alchemist</p>
+    <p><a href="https://linktr.ee/achaibo" style="color:white;">Explore TENGU's Universe</a></p>
+    <p><a href="https://us06web.zoom.us/meeting/register/te8S_gONRUWBFEM_X1nhPQ" style="color:white; text-decoration: underline;">Join our Free Weekly AI-Soul-Tech Q&A</a></p>
+  </footer>
+  <script>
+    const regionalNotes = {
+      EMA: "Includes EU harmonized processes; allow 90-120 days baseline.",
+      MHRA: "UK-specific timelines post-Brexit; generally efficient with rolling review.",
+      NMPA: "China's NMPA requires local translations and prior registration.",
+      SAHPRA: "South Africa's SAHPRA timelines often delayed due to contracting.",
+      ANVISA: "Brazil has dual review via ANVISA and CONEP; plan for overlap."
+    };
+
+    function calculateTimeline() {
+      const authority = document.getElementById('authority').value;
+      const submissionDate = new Date(document.getElementById('submissionDate').value);
+      const startupDays = parseInt(document.getElementById('startupMetric').value);
+      const delayDays = parseInt(document.getElementById('localDelay').value) || 0;
+
+      const totalDays = startupDays + delayDays;
+      const activationDate = new Date(submissionDate);
+      activationDate.setDate(activationDate.getDate() + totalDays);
+
+      document.getElementById('activationDate').innerText = activationDate.toDateString();
+      document.getElementById('durationSummary').innerText = `Total startup duration: ${totalDays} days.`;
+      document.getElementById('regionalNotes').innerText = regionalNotes[authority] || '';
+      document.getElementById('result').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
