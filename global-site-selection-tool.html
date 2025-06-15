@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Site Selection Tool</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f8f8f8; color: #333; }
+    header, footer { background: #1a1a1a; color: white; padding: 20px; text-align: center; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 20px; background: white; }
+    h1 { font-size: 28px; margin-bottom: 10px; }
+    h2 { font-size: 20px; color: #555; margin-top: 30px; }
+    label, select, textarea, input { display: block; width: 100%; margin-bottom: 15px; }
+    select, textarea, input { padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
+    th { background-color: #eee; }
+    .cta { background: #ffcc00; padding: 15px; margin: 20px 0; text-align: center; font-weight: bold; }
+    .note { font-size: 14px; color: #777; margin-bottom: 10px; }
+    .tooltip { font-size: 12px; color: #555; margin-bottom: 10px; }
+    button { padding: 10px 20px; background: #333; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 10px; }
+    .feedback-section {
+      margin-top: 3rem;
+      padding: 1.5rem;
+      background: #e9f5ff;
+      border-left: 5px solid #0077cc;
+      border-radius: 6px;
+    }
+    .feedback-section h3 {
+      margin-top: 0;
+      color: #004b87;
+    }
+    .feedback-section p {
+      margin: 0.5rem 0 1rem;
+    }
+    .feedback-section a {
+      display: inline-block;
+      background: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 0.6rem 1.2rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+  <script>
+    function generateMatrix() {
+      const table = document.getElementById("matrix-table");
+      const tbody = table.querySelector("tbody");
+      const country = document.getElementById("countryInput").value;
+      if (country.trim() === "") return;
+
+      tbody.innerHTML = `<tr>
+        <td>${country}</td>
+        <td>8</td>
+        <td>12 weeks</td>
+        <td>Moderate</td>
+        <td>Local</td>
+        <td>Medium</td>
+        <td>Yes</td>
+        <td>7</td>
+        <td>6</td>
+        <td>10</td>
+        <td>No</td>
+        <td>78%</td>
+      </tr>`;
+
+      table.style.display = "table";
+    }
+
+    function exportTableToCSV(filename) {
+      const rows = document.querySelectorAll("table tr");
+      let csv = [];
+      rows.forEach(row => {
+        const cols = row.querySelectorAll("td, th");
+        let rowData = [];
+        cols.forEach(col => rowData.push(col.innerText));
+        csv.push(rowData.join(","));
+      });
+
+      const csvFile = new Blob([csv.join("\n")], { type: "text/csv" });
+      const downloadLink = document.createElement("a");
+      downloadLink.download = filename;
+      downloadLink.href = window.URL.createObjectURL(csvFile);
+      downloadLink.style.display = "none";
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+    }
+  </script>
+</head>
+<body>
+
+<header>
+  <h1>Global Site Selection Tool</h1>
+  <p>Strategic country readiness insights for global trial planning</p>
+  <p><a href="https://us06web.zoom.us/meeting/register/te8S_gONRUWBFEM_X1nhPQ" style="color: #ffcc00;">Join Our Free Weekly Webinar - Sundays @ 10 AM CST</a></p>
+</header>
+
+<div class="container">
+  <h2>Study Inputs</h2>
+
+  <label>Study Phase</label>
+  <div class="tooltip">Select the clinical phase for your study (e.g., I to IV).</div>
+  <select><option>I</option><option>II</option><option>III</option><option>IV</option></select>
+
+  <label>Therapeutic Area</label>
+  <div class="tooltip">Enter the therapeutic focus (e.g., oncology, cardiology, infectious diseases).</div>
+  <input type="text" placeholder="e.g., Oncology">
+
+  <label>Project Type</label>
+  <div class="tooltip">Choose whether the product is a drug, biologic, device, or herbal/natural product.</div>
+  <select>
+    <option>Drug</option><option>Biologic</option><option>Device</option><option>Herbal/Natural</option>
+  </select>
+
+  <label>Submission Urgency</label>
+  <div class="tooltip">Define how urgently regulatory submissions should be completed.</div>
+  <select><option>Low</option><option>Moderate</option><option>High</option></select>
+
+  <label>Regulatory Pathway</label>
+  <div class="tooltip">Choose the expected submission type (e.g., Standard, Accelerated, Emergency Use).</div>
+  <select>
+    <option>Standard</option><option>Accelerated</option><option>Emergency Use</option>
+  </select>
+
+  <label>Country</label>
+  <div class="tooltip">Enter the target country for trial site consideration.</div>
+  <input type="text" id="countryInput" placeholder="e.g., Germany">
+
+  <button onclick="generateMatrix()">Generate Country Matrix</button>
+  <button onclick="exportTableToCSV('global_site_selection_matrix.csv')">Export to CSV</button>
+
+  <h2>Country Readiness Matrix</h2>
+  <div class="tooltip">
+    Use this table to review a country's readiness for study startup. Each metric reflects operational factors.
+  </div>
+  <table id="matrix-table" style="display:none;">
+    <thead>
+      <tr>
+        <th>Country</th>
+        <th>Regulatory Efficiency</th>
+        <th>Activation Timeline</th>
+        <th>Site Quality</th>
+        <th>IRB/Ethics Type</th>
+        <th>Contracting Speed</th>
+        <th>Translation Barrier</th>
+        <th>Recruitment Score</th>
+        <th>Infrastructure</th>
+        <th>Prior Trials</th>
+        <th>DEI Potential</th>
+        <th>Suitability Index</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <h2>💬 Help Us Improve This Tool</h2>
+  <div class="feedback-section">
+    <p>Your insight helps us refine this matrix and bring more clarity...</p>
+    <a href="https://forms.gle/ruVDANznyt751JLY6" target="_blank">Submit Feedback</a>
+  </div>
+
+  <div class="cta">
+    Join our AI-Soul-Tech Webinar Sundays at 10 a.m. CST — <a href="https://us06web.zoom.us/meeting/register/te8S_gONRUWBFEM_X1nhPQ">Register Here</a>
+  </div>
+</div>
+
+<footer>
+  <p><em>"This is soul-coded strategy — where AI meets inner alignment and your vision becomes inevitable."</em></p>
+  <p>&copy; 2025 Tengu Muna | Oracle Mentor & Visionary Flow Alchemist</p>
+  <p><a href="https://linktr.ee/achaibo" style="color: #ffcc00;">Explore TENGU's Universe</a></p>
+  <p><a href="https://us06web.zoom.us/meeting/register/te8S_gONRUWBFEM_X1nhPQ" style="color: #ffcc00; text-decoration: underline;">Join Our Free Weekly Webinar</a></p>
+</footer>
+
+</body>
+</html>
