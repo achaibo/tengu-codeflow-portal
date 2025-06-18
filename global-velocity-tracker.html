@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🌍 Global Velocity Monitor - Final</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .status-green { background-color: #d1fae5; }
+    .status-yellow { background-color: #fef9c3; }
+    .status-red { background-color: #fee2e2; }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <div class="max-w-7xl mx-auto p-6">
+    <header class="mb-8">
+      <h1 class="text-4xl font-bold text-center">🌍 Global Velocity Monitor</h1>
+      <p class="text-center text-lg text-gray-600 mt-2">
+        Multi-tiered view for tracking Site, Country, and Global enrollment & DEI performance
+      </p>
+      <div class="bg-blue-50 border border-blue-200 text-sm text-gray-700 p-4 rounded mt-4">
+        <h2 class="font-semibold mb-2">📘 How to Use:</h2>
+<ul class="list-disc pl-5 space-y-1">
+  <li>Start by selecting the appropriate level: <strong>Site</strong>, <strong>Country</strong>, or <strong>Global</strong>.</li>
+  <li>Use the <strong>"+ Add Row"</strong> button to input new data entries in each section.</li>
+  <li>Fill in all applicable fields. Make sure numerical values are entered without formatting symbols.</li>
+  <li>Use the required <strong>date format</strong>: <code>DD-MMM-YYYY</code> (e.g., 30-JUN-2025).</li>
+  <li>Click <strong>"Calculate Pace"</strong> after data entry to update performance metrics.</li>
+  <li>Review color-coded <strong>Status</strong> indicators:
+    <ul class="list-disc pl-6">
+      <li>🔷 = On Track (Pace Ratio ≥ 1)</li>
+      <li>🟡 = Watch (0.70 ≤ Pace Ratio &lt; 1)</li>
+      <li>🔴 = Lagging (Pace Ratio &lt; 0.70)</li>
+    </ul>
+  </li>
+  <li><strong>Key Metrics Definitions:</strong>
+    <ul class="list-disc pl-6">
+      <li><strong>Pace Ratio</strong> = Actual Randomized ÷ Projected Randomization</li>
+      <li><strong>Gap (#)</strong> = Projected Randomization − Actual Randomized</li>
+      <li><strong>Gap (%)</strong> = (Gap ÷ Projected Randomization) × 100</li>
+      <li><strong>DEI Gap (#)</strong> = Planned DEI − Actual DEI</li>
+    </ul>
+  </li>
+  <li>To maintain consistency, DEI tracking fields are editable and must be entered manually.</li>
+</ul>
+      </div>
+    </header>
+
+    <main>
+      <!-- Site-Level Snapshot -->
+      <section id="siteSnapshot" class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">🏥 Site-Level Snapshot</h2>
+        <div class="overflow-x-auto">
+          <table id="siteTable" class="min-w-full table-auto border text-sm">
+            <thead>
+              <tr class="bg-gray-200 text-left">
+                <th class="p-2 border">Site</th>
+                <th class="p-2 border">Country</th>
+                <th class="p-2 border">Projected Randomization</th>
+                <th class="p-2 border">Actual Randomized</th>
+                <th class="p-2 border">Planned End Date</th>
+                <th class="p-2 border">Last Data Cutoff</th>
+                <th class="p-2 border">Pace Ratio</th>
+                <th class="p-2 border">Gap (#)</th>
+                <th class="p-2 border">Gap (%)</th>
+                <th class="p-2 border">Planned DEI</th>
+                <th class="p-2 border">Actual DEI</th>
+                <th class="p-2 border">DEI Gap (#)</th>
+                <th class="p-2 border">🌊 Status</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="mt-4">
+          <button onclick="addSiteRow()" class="px-4 py-2 bg-blue-600 text-white rounded">+ Add Site Row</button>
+          <button onclick="calculateSitePace()" class="ml-2 px-4 py-2 bg-blue-800 text-white rounded">Calculate Site Pace</button>
+        </div>
+      </section>
+
+      <!-- Country-Level Snapshot -->
+      <section id="countrySnapshot" class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">🌍 Country-Level Snapshot</h2>
+        <div class="overflow-x-auto">
+          <table id="countryTable" class="min-w-full table-auto border text-sm">
+            <thead>
+              <tr class="bg-gray-200 text-left">
+                <th class="p-2 border">Country</th>
+                <th class="p-2 border"># of Sites</th>
+                <th class="p-2 border">Projected Randomization</th>
+                <th class="p-2 border">Actual Randomized</th>
+                <th class="p-2 border">Planned End Date</th>
+                <th class="p-2 border">Last Data Cutoff</th>
+                <th class="p-2 border">Pace Ratio</th>
+                <th class="p-2 border">Gap (#)</th>
+                <th class="p-2 border">Gap (%)</th>
+                <th class="p-2 border">Planned DEI</th>
+                <th class="p-2 border">Actual DEI</th>
+                <th class="p-2 border">DEI Gap (#)</th>
+                <th class="p-2 border">🌊 Status</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="mt-4">
+          <button onclick="addCountryRow()" class="px-4 py-2 bg-green-600 text-white rounded">+ Add Country Row</button>
+          <button onclick="calculateCountryPace()" class="ml-2 px-4 py-2 bg-green-800 text-white rounded">Calculate Country Pace</button>
+        </div>
+      </section>
+
+      <!-- Global-Level Snapshot -->
+      <section id="globalSnapshot" class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">🌐 Global-Level Snapshot</h2>
+        <div class="overflow-x-auto">
+          <table id="globalTable" class="min-w-full table-auto border text-sm">
+            <thead>
+              <tr class="bg-gray-200 text-left">
+                <th class="p-2 border"># of Countries</th>
+                <th class="p-2 border"># of Sites</th>
+                <th class="p-2 border">Projected Randomization</th>
+                <th class="p-2 border">Actual Randomized</th>
+                <th class="p-2 border">Planned End Date</th>
+                <th class="p-2 border">Last Data Cutoff</th>
+                <th class="p-2 border">Pace Ratio</th>
+                <th class="p-2 border">Gap (#)</th>
+                <th class="p-2 border">Gap (%)</th>
+                <th class="p-2 border">Planned DEI</th>
+                <th class="p-2 border">Actual DEI</th>
+                <th class="p-2 border">DEI Gap (#)</th>
+                <th class="p-2 border">🌊 Status</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="mt-4">
+          <button onclick="addGlobalRow()" class="px-4 py-2 bg-purple-600 text-white rounded">+ Add Global Row</button>
+          <button onclick="calculateGlobalPace()" class="ml-2 px-4 py-2 bg-purple-800 text-white rounded">Calculate Global Pace</button>
+        </div>
+      </section>
+    <section class="mb-12 bg-blue-50 border border-blue-200 p-4 rounded">
+  <p class="text-center text-base text-gray-800">
+    💬 Loved using this tool? <a href="https://forms.gle/Qkgo5QfGTfb71LD78" class="text-blue-600 underline font-medium hover:text-blue-800">Send feedback or suggestions here ✨</a>
+  </p>
+</section>
+</main>
+
+    <footer class="text-center text-sm text-gray-500 mt-6 border-t pt-6">
+      🛡️ Licensed to: <strong>Unstoppable Empress TENGU 100X</strong><br/>
+      🌐 Build Date: 18 June 2025<br/>
+      🔒 Not for redistribution
+    </footer>
+  </div>
+
+  <script>
+    function addSiteRow() {
+      const tbody = document.querySelector('#siteTable tbody');
+      const row = document.createElement('tr');
+      for (let i = 0; i < 13; i++) {
+        const td = document.createElement('td');
+        td.contentEditable = i < 6 || (i > 8 && i < 12);
+        td.className = 'p-2 border';
+        td.textContent = i >= 6 && i <= 8 || i === 12 ? '–' : '';
+        row.appendChild(td);
+      }
+      tbody.appendChild(row);
+    }
+
+    function calculateSitePace() {
+      const rows = document.querySelectorAll('#siteTable tbody tr');
+      rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        const planned = parseFloat(cells[2].innerText) || 0;
+        const actual = parseFloat(cells[3].innerText) || 0;
+        const plannedDEI = parseFloat(cells[9].innerText) || 0;
+        const actualDEI = parseFloat(cells[10].innerText) || 0;
+
+        const pace = planned ? actual / planned : 0;
+        const gap = planned - actual;
+        const gapPct = planned ? (gap / planned) * 100 : 0;
+        const deiGap = plannedDEI - actualDEI;
+
+        cells[6].innerText = pace.toFixed(2);
+        cells[7].innerText = gap.toFixed(0);
+        cells[8].innerText = gapPct.toFixed(1) + '%';
+        cells[11].innerText = deiGap.toFixed(0);
+
+        let status = '–';
+        row.classList.remove('status-green', 'status-yellow', 'status-red');
+        if (pace >= 1) {
+          status = '🔷'; row.classList.add('status-green');
+        } else if (pace >= 0.7) {
+          status = '🟡'; row.classList.add('status-yellow');
+        } else {
+          status = '🔴'; row.classList.add('status-red');
+        }
+        cells[12].innerText = status;
+      });
+    }
+
+    function addCountryRow() {
+      const tbody = document.querySelector('#countryTable tbody');
+      const row = document.createElement('tr');
+      for (let i = 0; i < 13; i++) {
+        const td = document.createElement('td');
+        td.contentEditable = i < 6 || (i > 8 && i < 12);
+        td.className = 'p-2 border';
+        td.textContent = i >= 6 && i <= 8 || i === 12 ? '–' : '';
+        row.appendChild(td);
+      }
+      tbody.appendChild(row);
+    }
+
+    function calculateCountryPace() {
+      const rows = document.querySelectorAll('#countryTable tbody tr');
+      rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        const planned = parseFloat(cells[2].innerText) || 0;
+        const actual = parseFloat(cells[3].innerText) || 0;
+        const plannedDEI = parseFloat(cells[9].innerText) || 0;
+        const actualDEI = parseFloat(cells[10].innerText) || 0;
+
+        const pace = planned ? actual / planned : 0;
+        const gap = planned - actual;
+        const gapPct = planned ? (gap / planned) * 100 : 0;
+        const deiGap = plannedDEI - actualDEI;
+
+        cells[6].innerText = pace.toFixed(2);
+        cells[7].innerText = gap.toFixed(0);
+        cells[8].innerText = gapPct.toFixed(1) + '%';
+        cells[11].innerText = deiGap.toFixed(0);
+
+        let status = '–';
+        row.classList.remove('status-green', 'status-yellow', 'status-red');
+        if (pace >= 1) {
+          status = '🔷'; row.classList.add('status-green');
+        } else if (pace >= 0.7) {
+          status = '🟡'; row.classList.add('status-yellow');
+        } else {
+          status = '🔴'; row.classList.add('status-red');
+        }
+        cells[12].innerText = status;
+      });
+    }
+
+    function addGlobalRow() {
+      const tbody = document.querySelector('#globalTable tbody');
+      const row = document.createElement('tr');
+      for (let i = 0; i < 13; i++) {
+        const td = document.createElement('td');
+        td.contentEditable = i < 6 || (i > 8 && i < 12);
+        td.className = 'p-2 border';
+        td.textContent = i >= 6 && i <= 8 || i === 12 ? '–' : '';
+        row.appendChild(td);
+      }
+      tbody.appendChild(row);
+    }
+
+    function calculateGlobalPace() {
+      const rows = document.querySelectorAll('#globalTable tbody tr');
+      rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        const planned = parseFloat(cells[2].innerText) || 0;
+        const actual = parseFloat(cells[3].innerText) || 0;
+        const plannedDEI = parseFloat(cells[9].innerText) || 0;
+        const actualDEI = parseFloat(cells[10].innerText) || 0;
+
+        const pace = planned ? actual / planned : 0;
+        const gap = planned - actual;
+        const gapPct = planned ? (gap / planned) * 100 : 0;
+        const deiGap = plannedDEI - actualDEI;
+
+        cells[6].innerText = pace.toFixed(2);
+        cells[7].innerText = gap.toFixed(0);
+        cells[8].innerText = gapPct.toFixed(1) + '%';
+        cells[11].innerText = deiGap.toFixed(0);
+
+        let status = '–';
+        row.classList.remove('status-green', 'status-yellow', 'status-red');
+        if (pace >= 1) {
+          status = '🔷'; row.classList.add('status-green');
+        } else if (pace >= 0.7) {
+          status = '🟡'; row.classList.add('status-yellow');
+        } else {
+          status = '🔴'; row.classList.add('status-red');
+        }
+        cells[12].innerText = status;
+      });
+    }
+  </script>
+</body>
+</html>
