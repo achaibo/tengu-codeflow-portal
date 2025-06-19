@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Global Site Selection Compass</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-slate-800 font-sans">
+  <div class="max-w-5xl mx-auto px-4 py-8">
+    <header class="text-center mb-8">
+      <h1 class="text-4xl font-bold">🌍 Global Site-Selection Compass</h1>
+      <p class="mt-2 text-gray-600">Real-time regional trial insights to guide your country and site decisions.</p>
+    </header>
+
+    <!-- Region Dropdown -->
+    <section class="mb-6">
+      <label for="regionSelect" class="block font-semibold mb-2">🌎 Select a Trial Region</label>
+      <select id="regionSelect" onchange="showRegionGuidance()" class="w-full border border-gray-300 p-2 rounded">
+        <option value="">-- Choose Region --</option>
+        <option value="APAC">APAC</option>
+        <option value="EU">EU / UK</option>
+        <option value="NA">North America</option>
+        <option value="LATAM">Latin America</option>
+        <option value="MENA">Middle East</option>
+        <option value="AFRICA">Africa</option>
+        <option value="CHINA">China (Special)</option>
+        <option value="TURKEY">Turkey (Special)</option>
+        <option value="INDIA">India (Special)</option>
+      </select>
+    </section>
+
+    <!-- Guidance Output -->
+    <section id="regionOutput" class="hidden bg-slate-50 border border-slate-300 rounded p-4 space-y-4">
+      <div id="regulatory" class="text-sm"></div>
+      <div id="supply" class="text-sm"></div>
+      <div id="dct" class="text-sm"></div>
+      <div id="dei" class="text-sm"></div>
+      <div id="precision" class="text-sm"></div>
+      <div id="risks" class="text-sm"></div>
+      <div id="rwd" class="text-sm"></div>
+      <div id="countries" class="text-sm"></div>
+      <div id="insights" class="text-sm font-medium"></div>
+    </section>
+
+    <!-- Feedback Section -->
+    <section class="mt-10">
+      <h2 class="text-lg font-semibold mb-2">💬 Help Us Improve This Tool</h2>
+      <div class="bg-blue-50 p-4 rounded">
+        <p class="mb-2">Your insight helps us refine this matrix and bring more clarity...</p>
+        <a href="https://forms.gle/TEVJzKQSSPitSpqi7" target="_blank" class="bg-blue-600 text-white px-4 py-2 rounded inline-block">Submit Feedback</a>
+      </div>
+    </section>
+
+    <!-- Weekly Webinar Invite -->
+    <section class="mt-6 bg-yellow-400 text-center py-4 rounded">
+      <p class="font-semibold text-black">
+        Join our AI-Soul-Tech Webinar Sundays at 10 a.m. CST — <a href="https://us06web.zoom.us/meeting/register/te8S_gONRUWBFEM_X1nhPQ" target="_blank" class="underline text-purple-800">Register Here</a>
+      </p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-10 text-center text-sm text-white bg-black p-4 rounded">
+      <p class="italic mb-1">"This is soul-coded strategy — where AI meets inner alignment and your vision becomes inevitable."</p>
+      <p>© 2025 Tengu Muna | Oracle Mentor & Visionary Flow Alchemist</p>
+      <p><a href="#" class="underline text-yellow-400">Explore TENGU's Universe</a> | <a href="#" class="underline text-yellow-400">Join Our Free Weekly Webinar</a></p>
+    </footer>
+  </div>
+
+  <script>
+    const siteRegionGuidance = {
+      APAC: {
+        regulatory: "⚖️ <strong>Regulatory:</strong> PMDA consultation required; long ethics + import cycles.",
+        supply: "🚚 <strong>Supply/IP:</strong> Cold-chain needs extra planning; regional depots help.",
+        dct: "📱 <strong>DCT Readiness:</strong> Japan/Korea high; SE Asia moderate.",
+        dei: "🌈 <strong>DEI:</strong> Low in East Asia; better in urban SE Asia.",
+        precision: "🧬 <strong>Precision Medicine:</strong> Japan and Korea lead in biomarker-driven trials; NGS labs growing regionally.",
+        risks: "⚠️ <strong>Risks:</strong> Long import timelines; multi-tiered regulatory review in some countries.",
+        rwd: "📊 <strong>Data Access:</strong> EMR access improving; still fragmented outside urban hubs.",
+        countries: "🌐 <strong>Best Countries:</strong> Japan, South Korea, Singapore, Vietnam.",
+        insights: "✨ APAC is ideal for hybrid Phase II–III trials with regional CRO alignment."
+      },
+      EU: {
+        regulatory: "⚖️ <strong>Regulatory:</strong> Harmonized under CTR 536/2014; GDPR implications.",
+        supply: "🚚 <strong>Supply/IP:</strong> VAT and customs complexity; strong GMP infrastructure.",
+        dct: "📱 <strong>DCT Readiness:</strong> High in UK, Germany, Nordics.",
+        dei: "🌈 <strong>DEI:</strong> Higher in urban areas; language variation noted.",
+        precision: "🧬 <strong>Precision Medicine:</strong> EU strong in rare disease, oncology, and CDx infrastructure. Genomic initiatives advancing.",
+        risks: "⚠️ <strong>Risks:</strong> Complex VAT/local taxation; language & consent document burdens.",
+        rwd: "📊 <strong>Data Access:</strong> Robust eHealth strategies; GDPR limits cross-border linkage.",
+        countries: "🌐 <strong>Best Countries:</strong> Germany, Spain, UK, Poland, Turkey.",
+        insights: "✨ EU is ideal for regulatory-complex, large-scale trials with strong PI networks."
+      },
+      NA: {
+        regulatory: "⚖️ <strong>Regulatory:</strong> FDA pathways are streamlined; IND timelines reliable.",
+        supply: "🚚 <strong>Supply/IP:</strong> Excellent logistics for IP and temperature-controlled shipments.",
+        dct: "📱 <strong>DCT Readiness:</strong> High across U.S. and Canada; supported by telehealth infrastructure.",
+        dei: "🌈 <strong>DEI:</strong> Emphasis on inclusive enrollment; diversity benchmarks enforced.",
+        precision: "🧬 <strong>Precision Medicine:</strong> U.S. leads in CDx trials and real-world data integration.",
+        risks: "⚠️ <strong>Risks:</strong> High site competition; protocol deviations in high-volume centers.",
+        rwd: "📊 <strong>Data Access:</strong> Strong EHR/claims datasets; integration challenges remain.",
+        countries: "🌐 <strong>Best Countries:</strong> United States, Canada.",
+        insights: "✨ North America is ideal for early-phase innovation and precision oncology platforms."
+      },
+      LATAM: {
+        regulatory: "⚖️ <strong>Regulatory:</strong> ANVISA and COFEPRIS timelines vary; local ethics dual process.",
+        supply: "🚚 <strong>Supply/IP:</strong> Complex import/export paperwork; centralized depot recommended.",
+        dct: "📱 <strong>DCT Readiness:</strong> Growing interest; limited coverage outside urban zones.",
+        dei: "🌈 <strong>DEI:</strong> Ethnically diverse populations with unmet trial access.",
+        precision: "🧬 <strong>Precision Medicine:</strong> Emerging focus; oncology trials gaining traction.",
+        risks: "⚠️ <strong>Risks:</strong> Infrastructure variability; customs delay risk.",
+        rwd: "📊 <strong>Data Access:</strong> Hospital data fragmented; limited unified registries.",
+        countries: "🌐 <strong>Best Countries:</strong> Brazil, Mexico, Argentina, Colombia.",
+        insights: "✨ LATAM is ideal for Phase III–IV access expansion with proper regulatory planning."
+      },
+      MENA: {
+        regulatory: "⚖️ <strong>Regulatory:</strong> Gulf states improving speed; centralized review in UAE.",
+        supply: "🚚 <strong>Supply/IP:</strong> Reliable air hub connectivity; customs require preclearance.",
+        dct: "📱 <strong>DCT Readiness:</strong> Mixed; UAE and KSA expanding telemedicine capacity.",
+        dei: "🌈 <strong>DEI:</strong> Localized diversity; growing awareness in major cities.",
+        precision: "🧬 <strong>Precision Medicine:</strong> Investments in genomics in Qatar, UAE.",
+        risks: "⚠️ <strong>Risks:</strong> Regional instability; contract negotiation delays.",
+        rwd: "📊 <strong>Data Access:</strong> Hospital-centric; digital transition ongoing.",
+        countries: "🌐 <strong>Best Countries:</strong> UAE, Saudi Arabia, Egypt, Qatar.",
+        insights: "✨ MENA is ideal for Phase III–IV regional outreach with CRO-led oversight."
+      },
+      AFRICA: {
+        regulatory: "⚖️ <strong>Regulatory:</strong> Varies by country; some regions improving with AVAREF.",
+        supply: "🚚 <strong>Supply/IP:</strong> Infrastructure support critical; transport time high.",
+        dct: "📱 <strong>DCT Readiness:</strong> Mobile health pilots rising; connectivity remains a barrier.",
+        dei: "🌈 <strong>DEI:</strong> High unmet medical need in rural and peri-urban regions.",
+        precision: "🧬 <strong>Precision Medicine:</strong> Few active CDx sites; pilot programs emerging.",
+        risks: "⚠️ <strong>Risks:</strong> Staff turnover; IRB variability; limited PI density.",
+        rwd: "📊 <strong>Data Access:</strong> Paper-based systems still dominant; EMR slow to scale.",
+        countries: "🌐 <strong>Best Countries:</strong> South Africa, Kenya, Nigeria, Ghana.",
+        insights: "✨ Africa is ideal for long-term observational or vaccine trials with infrastructure investment."
+      },
+      CHINA: {
+        regulatory: "⚖️ <strong>Regulatory:</strong> NMPA evolving with faster IND pathways; ethics decentralization ongoing.",
+        supply: "🚚 <strong>Supply/IP:</strong> Domestic IP packaging mandates apply; customs clearance strict.",
+        dct: "📱 <strong>DCT Readiness:</strong> High tech but regional disparities; pilot projects accelerating.",
+        dei: "🌈 <strong>DEI:</strong> Diverse provinces; urban–rural divide affects representation.",
+        precision: "🧬 <strong>Precision Medicine:</strong> Huge investment in AI genomics and targeted therapy.",
+        risks: "⚠️ <strong>Risks:</strong> Policy shifts and data localization laws affect access.",
+        rwd: "📊 <strong>Data Access:</strong> Expanding national health databases; export restricted.",
+        countries: "🌐 <strong>Best Regions:</strong> Beijing, Shanghai, Guangdong, Jiangsu.",
+        insights: "✨ China is ideal for digital-heavy oncology trials and AI-enabled precision research."
+      },
+      TURKEY: {
+        regulatory: "⚖️ <strong>Regulatory:</strong> TITCK efficient timelines; EU-harmonized regulations.",
+        supply: "🚚 <strong>Supply/IP:</strong> Istanbul as a hub; quick access to EU/MENA corridors.",
+        dct: "📱 <strong>DCT Readiness:</strong> Moderate; rapid adoption post-pandemic.",
+        dei: "🌈 <strong>DEI:</strong> Diverse population; urban vs. rural access disparities.",
+        precision: "🧬 <strong>Precision Medicine:</strong> Oncology, cardiology research hubs growing.",
+        risks: "⚠️ <strong>Risks:</strong> Currency fluctuations; regional site infrastructure gaps.",
+        rwd: "📊 <strong>Data Access:</strong> National registry initiatives expanding.",
+        countries: "🌐 <strong>Focus:</strong> Istanbul, Ankara, Izmir.",
+        insights: "✨ Turkey is ideal as a dual-identity node between EU and MENA operations."
+      },
+      INDIA: {
+        regulatory: "⚖️ <strong>Regulatory:</strong> CDSCO timelines improved; ethics oversight varies by region.",
+        supply: "🚚 <strong>Supply/IP:</strong> Large domestic pharma base; logistics varies by zone.",
+        dct: "📱 <strong>DCT Readiness:</strong> Expanding with telehealth; connectivity gaps exist.",
+        dei: "🌈 <strong>DEI:</strong> High linguistic and ethnic diversity; regulatory focus increasing.",
+        precision: "🧬 <strong>Precision Medicine:</strong> Genomics initiatives and bioinformatics labs expanding.",
+        risks: "⚠️ <strong>Risks:</strong> IRB variability; contract delays at public sites.",
+        rwd: "📊 <strong>Data Access:</strong> EMR adoption growing in private networks.",
+        countries: "🌐 <strong>Key States:</strong> Maharashtra, Karnataka, Tamil Nadu, Delhi.",
+        insights: "✨ India is ideal for high-volume trials, particularly in metabolic and infectious disease research."
+      }
+    };
+
+    function showRegionGuidance() {
+      const selected = document.getElementById("regionSelect").value;
+      const output = document.getElementById("regionOutput");
+      if (!siteRegionGuidance[selected]) {
+        output.classList.add("hidden");
+        return;
+      }
+      document.getElementById("regulatory").innerHTML = siteRegionGuidance[selected].regulatory;
+      document.getElementById("supply").innerHTML = siteRegionGuidance[selected].supply;
+      document.getElementById("dct").innerHTML = siteRegionGuidance[selected].dct;
+      document.getElementById("dei").innerHTML = siteRegionGuidance[selected].dei;
+      document.getElementById("precision").innerHTML = siteRegionGuidance[selected].precision;
+      document.getElementById("risks").innerHTML = siteRegionGuidance[selected].risks;
+      document.getElementById("rwd").innerHTML = siteRegionGuidance[selected].rwd;
+      document.getElementById("countries").innerHTML = siteRegionGuidance[selected].countries;
+      document.getElementById("insights").innerHTML = siteRegionGuidance[selected].insights;
+      output.classList.remove("hidden");
+    }
+  </script>
+</body>
+</html>
