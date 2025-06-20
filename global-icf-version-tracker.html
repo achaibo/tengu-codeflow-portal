@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📝 Global ICF Version Tracker</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #cfe8fa; color: #333; }
+    .container { max-width: 900px; margin: 30px auto; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    h1 { text-align: center; color: #1b4965; margin-bottom: 20px; font-size: 2em; }
+    .instructions {
+      background-color: #a1cbe8;
+      border-left: 4px solid #1b4965;
+      padding: 20px;
+      margin: 30px 0; /* Increased vertical spacing */
+      border-radius: 4px;
+    }
+    .instructions ul { margin: 0; padding-left: 20px; }
+    .form-section { background-color: #eaf6fc; padding: 20px; border-radius: 4px; margin-bottom: 20px; }
+    label { font-weight: bold; display: block; margin-top: 15px; }
+    small { display: block; color: #555; margin-bottom: 5px; }
+    input, select, textarea, button { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
+    textarea { resize: vertical; height: 80px; }
+    button { background-color: #005f9e; color: #fff; border: none; cursor: pointer; font-weight: bold; }
+    button:hover { background-color: #004776; }
+    .export-button { text-align: center; margin-bottom: 20px; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+    th, td { border: 1px solid #ddd; padding: 8px; }
+    th { background-color: #7baed8; color: #1b4965; }
+    .feedback { margin-top: 20px; background-color: #e0eefa; padding: 20px; border-radius: 4px; text-align: center; font-size: 1.2em; }
+    .feedback a { color: #007acc; text-decoration: none; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📝 Global ICF Version Tracker</h1>
+
+    <div class="instructions">
+      <p><strong>📌 Purpose:</strong> This tool helps global study teams quickly track the <em>current ICF version</em> in use across all sites, and identify who needs to update.</p>
+      <ul>
+        <li>✅ Add new versions: <strong>🆔 Protocol ID</strong>, <strong>📋 Consent Type</strong>, <strong>🔢 Version #</strong>, <strong>📅 Effective Date</strong>.</li>
+        <li>🔙 Record previous version: <strong>🔙 Previous Version #</strong>, <strong>🕒 Previous Version Date</strong>.</li>
+        <li>🚦 Select <strong>Status</strong> (Active, Archived, Draft, Replaced).</li>
+        <li>📝 Add optional <strong>Notes</strong> for context or clarifications.</li>
+        <li>📋 View a live table of all ICF versions.</li>
+        <li>📥 Export data to <strong>CSV</strong>.</li>
+      </ul>
+    </div>
+
+    <div class="form-section">
+      <form id="versionForm">
+        <label for="protocol">🆔 Protocol ID</label>
+        <small>Enter the unique study protocol identifier.</small>
+        <input type="text" id="protocol" required placeholder="e.g., ABC123" />
+
+        <label for="consentType">📋 Consent Type</label>
+        <small>Pick the type of consent.</small>
+        <select id="consentType">
+          <option>Main</option>
+          <option>Precision Medicine</option>
+          <option>Genetic</option>
+          <option>Sub-study</option>
+          <option>Pediatric / Minor Assent</option>
+          <option>Global Master ICF</option>
+          <option>IRB-approved Local Version</option>
+        </select>
+
+        <label for="version">🔢 Version #</label>
+        <small>Add the consent version number (e.g., v1.0).</small>
+        <input type="text" id="version" required placeholder="v1.0" />
+
+        <label for="effectiveDate">📅 Effective Date</label>
+        <small>Select the date this version was released.</small>
+        <input type="date" id="effectiveDate" required />
+
+        <label for="prevVersion">🔙 Previous Version #</label>
+        <small>Enter the prior version number (if applicable).</small>
+        <input type="text" id="prevVersion" placeholder="e.g., v0.9" />
+
+        <label for="prevDate">🕒 Previous Version Date</label>
+        <small>Select the release date of the prior version.</small>
+        <input type="date" id="prevDate" />
+
+        <label for="status">🚦 Status</label>
+        <small>Select the status of this consent version.</small>
+        <select id="status">
+          <option>Active</option>
+          <option>Archived</option>
+          <option>Draft</option>
+          <option>Replaced</option>
+        </select>
+
+        <label for="notes">📝 Notes (Optional)</label>
+        <small>Add any free-text notes or clarifications.</small>
+        <textarea id="notes" placeholder="e.g., Reason for update..."></textarea>
+
+        <button type="submit">➕ Add Version</button>
+      </form>
+    </div>
+
+    <div class="export-button">
+      <button id="exportCsv">📥 Export CSV</button>
+    </div>
+
+    <table id="versionTable">
+      <thead>
+        <tr>
+          <th>🆔 Protocol ID</th>
+          <th>📋 Consent Type</th>
+          <th>🔢 Version #</th>
+          <th>📅 Effective Date</th>
+          <th>🔙 Previous Version #</th>
+          <th>🕒 Previous Version Date</th>
+          <th>🚦 Status</th>
+          <th>📝 Notes</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <div class="feedback">
+      💬 ✨ Loved using this tool? Click <a href="https://forms.gle/kBNwi9U98dLLXDteA">here</a> to give feedback and suggestions!
+    </div>
+  </div>
+
+  <script>
+    // CSV export utility
+    function downloadCSV(csv, filename) {
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.setAttribute('download', filename);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+    function exportTableToCSV(filename) {
+      const rows = document.querySelectorAll('#versionTable tr');
+      const csv = Array.from(rows).map(row => {
+        const cols = row.querySelectorAll('th, td');
+        return Array.from(cols).map(col => '"' + col.innerText.replace(/"/g, '""') + '"').join(',');
+      }).join('\r\n');
+      downloadCSV(csv, filename);
+    }
+    document.getElementById('exportCsv').addEventListener('click', () => {
+      exportTableToCSV('consent_versions.csv');
+    });
+
+    // Form handling scoped in an IIFE
+    (function() {
+      var form = document.getElementById('versionForm');
+      var tableBody = document.querySelector('#versionTable tbody');
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var data = [
+          document.getElementById('protocol').value,
+          document.getElementById('consentType').value,
+          document.getElementById('version').value,
+          document.getElementById('effectiveDate').value,
+          document.getElementById('prevVersion').value,
+          document.getElementById('prevDate').value,
+          document.getElementById('status').value,
+          document.getElementById('notes').value
+        ];
+        var row = document.createElement('tr');
+        data.forEach(function(text) {
+          var cell = document.createElement('td');
+          cell.innerText = text;
+          row.appendChild(cell);
+        });
+        tableBody.appendChild(row);
+        form.reset();
+      });
+    })();
+  </script>
+</body>
+</html>
