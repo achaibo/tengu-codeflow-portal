@@ -8,13 +8,7 @@
     body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #cfe8fa; color: #333; }
     .container { max-width: 900px; margin: 30px auto; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
     h1 { text-align: center; color: #1b4965; margin-bottom: 20px; font-size: 2em; }
-    .instructions {
-      background-color: #a1cbe8;
-      border-left: 4px solid #1b4965;
-      padding: 20px;
-      margin: 30px 0; /* Increased vertical spacing */
-      border-radius: 4px;
-    }
+    .instructions { background-color: #a1cbe8; border-left: 4px solid #1b4965; padding: 20px; margin: 20px 0; border-radius: 4px; }
     .instructions ul { margin: 0; padding-left: 20px; }
     .form-section { background-color: #eaf6fc; padding: 20px; border-radius: 4px; margin-bottom: 20px; }
     label { font-weight: bold; display: block; margin-top: 15px; }
@@ -121,6 +115,10 @@
     <div class="feedback">
       💬 ✨ Loved using this tool? Click <a href="https://forms.gle/kBNwi9U98dLLXDteA">here</a> to give feedback and suggestions!
     </div>
+    <p style="text-align: center; font-size: 0.9em; color: #555; margin-top: 10px;">
+      Licensed to Unstoppable Empress TENGU 100X – Not for Redistribution.<br>
+      Last updated: 18 Jun 2025
+    </p>
   </div>
 
   <script>
@@ -134,6 +132,7 @@
       link.click();
       document.body.removeChild(link);
     }
+
     function exportTableToCSV(filename) {
       const rows = document.querySelectorAll('#versionTable tr');
       const csv = Array.from(rows).map(row => {
@@ -142,7 +141,8 @@
       }).join('\r\n');
       downloadCSV(csv, filename);
     }
-    document.getElementById('exportCsv').addEventListener('click', () => {
+
+    document.getElementById('exportCsv').addEventListener('click', function() {
       exportTableToCSV('consent_versions.csv');
     });
 
