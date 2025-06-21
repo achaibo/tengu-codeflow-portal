@@ -1,13 +1,13 @@
-# tengu-digital-launchpad
+### 🌍 About Me  
+I’m Tengu Muna—visionary afrofuturistic digital artist & global clinical ops consultant.  
+Creator of 20+ transformational tools and an Afrofuturistic archive of images that have inspired thousands.
 
-First micro-offer launch site for digital products & rituals.
+> “Empower your research. Elevate your impact.”
 
-## Sample Clinical Trial Protocol – Moringa Observational Study
-6wfgxk-codex/update-content-in-moringa-study.html-and-readme.md
-_A Prospective Observational Study Evaluating the Wellness Effects of *Moringa oleifera* Supplementation on Post‑Chemotherapy Fatigue in Breast‑Cancer Survivors_
+🔥 Explore My Work:
+- 🧠 [Clinical Operations Toolkit](https://achaibo.github.io/tengu-codeflow-portal/clinical-ops-100x-master-portal.html)
+- 🌐 [LinkTree: Clinical Ops](https://linktr.ee/achaibo)
+- 🎨 [Art Universe LinkTree](https://linktr.ee/AchaiboAIFusion)
+- 📡 [AI Sunday Webinars](https://us06web.zoom.us/meeting/register/te8S_gONRUWBFEM_X1nhPQ#/registration)
 
-Created by Tengu Muna – Global Clinical Trial Strategist • AI Innovator • Coach
-
-This repo includes a colorful HTML summary of the 12-week Moringa supplement study. See [moringa-study.html](moringa-study.html) for details.
-
-It also hosts an interactive [Site Selection Matrix](site-selection-matrix.html) for assessing country readiness.
+💬 I’d love your feedback! [Click here](https://forms.gle/5k6M9xGKHy53veur6) to share thoughts.
