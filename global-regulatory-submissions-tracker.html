@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Global Regulatory Submissions Tracker</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      background: #f0f4f8;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      padding: 20px 0 10px;
+      background-color: #007BFF;
+      color: white;
+      margin-bottom: 0;
+    }
+    .instructions {
+      background: #d0e7ff;
+      margin: 0 auto 20px;
+      padding: 20px;
+      max-width: 900px;
+      border-left: 6px solid #007BFF;
+    }
+    .instructions ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .instructions li {
+      margin-bottom: 8px;
+      font-size: 0.95em;
+    }
+    .form-section {
+      background: #e1f0ff;
+      padding: 30px;
+      border-radius: 10px;
+      margin: 0 auto 20px;
+      max-width: 900px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+    .form-section label {
+      display: block;
+      margin-top: 16px;
+      font-weight: bold;
+    }
+    .form-section input,
+    .form-section select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 4px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: white;
+    }
+    .form-section small {
+      font-size: 0.85em;
+      color: #666;
+    }
+    .form-buttons {
+      text-align: center;
+      margin-top: 20px; /* reduced from 30px */
+    }
+    .form-buttons button {
+      padding: 12px 30px;
+      margin: 0 15px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    .form-buttons button:hover {
+      background-color: #0056b3;
+    }
+    .table-section {
+      background: #fff;
+      padding: 10px 0; /* reduced from 20px 0 */
+      margin-top: -10px; /* shift upwards */
+    }
+    table {
+      width: 95%;
+      margin: 0 auto;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    th, td {
+      border: 1px solid #e0e0e0;
+      padding: 10px;
+      text-align: left;
+      font-size: 0.95em;
+    }
+    th {
+      background-color: #007BFF;
+      color: white;
+    }
+    .overdue {
+      background-color: #ffe6e6;
+    }
+    .feedback-section {
+      background: #e1f0ff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 20px;
+    }
+    .feedback-section a {
+      color: #007BFF;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.85em;
+      color: #666;
+      padding: 10px 0;
+      background: #f8f9fa;
+    }
+  </style>
+</head>
+<body>
+  <h1>📋 Global Regulatory Submissions Tracker</h1>
+
+  <div class="instructions">
+    <p>📌 Purpose: This tool helps global study teams quickly track regulatory submissions and approvals by study, country, and authority; flag overdue items; and export for reporting.</p>
+    <ul>
+      <li>📘 <strong>Study ID/Name</strong>: Unique protocol identifier.</li>
+      <li>🌍 <strong>Country</strong>: Jurisdiction of submission.</li>
+      <li>🏛️ <strong>Authority/IRB</strong>: Regulatory body or ethics committee.</li>
+      <li>📤 <strong>Submission Date (DD‑MMM‑YYYY)</strong>: Date you submitted the dossier.</li>
+      <li>✅ <strong>Approval Date (DD‑MMM‑YYYY)</strong>: Date approval was granted.</li>
+      <li>⏳ <strong>Expiry Date (DD‑MMM‑YYYY)</strong>: Approval renewal due date.</li>
+      <li>📌 <strong>Status</strong>: Pending, Under Review, Approved, Rejected, or Withdrawn.</li>
+      <li>⚠️ <strong>Overdue?</strong>: Flags expired approvals.</li>
+      <li>🗒️ <strong>Comments</strong>: Optional context or notes.</li>
+      <li>➕ <strong>Add Entry</strong> then 📤 <strong>Export CSV</strong> to save.</li>
+    </ul>
+  </div>
+
+  <div class="form-section">
+    <label for="study">📘 Study ID or Name</label>
+    <input type="text" id="study" placeholder="e.g., ABC123">
+    <small>Enter the unique study name or protocol identifier.</small>
+
+    <label for="country">🌍 Country</label>
+    <input type="text" id="country" placeholder="e.g., Nigeria">
+    <small>Enter the country where the submission is made.</small>
+
+    <label for="authority">🏛️ Health Authority / IRB Name</label>
+    <input type="text" id="authority" placeholder="e.g., FDA, EMA, Local IRB">
+    <small>Enter the name of the regulatory body or ethics board.</small>
+
+    <label for="submissionDate">📤 Submission Date</label>
+    <input type="text" id="submissionDate" placeholder="DD‑MMM‑YYYY">
+    <small>Enter date of submission in DD‑MMM‑YYYY format.</small>
+
+    <label for="approvalDate">✅ Approval Date</label>
+    <input type="text" id="approvalDate" placeholder="DD‑MMM‑YYYY">
+    <small>Enter date of approval in DD‑MMM‑YYYY format.</small>
+
+    <label for="expiryDate">⏳ Approval Expiry Date</label>
+    <input type="text" id="expiryDate" placeholder="DD‑MMM‑YYYY">
+    <small>Enter expiration (renewal) date in DD‑MMM‑YYYY format.</small>
+
+    <label for="status">📌 Status</label>
+    <select id="status">
+      <option value="Pending">Pending</option>
+      <option value="Under Review">Under Review</option>
+      <option value="Approved">Approved</option>
+      <option value="Rejected">Rejected</option>
+      <option value="Withdrawn">Withdrawn</option>
+    </select>
+    <small>Choose the current review status.</small>
+
+    <label for="comments">🗒️ Comments / Notes</label>
+    <input type="text" id="comments" placeholder="e.g., Re-submission after protocol amendment">
+    <small>Optional notes for context or clarification.</small>
+
+    <div class="form-buttons">
+      <button onclick="addRow()">➕ Add Entry</button>
+      <button onclick="exportCSV()">📤 Export CSV</button>
+    </div>
+  </div>
+
+  <div class="table-section">
+    <table id="trackerTable">
+      <thead>
+        <tr>
+          <th>📘 Study</th>
+          <th>🌍 Country</th>
+          <th>🏛️ Authority / IRB</th>
+          <th>📤 Submission Date</th>
+          <th>✅ Approval Date</th>
+          <th>⏳ Expiry Date</th>
+          <th>📌 Status</th>
+          <th>⚠️ Overdue?</th>
+          <th>🗒️ Comments</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="feedback-section">
+    💬✨ Loved using this tool? <a href="https://forms.gle/ATYoxhMJd4cALot1A" target="_blank">Click here</a> to provide feedback!
+  </div>
+
+  <div class="footer">
+    Licensed to Unstoppable Empress TENGU 100X – Not for Redistribution.<br>
+    Last updated: 20 Jun 2025
+  </div>
+
+  <script>
+    function addRow() {
+      const table = document.getElementById("trackerTable").getElementsByTagName('tbody')[0];
+      const row = table.insertRow();
+
+      const study = document.getElementById("study").value;
+      const country = document.getElementById("country").value;
+      const authority = document.getElementById("authority").value;
+      const submissionDate = document.getElementById("submissionDate").value;
+      const approvalDate = document.getElementById("approvalDate").value;
+      const expiryDate = document.getElementById("expiryDate").value;
+      const status = document.getElementById("status").value;
+      const comments = document.getElementById("comments").value;
+
+      const today = new Date();
+      const expParts = expiryDate.split('-');
+      const expiry = new Date(expParts[2], ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'].indexOf(expParts[1]), expParts[0]);
+      const isOverdue = expiryDate && expiry < today ? "Yes" : "No";
+
+      const cells = [study, country, authority, submissionDate, approvalDate, expiryDate, status, isOverdue, comments];
+      cells.forEach((cellData, i) => {
+        const cell = row.insertCell(i);
+        cell.innerText = cellData;
+      });
+
+      if (isOverdue === "Yes") row.classList.add("overdue");
+
+      document.querySelectorAll(".form-section input, .form-section select").forEach(input => input.value = "");
+    }
+
+    function exportCSV() {
+      let csv = "";
+      const rows = document.querySelectorAll("table tr");
+      for (let row of rows) {
+        const cols = row.querySelectorAll("td, th");
+        const rowData = Array.from(cols).map(col => `"${col.innerText}"`).join(",");
+        csv += rowData + "\n";
+      }
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'regulatory_tracker.csv';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
