@@ -5,7 +5,14 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Global Protocol Deviations Tracker</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+  <!-- Feedback & Licensing Footer -->
+  <footer style="background:#e3f2fd;padding:1rem;text-align:center;margin-top:2rem;">
+    <p>💬✨ Loved using this tool? <a href="https://forms.gle/3s8vbpYidPLgePos9" target="_blank">Click here</a> to provide feedback!</p>
+  </footer>
+  <div style="text-align:center;font-size:.9rem;color:#666;margin-bottom:1rem;">
+    Licensed to Unstoppable Empress TENGU 100X – Not for Redistribution.<br/>
+    Last updated: 23 Jun 2025
+  </div>
   <style>
     body { font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0; background: #e0f2ff; color: #222; }
     header { text-align: center; padding: 2rem; background: #b3e5fc; }
@@ -40,7 +47,7 @@
     .outcome-other { background: #795548; }
     .chart-wrap { margin-top: 2rem; }
     h3 { margin-bottom: .5rem; font-size: 1.75rem; color: #01579b; text-align: center; }
-    canvas { max-width: 100%; height: 360px !important; display: block; margin: auto; }
+    canvas { max-width: 100%; height: 360px !important; }
     table { width: 100%; border-collapse: collapse; font-size: 1rem; margin-top: 1rem; }
     th, td { border: 1px solid #ddd; padding: .6rem .75rem; text-align: left; }
     th { background: #b3e5fc; color: #01579b; }
@@ -54,126 +61,136 @@
   <div class="container">
     <section class="card">
       <form id="pd-form">
-        <!-- form fields omitted for brevity -->
+        <div><label for="studyId"><span class="emoji">📖</span>Study ID</label><input id="studyId" name="studyId" required/></div>
+        <div><label for="siteId"><span class="emoji">🏢</span>Site ID</label><input id="siteId" name="siteId" required/></div>
+        <div><label for="country"><span class="emoji">🌍</span>Country</label><input id="country" name="country" type="text" required/></div>
+        <div><label for="occDate"><span class="emoji">📅</span>Date Occurred</label><input id="occDate" name="occDate" type="date" required/></div>
+        <div><label for="logDate"><span class="emoji">📝</span>Date Logged</label><input id="logDate" name="logDate" type="date"/></div>
+        <div><label for="category"><span class="emoji">📂</span>Category</label><select id="category" name="category" required>
+            <option value="">-- Select --</option>
+            <option>Eligibility Criteria</option><option>Informed Consent</option><option>Visit Schedule</option>
+            <option>Treatment Administration</option><option>Assessment Procedures</option><option>Lab/Specimen Handling</option>
+            <option>Data Entry/EDC Error</option><option>Device/Equipment Issue</option><option>Randomization</option>
+            <option>Drug Accountability</option><option>Subject Withdrawal</option><option>Safety Reporting</option><option>Other</option>
+          </select></div>
+        <div id="otherCategoryDiv" style="display:none"><label for="otherCategory"><span class="emoji">✏️</span>Other Category</label><input id="otherCategory" name="otherCategory" type="text"/></div>
+        <div><label for="severity"><span class="emoji">⚠️</span>Severity</label><select id="severity" name="severity" required>
+            <option value="">-- Select --</option><option>Minor</option><option>Major</option><option>Critical</option>
+          </select></div>
+        <div><label for="rootCause"><span class="emoji">🛠️</span>Root Cause</label><select id="rootCause" name="rootCause">
+            <option value="">-- Select --</option><option>Protocol Design</option><option>Site Staff Error</option>
+            <option>Participant Non-Compliance</option><option>System/EDC Issue</option><option>Lab Error</option>
+            <option>Data Entry Error</option><option>Vendor/System Failure</option><option>Subject Withdrawal</option>
+            <option>Staff Training Issue</option><option>Logistical/Shipping Delay</option><option>Device/Equipment Malfunction</option>
+            <option>IRB/EC-related Issue</option><option>Randomization Error</option><option>Communication Breakdown</option><option>Other</option>
+          </select></div>
+        <div><label for="deviationStatus"><span class="emoji">📊</span>Deviation Status</label><select id="deviationStatus" name="deviationStatus" required>
+            <option value="">-- Select Status --</option><option>Open</option><option>Under Review</option>
+            <option>Closed</option><option>CAPA Initiated</option>
+          </select></div>
+        <div><label for="capaIssued"><span class="emoji">✅</span>CAPA Issued?</label><select id="capaIssued" name="capaIssued">
+            <option value="">-- Select --</option><option>Yes</option><option>No</option><option>Not Applicable</option>
+          </select></div>
+        <div style="grid-column:1/-1"><label for="description"><span class="emoji">📝</span>Description</label><textarea id="description" name="description" rows="3" required></textarea></div>
+        <div style="grid-column:1/-1"><label for="capa"><span class="emoji">🔄</span>Corrective Action</label><textarea id="capa" name="capa" rows="2"></textarea></div>
+        <div><label for="deviationOutcome"><span class="emoji">🎯</span>Deviation Outcome</label><select id="deviationOutcome" name="deviationOutcome">
+            <option value="">-- Select Outcome --</option>
+            <option>Not a Protocol Deviation</option><option>Reported to IRB/EC</option><option>Reported to Sponsor</option>
+            <option>Reported to Regulatory Authority</option><option>Pending Internal Review</option><option>Other</option>
+          </select></div>
+        <div id="otherOutcomeDiv" style="display:none"><label for="otherOutcome"><span class="emoji">✏️</span>Please specify:</label><input id="otherOutcome" name="otherOutcome" type="text"/></div>
+        <div style="grid-column:1/-1;text-align:right"><button type="submit">Save Deviation</button></div>
       </form>
     </section>
+
+    <!-- Legend Boxes -->
     <div id="legendBoxes" class="legend-container"></div>
+
     <section class="card chart-wrap">
       <h3>Deviations by Category</h3>
       <canvas id="deviationChart"></canvas>
+
       <h3>Deviations by Country</h3>
       <canvas id="countryChart"></canvas>
     </section>
+
     <section class="card">
       <h2>Logged Deviations</h2>
-      <table id="pd-table">
-        <thead><tr>
-          <th>#</th><th>📖 Study ID</th><th>🏢 Site ID</th><th>🌍 Country</th>
-          <th>📅 Occurred</th><th>📝 Logged</th><th>📂 Category</th><th>⚠️ Severity</th>
-          <th>🛠️ Root Cause</th><th>📊 Status</th><th>✅ CAPA?</th><th>🎯 Outcome</th><th>📝 Narrative</th>
-        </tr></thead>
-        <tbody></tbody>
-      </table>
-      <div style="text-align:right; margin-top:1rem;">
-        <button id="exportCSV">Export to CSV</button>
-      </div>
+      <table id="pd-table"><thead><tr>
+        <th>#</th><th>📖 Study ID</th><th>🏢 Site ID</th><th>🌍 Country</th><th>📅 Occurred</th><th>📝 Logged</th>
+        <th>📂 Category</th><th>⚠️ Severity</th><th>🛠️ Root Cause</th><th>📊 Status</th><th>✅ CAPA?</th><th>🎯 Outcome</th><th>📝 Narrative</th>
+      </tr></thead><tbody></tbody></table>
     </section>
-  </div>
-  <script>
-(function(){
-  const STORAGE_KEY = "pdRecords";
-  let pdRecordsList = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-  const form = document.getElementById("pd-form");
-  const legendContainer = document.getElementById("legendBoxes");
-  const tableBody = document.querySelector("#pd-table tbody");
-  const ctxCat = document.getElementById("deviationChart").getContext("2d");
-  const ctxCountry = document.getElementById("countryChart").getContext("2d");
-  let catChart, countryChart;
 
-  function updateLegendBoxes(list) {
-    legendContainer.innerHTML = "";
-    // severity, status, root cause, outcome counts
-    const sev = { Minor:0, Major:0, Critical:0 };
-    const stat = { Open:0, "Under Review":0, Closed:0, "CAPA Initiated":0 };
-    const root = {}, out = {};
-    list.forEach(d => {
-      if(sev[d.severity] !== undefined) sev[d.severity]++;
-      if(stat[d.deviationStatus] !== undefined) stat[d.deviationStatus]++;
-      root[d.rootCause] = (root[d.rootCause]||0)+1;
-      out[d.deviationOutcome] = (out[d.deviationOutcome]||0)+1;
+<script>
+(function(){
+  const STORAGE_KEY="pdRecords";
+  let pdRecordsList=JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]");
+  const form=document.getElementById("pd-form");
+  const legendContainer=document.getElementById("legendBoxes");
+  const tableBody=document.querySelector("#pd-table tbody");  
+  const ctxCat=document.getElementById("deviationChart").getContext("2d");
+  const ctxCountry=document.getElementById("countryChart").getContext("2d");
+  let catChart,countryChart;
+
+  function updateLegendBoxes(list){
+    legendContainer.innerHTML="";
+    const sev={Minor:0,Major:0,Critical:0};
+    const stat={Open:0,"Under Review":0,Closed:0,"CAPA Initiated":0};
+    const root={},out={};
+    list.forEach(d=>{
+      d.severity in sev && sev[d.severity]++;
+      d.deviationStatus in stat && stat[d.deviationStatus]++;
+      root[d.rootCause]=(root[d.rootCause]||0)+1;
+      out[d.deviationOutcome]=(out[d.deviationOutcome]||0)+1;
     });
-    Object.entries(sev).forEach(([k,v])=>{ const div=document.createElement("div"); div.className=`legend-box ${k.toLowerCase()}`; div.textContent=`${v} ${k}`; legendContainer.appendChild(div); });
-    Object.entries(stat).forEach(([k,v])=>{ const cls=k.toLowerCase().replace(/\s/g,"-"); const div=document.createElement("div"); div.className=`legend-box ${cls}`; div.textContent=`${v} ${k}`; legendContainer.appendChild(div); });
-    Object.entries(root).forEach(([k,v])=>{ const cls="root-"+k.toLowerCase().replace(/\s|\//g,"-"); const div=document.createElement("div"); div.className=`legend-box ${cls}`; div.textContent=`${v} ${k}`; legendContainer.appendChild(div); });
-    Object.entries(out).forEach(([k,v])=>{ const cls="outcome-"+k.toLowerCase().replace(/\s|\//g,"-"); const div=document.createElement("div"); div.className=`legend-box ${cls}`; div.textContent=`${v} ${k}`; legendContainer.appendChild(div); });
+    Object.entries(sev).forEach(([k,v])=>{const div=document.createElement("div");div.className=`legend-box ${k.toLowerCase()}`;div.textContent=`${v} ${k}`;legendContainer.appendChild(div);} );
+    Object.entries(stat).forEach(([k,v])=>{const cls=k.toLowerCase().replace(/\s/g,"-");const div=document.createElement("div");div.className=`legend-box ${cls}`;div.textContent=`${v} ${k}`;legendContainer.appendChild(div);} );
+    Object.entries(root).forEach(([k,v])=>{const cls="root-"+k.toLowerCase().replace(/\s|\//g,"-");const div=document.createElement("div");div.className=`legend-box ${cls}`;div.textContent=`${v} ${k}`;legendContainer.appendChild(div);} );
+    Object.entries(out).forEach(([k,v])=>{const cls="outcome-"+k.toLowerCase().replace(/\s|\//g,"-");const div=document.createElement("div");div.className=`legend-box ${cls}`;div.textContent=`${v} ${k}`;legendContainer.appendChild(div);} );
   }
 
-  function renderTable() {
+  function renderTable(){
     tableBody.innerHTML="";
     pdRecordsList.forEach((r,i)=>{
       const tr=document.createElement("tr");
-      tr.innerHTML = `<td>${i+1}</td><td>${r.studyId}</td><td>${r.siteId}</td><td>${r.country}</td>`+
-                      `<td>${r.occDate}</td><td>${r.logDate}</td><td>${r.category}</td><td>${r.severity}</td>`+
-                      `<td>${r.rootCause}</td><td>${r.deviationStatus}</td><td>${r.capaIssued}</td><td>${r.deviationOutcome}</td><td>${r.description}</td>`;
+      tr.innerHTML=`<td>${i+1}</td><td>${r.studyId}</td><td>${r.siteId}</td><td>${r.country}</td><td>${r.occDate}</td><td>${r.logDate}</td><td>${r.category}</td><td>${r.severity}</td><td>${r.rootCause}</td><td>${r.deviationStatus}</td><td>${r.capaIssued}</td><td>${r.deviationOutcome}</td><td>${r.description}</td>`;
       tableBody.appendChild(tr);
     });
   }
 
-  function updateCategoryChart(list) {
-    const cnt = {};
-    list.forEach(d=>{ const c=d.category||"Unspecified"; cnt[c]=(cnt[c]||0)+1; });
-    const labels=Object.keys(cnt), data=Object.values(cnt);
+  function updateCategoryChart(list){
+    const cnt={};list.forEach(d=>{const c=d.category||"Unspecified";cnt[c]=(cnt[c]||0)+1;});
+    const labels=Object.keys(cnt),data=Object.values(cnt);
     const cols=["#FF6384","#36A2EB","#FFCE56","#9AD0F5","#FF9F40","#C9CBCF","#4BC0C0"];
-    if(catChart) catChart.destroy();
-    catChart = new Chart(ctxCat, { type:'pie', data:{labels, datasets:[{data, backgroundColor:cols.slice(0,labels.length), borderColor:'#fff', borderWidth:1}]}, options:{responsive:true, plugins:{legend:{position:'right', labels:{font:{size:14}}}, title:{display:true,text:'Category Breakdown', font:{size:18}}}} });
+    if(catChart)catChart.destroy();
+    catChart=new Chart(ctxCat,{type:'pie',data:{labels,datasets:[{data,backgroundColor:cols.slice(0,labels.length),borderColor:'#fff',borderWidth:1}]},options:{responsive:true,plugins:{legend:{position:'right',labels:{font:{size:14}}},title:{display:true,text:'Category Breakdown',font:{size:18}}}}});
   }
 
-  function updateCountryChart(list) {
-    const cnt = {};
-    list.forEach(d=>{ const c=d.country||"Unspecified"; cnt[c]=(cnt[c]||0)+1; });
-    const labels=Object.keys(cnt), data=Object.values(cnt);
+  function updateCountryChart(list){
+    const cnt={};list.forEach(d=>{const c=d.country||"Unspecified";cnt[c]=(cnt[c]||0)+1;});
+    const labels=Object.keys(cnt),data=Object.values(cnt);
     const cols=["#4BC0C0","#9966FF","#FF9F40","#FF6384","#36A2EB","#FFCE56","#C9CBCF"];
-    if(countryChart) countryChart.destroy();
-    countryChart = new Chart(ctxCountry, { type:'bar', data:{labels, datasets:[{label:'Deviations', data, backgroundColor:cols.slice(0,labels.length)}]}, options:{responsive:true, plugins:{legend:{display:false}, title:{display:true,text:'Country Breakdown', font:{size:18}}}, scales:{y:{beginAtZero:true, precision:0}, x:{ticks:{font:{size:14}}}, y:{ticks:{font:{size:14}}}} }});
+    if(countryChart)countryChart.destroy();
+    countryChart=new Chart(ctxCountry,{type:'bar',data:{labels,datasets:[{label:'Deviations',data,backgroundColor:cols.slice(0,labels.length)}]},options:{responsive:true,plugins:{legend:{display:false},title:{display:true,text:'Country Breakdown',font:{size:18}}},scales:{y:{beginAtZero:true,precision:0},x:{ticks:{font:{size:14}}},y:{ticks:{font:{size:14}}}}}});
   }
 
-  function exportToCSV() {
-    if(!pdRecordsList.length) return alert('No data to export');
-    const headers = ['Study ID','Site ID','Country','Occurred','Logged','Category','Severity','Root Cause','Status','CAPA','Outcome','Narrative'];
-    const rows = pdRecordsList.map(r => [r.studyId, r.siteId, r.country, r.occDate, r.logDate, r.category, r.severity, r.rootCause, r.deviationStatus, r.capaIssued, r.deviationOutcome, r.description]);
-    let csvContent = headers.join(',') + '\n' + rows.map(r=>r.map(v=>`"${v||''}"`).join(',')).join('\n');
-    const blob = new Blob([csvContent], {type:'text/csv'});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a'); a.href=url; a.download='deviations.csv'; a.click();
-  }
-
-  document.getElementById('exportCSV').addEventListener('click', exportToCSV);
-
-  form.addEventListener('submit', e=>{
-    e.preventDefault();
-    const fd=new FormData(form);
-    let rec = Object.fromEntries(fd.entries());
-    if(rec.category==='Other') rec.category=rec.otherCategory;
-    if(!rec.deviationStatus) return alert('Select Deviation Status');
-    if(rec.deviationOutcome==='Other') rec.deviationOutcome=rec.otherOutcome;
-    if(!rec.logDate) rec.logDate=new Date().toISOString().split('T')[0];
+  form.addEventListener('submit',e=>{
+    e.preventDefault();const fd=new FormData(form);let rec=Object.fromEntries(fd.entries());
+    if(rec.category==='Other')rec.category=rec.otherCategory;
+    if(!rec.deviationStatus){alert('Select Deviation Status');return;}
+    if(rec.deviationOutcome==='Other')rec.deviationOutcome=rec.otherOutcome;
+    if(!rec.logDate)rec.logDate=new Date().toISOString().split('T')[0];
     pdRecordsList.push(rec);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(pdRecordsList));
-    renderTable(); updateLegendBoxes(pdRecordsList); updateCategoryChart(pdRecordsList); updateCountryChart(pdRecordsList);
-    form.reset(); document.getElementById('studyId').focus();
+    localStorage.setItem(STORAGE_KEY,JSON.stringify(pdRecordsList));
+    renderTable();updateLegendBoxes(pdRecordsList);updateCategoryChart(pdRecordsList);updateCountryChart(pdRecordsList);
+    form.reset();document.getElementById('studyId').focus();
   });
 
-  // initialize
-  renderTable(); updateLegendBoxes(pdRecordsList); updateCategoryChart(pdRecordsList); updateCountryChart(pdRecordsList);
+  renderTable();updateLegendBoxes(pdRecordsList);updateCategoryChart(pdRecordsList);updateCountryChart(pdRecordsList);
 })();
 </script>
-
-<footer style="background:#e3f2fd;padding:1rem;text-align:center;margin-top:2rem;">
-  <p>💬✨ Loved using this tool? <a href="https://forms.gle/3s8vbpYidPLgePos9" target="_blank">Click here</a> to provide feedback!</p>
-</footer>
-<div style="text-align:center;font-size:.9rem;color:#666;margin-bottom:1rem;">
-  Licensed to Unstoppable Empress TENGU 100X – Not for Redistribution.<br/>
-  Last updated: 23 Jun 2025
-</div>
 </body>
 </html>
+
+
