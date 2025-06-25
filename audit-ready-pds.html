@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Audit Ready PDs</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
@@ -12,7 +12,7 @@
     p.lead { margin-top: .5rem; font-size: 1.1rem; color: #0277bd; }
     .container { max-width: 1200px; margin: auto; padding: 1rem; }
     .card { background: #fff; border-radius: 6px; box-shadow: 0 0 6px rgba(0,0,0,.08); padding: 1rem; margin-bottom: 1.5rem; }
-    .card form { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: .75rem; }
+    .card form { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .75rem; }
     label { font-size: 1rem; font-weight: 600; margin-bottom: .25rem; display: block; }
     label span.emoji { margin-right: .25rem; }
     input, select, textarea, button { width: 100%; padding: .6rem .75rem; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; }
@@ -49,12 +49,23 @@
   <header>
     <h1>🔍 Audit Ready PDs</h1>
     <p class="lead">Track and export protocol deviations effortlessly—compliance without complexity.</p>
+    <!-- Instructions -->
+    <div class="instructions" style="margin:1.5rem 0; padding:1rem; background:#f1f8ff; border-left:4px solid #0288d1;">
+      <p>📝 <strong>Fill out all form fields</strong> (Study, Site, Patient, Country, Dates, Category…)</p>
+      <p>✍️ <strong>Enter a brief description</strong> and any corrective action.</p>
+      <p>💾 <strong>Click “Save Deviation”</strong> to log your entry.</p>
+      <p>📊 <strong>Review the summary boxes</strong> below (Severity, Status, Root Causes, Outcomes).</p>
+      <p>📈 <strong>Explore the “Deviations by Category”</strong> and <strong>“Deviations by Country”</strong> charts.</p>
+      <p>📤 <strong>Use “Export to CSV”</strong> to download all entries.</p>
+      <p>➕ <strong>Add multiple deviations</strong> as needed—each will append to your table.</p>
+    </div>
   </header>
   <div class="container">
     <section class="card">
       <form id="pd-form">
-        <div><label for="studyId"><span class="emoji">📚</span>Study ID</label><input id="studyId" name="studyId" required/></div>
+        <div><label for="studyId"><span class="emoji">📖</span>Study ID</label><input id="studyId" name="studyId" required/></div>
         <div><label for="siteId"><span class="emoji">🏢</span>Site ID</label><input id="siteId" name="siteId" required/></div>
+        <div><label for="patientId"><span class="emoji">🆔</span>Patient ID</label><input id="patientId" name="patientId" required/></div>
         <div><label for="country"><span class="emoji">🌍</span>Country</label><input id="country" name="country" type="text" required/></div>
         <div><label for="occDate"><span class="emoji">📅</span>Date Occurred</label><input id="occDate" name="occDate" type="date" required/></div>
         <div><label for="logDate"><span class="emoji">📝</span>Date Logged</label><input id="logDate" name="logDate" type="date"/></div>
@@ -106,10 +117,13 @@
 
     <section class="card">
       <h2>Logged Deviations</h2>
-      <table id="pd-table"><thead><tr>
-        <th>#</th><th>📚 Study ID</th><th>🏢 Site ID</th><th>🌍 Country</th><th>📅 Occurred</th><th>📝 Logged</th>
-        <th>📂 Category</th><th>⚠️ Severity</th><th>🛠️ Root Cause</th><th>📊 Status</th><th>✅ CAPA?</th><th>🎯 Outcome</th><th>📝 Narrative</th>
-      </tr></thead><tbody></tbody></table>
+      <table id="pd-table">
+        <thead><tr>
+          <th>#</th><th>📖 Study ID</th><th>🏢 Site ID</th><th>🆔 Patient ID</th><th>🌍 Country</th><th>📅 Occurred</th><th>📝 Logged</th>
+          <th>📂 Category</th><th>⚠️ Severity</th><th>🛠️ Root Cause</th><th>📊 Status</th><th>✅ CAPA?</th><th>🎯 Outcome</th><th>📝 Narrative</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
       <div style="text-align:right; margin-top:1rem;"><button id="exportCSV">Export to CSV</button></div>
     </section>
   </div>
@@ -146,7 +160,7 @@
       tableBody.innerHTML = '';
       pdRecordsList.forEach((r,i) => {
         const tr = document.createElement('tr');
-        tr.innerHTML = `<td>${i+1}</td><td>${r.studyId}</td><td>${r.siteId}</td><td>${r.country}</td>` +
+        tr.innerHTML = `<td>${i+1}</td><td>${r.studyId}</td><td>${r.siteId}</td><td>${r.patientId}</td><td>${r.country}</td>` +
                        `<td>${r.occDate}</td><td>${r.logDate}</td><td>${r.category}</td><td>${r.severity}</td>` +
                        `<td>${r.rootCause}</td><td>${r.deviationStatus}</td><td>${r.capaIssued}</td><td>${r.deviationOutcome}</td><td>${r.description}</td>`;
         tableBody.appendChild(tr);
@@ -173,8 +187,8 @@
 
     function exportToCSV() {
       if (!pdRecordsList.length) return alert('No data to export');
-      const headers = ['Study ID','Site ID','Country','Occurred','Logged','Category','Severity','Root Cause','Status','CAPA','Outcome','Narrative'];
-      const rows = pdRecordsList.map(r => [r.studyId, r.siteId, r.country, r.occDate, r.logDate, r.category, r.severity, r.rootCause, r.deviationStatus, r.capaIssued, r.deviationOutcome, r.description]);
+      const headers = ['Study ID','Site ID','Patient ID','Country','Occurred','Logged','Category','Severity','Root Cause','Status','CAPA','Outcome','Narrative'];
+      const rows = pdRecordsList.map(r => [r.studyId, r.siteId, r.patientId, r.country, r.occDate, r.logDate, r.category, r.severity, r.rootCause, r.deviationStatus, r.capaIssued, r.deviationOutcome, r.description]);
       let csvContent = headers.join(',') + '\n' + rows.map(r => r.map(v => `"${v||''}"`).join(',')).join('\n');
       const blob = new Blob([csvContent], {type:'text/csv'});
       const url = URL.createObjectURL(blob);
@@ -191,6 +205,7 @@
       if (!rec.deviationStatus) return alert('Please select a Deviation Status');
       if (rec.deviationOutcome === 'Other') rec.deviationOutcome = rec.otherOutcome;
       if (!rec.logDate) rec.logDate = new Date().toISOString().split('T')[0];
+      rec.patientId = rec.patientId.trim() || 'N/A';
       pdRecordsList.push(rec);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(pdRecordsList));
       renderTable(); updateLegendBoxes(pdRecordsList); updateCategoryChart(pdRecordsList); updateCountryChart(pdRecordsList);
@@ -211,3 +226,4 @@
   </div>
 </body>
 </html>
+
