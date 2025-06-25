@@ -1,13 +1,41 @@
-### 🌍 About Me  
-I’m Tengu Muna—visionary afrofuturistic digital artist & global clinical ops consultant.  
-Creator of 20+ transformational tools and an Afrofuturistic archive of images that have inspired thousands.
+# Welcome to the Future of Clinical Trials
 
-> “Empower your research. Elevate your impact.”
+I'm Tengu Muna — a **Global Clinical Operations Strategist** and **Afrofuturistic Digital Artist** who’s spent decades navigating the complexities of clinical research across continents.
 
-🔥 Explore My Work:
-- 🧠 [Clinical Operations Toolkit](https://achaibo.github.io/tengu-codeflow-portal/clinical-ops-100x-master-portal.html)
-- 🌐 [LinkTree: Clinical Ops](https://linktr.ee/achaibo)
-- 🎨 [Art Universe LinkTree](https://linktr.ee/AchaiboAIFusion)
-- 📡 [AI Sunday Webinars](https://us06web.zoom.us/meeting/register/te8S_gONRUWBFEM_X1nhPQ#/registration)
+After witnessing firsthand how clinical trial operations are slowed down by outdated systems, excessive red tape, and generic spreadsheets, I decided to do something radical:
 
-💬 I’d love your feedback! [Click here](https://forms.gle/5k6M9xGKHy53veur6) to share thoughts.
+🔥 I taught myself how to code using GitHub Copilot (Codex) and launched a full suite of **clinical trial tools** — designed to actually work.
+
+These are **real-world**, AI-assisted tools for **study-level trial management**, built from the lens of someone who’s led global studies, managed sites, collaborated with CROs, and lived the bottlenecks.
+
+I'm now expanding into tools specifically designed for **site operations**—to empower study coordinators, site managers, and investigators with intuitive systems that simplify complexity.
+
+---
+
+### 🛠️ What You’ll Find Here
+- A growing collection of **global study management tools**
+- Soon-to-be-released **site-level tools** built to serve frontline teams
+- All tools coded by me with the support of AI, lived experience, and a vision to transform how trials are run
+
+---
+
+### 📩 Collaborate or Connect
+
+Whether you're a sponsor, CRO, clinical innovator, or investor interested in revolutionizing trial management:
+
+🔗 **Email me**: sevacrp@gmail.com  
+✨ **Explore my full portfolio**: https://linktr.ee/achaibo 
+💬 I'm open to licensing, collaboration, or strategic partnerships.
+
+---
+
+### ⚖️ License
+These tools are MIT licensed for educational/demo purposes. For enterprise use, custom builds, or licensing rights, please reach out directly.
+
+---
+
+### 🌀 Why I’m Here
+
+This is not just a GitHub page — it’s a movement.  
+I’m here to **transform clinical trials from the inside out**.  
+Let’s build the future, together.
