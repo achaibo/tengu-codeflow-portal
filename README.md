@@ -4,7 +4,7 @@ I'm Tengu Muna — a **Global Clinical Operations Strategist** and **Afrofuturis
 
 After witnessing firsthand how clinical trial operations are slowed down by outdated systems, excessive red tape, and generic spreadsheets, I decided to do something radical:
 
-🔥 I taught myself how to code using GitHub Copilot (Codex) and launched a full suite of **clinical trial tools** — designed to actually work.
+🔥 ⚙️ Although I come from a non-coding background, I taught myself to code using OpenAI tools like ChatGPT and Codex, and simultaneously immersed myself in learning GitHub. Every tool I’ve released reflects my commitment to practical, elegant solutions that solve real problems across the clinical research lifecycle.
 
 These are **real-world**, AI-assisted tools for **study-level trial management**, built from the lens of someone who’s led global studies, managed sites, collaborated with CROs, and lived the bottlenecks.
 
