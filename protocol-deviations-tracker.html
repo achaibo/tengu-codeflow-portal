@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Protocol Deviations Tracker</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0; background: #e0f2ff; color: #222; }
+    header { text-align: center; padding: 2rem; background: #b3e5fc; }
+    h1 { margin: 0; font-size: 2.5rem; color: #01579b; }
+    p.lead { margin-top: .5rem; font-size: 1.1rem; color: #0277bd; }
+    .instructions { margin:1.5rem 0; padding:1rem; background:#f1f8ff; border-left:4px solid #0288d1; }
+    .container { max-width: 1200px; margin: auto; padding: 1rem; }
+    .card { background: #fff; border-radius: 6px; box-shadow: 0 0 6px rgba(0,0,0,.08); padding: 1rem; margin-bottom: 1.5rem; }
+    .card form { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .75rem; }
+    .card form button { grid-column: 1 / -1; justify-self: start; }
+    label { font-size: 1rem; font-weight: 600; margin-bottom: .25rem; display: block; }
+    label span.emoji { margin-right: .25rem; }
+    input, select, textarea, button { width: 100%; padding: .6rem .75rem; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; }
+    button { background: #0288d1; color: #fff; cursor: pointer; border: none; }
+    button:hover { background: #01579b; }
+    .legend-container { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; }
+    .legend-box { padding: .75rem 1rem; border-radius: .5rem; color: #fff; font-weight: 600; font-size: 1rem; }
+    /* Severity */
+    .minor { background: #4caf50; }
+    .major { background: #ff9800; }
+    .critical { background: #f44336; }
+    /* Status */
+    .open { background: #2196f3; }
+    .under-review { background: #9c27b0; }
+    .closed { background: #607d8b; }
+    .capa-initiated { background: #ff5722; }
+    /* Root Causes */
+    .root-site-staff-error { background: #009688; }
+    .root-participant-noncompliance { background: #8bc34a; }
+    .root-study-drug-handling { background: #3f51b5; }
+    .root-scheduling-visit-issues { background: #0097a7; }
+    .root-edc-data-entry-errors { background: #ff5722; }
+    .root-site-infrastructure { background: #795548; }
+    /* Outcomes */
+    .outcome-logged-and-filed-internally { background: #607d8b; }
+    .outcome-reported-to-irb-ec { background: #9c27b0; }
+    .outcome-reported-to-sponsor-cra { background: #3f51b5; }
+    .outcome-discussed-during-monitoring-visit { background: #2196f3; }
+    .outcome-capa-documentation-filed { background: #ff5722; }
+    .outcome-other { background: #795548; }
+    .chart-wrap { margin-top: 2rem; }
+    h3 { margin-bottom: .5rem; font-size: 1.75rem; color: #01579b; text-align: center; }
+    canvas { max-width: 100%; height: 360px !important; display: block; margin: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 1rem; margin-top: 1rem; }
+    th, td { border: 1px solid #ddd; padding: .6rem .75rem; text-align: left; }
+    th { background: #b3e5fc; color: #01579b; }
+  </style>
+</head>
+<body>
+  <header>
+        <h1>🔍 Protocol Deviations Tracker</h1>
+    <p class="lead">Track and export protocol deviations effortlessly—compliance without complexity.</p>
+    <div class="instructions">
+      <p>📝 <strong>Fill out all form fields</strong> (Study, Site, Patient, Country, Dates, Category…)</p>
+      <p>✍️ <strong>Enter a brief description</strong> and any corrective action.</p>
+      <p>💾 <strong>Click “Save Deviation”</strong> to log your entry.</p>
+      <p>📊 <strong>Review the summary boxes</strong> below (Severity, Status, Root Causes, Outcomes).</p>
+      <p>📈 <strong>Explore the “Deviations per Patient”</strong> and <strong>“Deviations per Site”</strong> charts.</p>
+      <p>📤 <strong>Use “Export to CSV”</strong> to download all entries.</p>
+      <p>➕ <strong>Add multiple deviations</strong> as needed—each will append to your table.</p>
+    </div>
+  </header>
+  <div class="container">
+    <section class="card">
+      <form id="pd-form">
+        <label><span class="emoji">📖</span>Study ID<input type="text" id="studyId" name="studyId" required/></label>
+        <label><span class="emoji">🏢</span>Site ID<input type="text" id="siteId" name="siteId" required/></label>
+        <label><span class="emoji">🆔</span>Patient ID<input type="text" id="patientId" name="patientId" /></label>
+        <label><span class="emoji">🌍</span>Country<input type="text" id="country" name="country" required/></label>
+        <label><span class="emoji">📅</span>Occurrence Date<input type="date" id="occDate" name="occDate" required/></label>
+        <label><span class="emoji">📝</span>Log Date<input type="date" id="logDate" name="logDate"/></label>
+        <label><span class="emoji">📂</span>Category<select id="category" name="category" required>
+          <option value="">-- Select --</option>
+          <option>Eligibility Criteria</option>
+          <option>Informed Consent</option>
+          <option>Visit Schedule</option>
+          <option>Treatment Administration</option>
+          <option>Assessment Procedures</option>
+          <option>Lab/Specimen Handling</option>
+          <option>Data Entry/EDC Error</option>
+          <option>Device/Equipment Issue</option>
+          <option>Randomization</option>
+          <option>Drug Accountability</option>
+          <option>Subject Withdrawal</option>
+          <option>Safety Reporting</option>
+          <option>Other</option>
+        </select></label>
+        <label><span class="emoji">⚠️</span>Severity<select id="severity" name="severity" required>
+          <option>Minor</option>
+          <option>Major</option>
+          <option>Critical</option>
+        </select></label>
+        <label><span class="emoji">🛠️</span>Root Cause<select id="rootCause" name="rootCause" required>
+          <option value="">-- Select --</option>
+          <option>Site Staff Error</option>
+          <option>Participant Noncompliance</option>
+          <option>Study Drug Handling</option>
+          <option>Scheduling/Visit Issues</option>
+          <option>EDC/Data Entry Errors</option>
+          <option>Site Infrastructure (Power, Tech, etc.)</option>
+          <option>Other</option>
+        </select></label>
+        <label><span class="emoji">📊</span>Status<select id="deviationStatus" name="deviationStatus" required>
+          <option>Open</option>
+          <option>Under Review</option>
+          <option>Closed</option>
+          <option>CAPA Initiated</option>
+        </select></label>
+        <label><span class="emoji">✅</span>CAPA Initiated<select id="capaIssued" name="capaIssued" required>
+          <option>Yes</option>
+          <option>No</option>
+          <option>Not Applicable</option>
+        </select></label>
+        <label class="full-row"><span class="emoji">📝</span>Description<textarea id="description" name="description" rows="3" required></textarea></label>
+        <label class="full-row"><span class="emoji">🔄</span>Corrective Action<textarea id="capa" name="capa" rows="2"></textarea></label>
+        <label><span class="emoji">🎯</span>Deviation Outcome<select id="deviationOutcome" name="deviationOutcome" required>
+          <option value="">-- Select --</option>
+          <option>Logged and Filed Internally</option>
+          <option>Reported to IRB/EC</option>
+          <option>Reported to Sponsor/CRA</option>
+          <option>Discussed During Monitoring Visit</option>
+          <option>CAPA Documentation Filed</option>
+          <option>Other</option>
+        </select></label>
+        <label id="otherOutcomeDiv" style="display:none;"><span class="emoji">✏️</span>Please specify:<input type="text" id="otherOutcome" name="otherOutcome" /></label>
+        <button type="submit">Save Deviation</button>
+      </form>
+    </section>
+
+    <!-- Legend Boxes -->
+    <div id="legendBoxes" class="legend-container"></div>
+
+    <!-- Charts -->
+    <section class="card chart-wrap">
+      <h3>Deviations per Patient</h3>
+      <canvas id="patientChart"></canvas>
+      <h3>Deviations per Site</h3>
+      <canvas id="siteChart"></canvas>
+    </section>
+
+    <!-- Logged Deviations Table -->
+    <section class="card">
+      <h2>Logged Deviations</h2>
+      <table id="pd-table">
+        <thead><tr>
+          <th>#</th><th>Study</th><th>Site</th><th>Patient</th><th>Country</th>
+          <th>Occurred</th><th>Logged</th><th>Category</th><th>Severity</th>
+          <th>Root Cause</th><th>Status</th><th>CAPA</th><th>Outcome</th><th>Description</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+      <div style="text-align:right;margin-top:1rem;"><button id="exportCSV">Export to CSV</button></div>
+    </section>
+  </div>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const STORAGE_KEY='pdRecords';
+  let pdRecords=JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]');
+  const form=document.getElementById('pd-form');
+  const legendContainer=document.getElementById('legendBoxes');
+  const tableBody=document.querySelector('#pd-table tbody');
+  const ctxPat=document.getElementById('patientChart').getContext('2d');
+  const ctxSite=document.getElementById('siteChart').getContext('2d');
+  let patChart,siteChart;
+
+  function updateLegend(list){
+    legendContainer.innerHTML='';
+    const sev={Minor:0,Major:0,Critical:0};
+    const stat={Open:0,'Under Review':0,Closed:0,'CAPA Initiated':0};
+    const root={},out={};
+    list.forEach(d=>{
+      if(sev[d.severity]!==undefined)sev[d.severity]++;
+      if(stat[d.deviationStatus]!==undefined)stat[d.deviationStatus]++;
+      root[d.rootCause]=(root[d.rootCause]||0)+1;
+      out[d.deviationOutcome]=(out[d.deviationOutcome]||0)+1;
+    });
+    Object.entries(sev).forEach(([k,v])=>{const div=document.createElement('div');div.className='legend-box '+k.toLowerCase();div.textContent=v+' '+k;legendContainer.appendChild(div);} );
+    Object.entries(stat).forEach(([k,v])=>{const cls=k.toLowerCase().replace(/\s/g,'-');const div=document.createElement('div');div.className='legend-box '+cls;div.textContent=v+' '+k;legendContainer.appendChild(div);} );
+    Object.entries(root).forEach(([k,v])=>{const cls='root-'+k.toLowerCase().replace(/\s|\//g,'-');const div=document.createElement('div');div.className='legend-box '+cls;div.textContent=v+' '+k;legendContainer.appendChild(div);} );
+    Object.entries(out).forEach(([k,v])=>{const cls='outcome-'+k.toLowerCase().replace(/\s|\//g,'-');const div=document.createElement('div');div.className='legend-box '+cls;div.textContent=v+' '+k;legendContainer.appendChild(div);} );
+  }
+
+  function renderTable(){
+    tableBody.innerHTML='';
+    pdRecords.forEach((r,i)=>{const tr=document.createElement('tr');
+      tr.innerHTML=`<td>${i+1}</td><td>${r.studyId}</td><td>${r.siteId}</td><td>${r.patientId}</td><td>${r.country}</td>
+        <td>${r.occDate}</td><td>${r.logDate}</td><td>${r.category}</td><td>${r.severity}</td>
+        <td>${r.rootCause}</td><td>${r.deviationStatus}</td><td>${r.capaIssued}</td><td>${r.deviationOutcome}</td><td>${r.description}</td>`;
+      tableBody.appendChild(tr);
+    });
+  }
+
+  function updateChart(ctx,list,groupKey,type,title){
+    const cnt={};list.forEach(d=>{const k=d[groupKey]||'Unspecified';cnt[k]=(cnt[k]||0)+1;});
+    const labels=Object.keys(cnt),data=Object.values(cnt);
+    const colors=['#FF6384','#36A2EB','#FFCE56','#9AD0F5','#FF9F40','#C9CBCF','#4BC0C0'];
+    if(groupKey==='patientId'&&patChart)patChart.destroy();
+    if(groupKey==='siteId'&&siteChart)siteChart.destroy();
+    const cfg={type:type,data:{labels,datasets:[{label:title,data,backgroundColor:colors.slice(0,labels.length)}]},options:{responsive:true,plugins:{legend:{display:type!=='pie'},title:{display:true,text:title,font:{size:18}}},scales:type==='bar'?{y:{beginAtZero:true,precision:0},x:{ticks:{font:{size:14}}}}:{}}};
+    if(groupKey==='patientId')patChart=new Chart(ctx,cfg);
+    else siteChart=new Chart(ctx,cfg);
+  }
+
+  function exportCSV(){if(!pdRecords.length)return alert('No data');
+    const hdr=['Study ID','Site ID','Patient ID','Country','Occurred','Logged','Category','Severity','Root Cause','Status','CAPA','Outcome','Description'];
+    const rows=pdRecords.map(r=>[r.studyId,r.siteId,r.patientId,r.country,r.occDate,r.logDate,r.category,r.severity,r.rootCause,r.deviationStatus,r.capaIssued,r.deviationOutcome,r.description]);
+    let csv=hdr.join(',')+'\n'+rows.map(r=>r.map(v=>`"${v||''}"`).join(',')).join('\n');
+    const blob=new Blob([csv],{type:'text/csv'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='deviations.csv';a.click();
+  }
+
+  form.addEventListener('submit',e=>{
+    e.preventDefault();const fd=new FormData(form),rec=Object.fromEntries(fd.entries());
+    if(rec.deviationOutcome==='Other'){rec.deviationOutcome=rec.otherOutcome;}
+    if(!rec.logDate)rec.logDate=new Date().toISOString().split('T')[0];
+    pdRecords.push(rec);localStorage.setItem(STORAGE_KEY,JSON.stringify(pdRecords));
+    renderTable();updateLegend(pdRecords);updateChart(ctxPat,pdRecords,'patientId','pie','Deviations per Patient');updateChart(ctxSite,pdRecords,'siteId','bar','Deviations per Site');
+    form.reset();document.getElementById('studyId').focus();
+  });
+
+  document.getElementById('exportCSV').addEventListener('click',exportCSV);
+  renderTable();updateLegend(pdRecords);updateChart(ctxPat,pdRecords,'patientId','pie','Deviations per Patient');updateChart(ctxSite,pdRecords,'siteId','bar','Deviations per Site');
+});
+</script>
+
+<footer style="background:#e3f2fd;padding:1rem;text-align:center;margin-top:2rem;">
+  <p>💬✨ Loved using this tool? <a href="https://forms.gle/3s8vbpYidPLgePos9" target="_blank">Click here</a> to provide feedback!</p>
+</footer>
+<div style="text-align:center;font-size:.9rem;color:#666;margin-bottom:1rem;">
+  Licensed to Unstoppable Empress TENGU 100X – Not for Redistribution.<br/>
+  Last updated: 23 Jun 2025
+</div>
+</body>
+</html>
