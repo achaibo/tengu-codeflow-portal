@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Coaching for Small Business | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #FF8C42;
+            --secondary-color: #FF6F00;
+            --accent-color: #FFD700;
+            --dark-color: #3E2723;
+            --light-color: #FFF;
+            --text-color: #FFFFFF;
+            --card-bg: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        .background-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/aztec.png');
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.1));
+        }
+
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        header p.tagline {
+            font-family: 'Roboto', serif;
+            font-size: 1.5rem;
+            margin: 1rem auto;
+            font-weight: 500;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+            max-width: 600px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .cta-bar {
+            background: var(--dark-color);
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            border-top: 2px solid var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .cta-bar a {
+            color: var(--accent-color);
+            text-decoration: none;
+            margin: 0 0.5rem;
+            font-weight: bold;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .cta-bar a:hover {
+            color: var(--light-color);
+            transform: scale(1.05);
+        }
+
+        .tool-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tool {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: popIn 0.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        .tool:nth-child(1) { animation-delay: 0.1s; }
+        .tool:nth-child(2) { animation-delay: 0.2s; }
+        .tool:nth-child(3) { animation-delay: 0.3s; }
+        .tool:nth-child(4) { animation-delay: 0.4s; }
+        .tool:nth-child(5) { animation-delay: 0.5s; }
+        .tool:nth-child(6) { animation-delay: 0.6s; }
+        .tool:nth-child(7) { animation-delay: 0.7s; }
+        .tool:nth-child(8) { animation-delay: 0.8s; }
+        .tool:nth-child(9) { animation-delay: 0.9s; }
+        .tool:nth-child(10) { animation-delay: 1s; }
+
+        .tool:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+        }
+
+        .tool h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.6rem;
+            margin-bottom: 0.75rem;
+            color: var(--accent-color);
+        }
+
+        .tool p {
+            font-size: 1rem;
+            margin: 0.5rem 0 1.5rem;
+            line-height: 1.6;
+        }
+
+        .tool a.button {
+            color: var(--dark-color);
+            background: var(--accent-color);
+            padding: 0.8rem 1.6rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+            border: 2px solid var(--accent-color);
+        }
+
+        .tool a.button:hover {
+            background: var(--secondary-color);
+            color: var(--light-color);
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            background: var(--dark-color);
+            color: var(--light-color);
+            margin-top: 2rem;
+        }
+
+        .footer-bottom {
+            padding: 1rem;
+            background-color: rgba(0,0,0,0.2);
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="background-pattern"></div>
+    <header>
+        <h1>AI Solutions for Small Business</h1>
+        <p class="tagline">Explore Our Portfolio & Book Your Free Strategy Call ✨</p>
+    </header>
+
+    <nav class="cta-bar">
+        <a href="https://achaibo.github.io/tengu-codeflow-portal/AI%20Strategy%20Houston%20Landing%20Page.html" target="_blank">🚀 AI Coaching for Small Business</a>
+        <a href="https://achaibo.github.io/tengu-codeflow-portal/clinical-ops-100x-master-portal.html" target="_blank">🛠️ Clinical Ops 100X Master Portal</a>
+    </nav>
+
+    <main class="tool-container">
+        <div class="tool">
+            <h2>🍲 AfroBites Navigator</h2>
+            <p>Find authentic food spots and vibrant cultural flavor near you.</p>
+            <a href="https://chat.openai.com/g/g-682738914ab08191a48e194e87fee71c-jali-9-afrobites-navigator" class="button" target="_blank">Explore</a>
+        </div>
+        <div class="tool">
+            <h2>🎉 Event Radar</h2>
+            <p>Discover festivals, art shows, and diaspora gatherings in your area.</p>
+            <a href="https://chat.openai.com/g/g-68273b7106cc8191aeba4482c61a35a9-jali-9-community-event-radar" class="button" target="_blank">Explore</a>
+        </div>
+        <div class="tool">
+            <h2>🌍 Immigration Buddy</h2>
+            <p>Your friendly guide for global relocation and visa information.</p>
+            <a href="https://chat.openai.com/g/g-68273e827e1c81918e01ad8ea88cd521-jali-9-immigration-buddy" class="button" target="_blank">Explore</a>
+        </div>
+        <div class="tool">
+            <h2>🍛 Afrofusion Recipes</h2>
+            <p>Blend African culinary traditions with modern, exciting flavors.</p>
+            <a href="https://chat.openai.com/g/g-682740496da08191815297f1f828d1ce-jali-9-afrofusion-recipe-builder" class="button" target="_blank">Explore</a>
+        </div>
+        <div class="tool">
+            <h2>📚 Name & Brand Gen</h2>
+            <p>Create powerful names rooted in cultural heritage and meaning.</p>
+            <a href="https://chat.openai.com/g/g-68274e6e9b68819183a86ef71d4de45e-jali-9-cultural-name-brand-generator" class="button" target="_blank">Explore</a>
+        </div>
+        <div class="tool">
+            <h2>👗 Rooted in Style</h2>
+            <p>Discover and embrace your unique Afrocentric fashion archetype.</p>
+            <a href="https://chat.openai.com/g/g-6827431914d481919ce4fa6c33fb182c-jali-9-rooted-in-style" class="button" target="_blank">Explore</a>
+        </div>
+        <div class="tool">
+            <h2>🌀 Global Dreadlock Helper</h2>
+            <p>A multilingual advisor for organic and natural dread care.</p>
+            <a href="https://chat.openai.com/g/g-WjiLG095b-global-dreadlock-helper" class="button" target="_blank">Explore</a>
+        </div>
+        <div class="tool">
+            <h2>👙 Bikini Body 45+</h2>
+            <p>Custom fitness and nutrition coaching for women over 45.</p>
+            <a href="https://chat.openai.com/g/g-j9XoA1lX4-bikini-body-nutritionist-fitness-planner-45" class="button" target="_blank">Explore</a>
+        </div>
+        <div class="tool">
+            <h2>💇🏾‍♀️ Booked, Braided, & Paid</h2>
+            <p>A business success coach for braiding salon entrepreneurs.</p>
+            <a href="https://chat.openai.com/g/g-T1MA9Ep5b-booked-braided-paid" class="button" target="_blank">Explore</a>
+        </div>
+        <div class="tool">
+            <h2>🌿 Organic Beauty Guru</h2>
+            <p>Clean, holistic skincare and beauty tips for melanated skin.</p>
+            <a href="https://https.openai.com/g/g-dKWuPH5uo-organic-beauty-guru" class="button" target="_blank">Explore</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="cta-bar">
+             <a href="https://achaibo.github.io/tengu-codeflow-portal/AI%20Strategy%20Houston%20Landing%20Page.html" target="_blank">🚀 AI Coaching for Small Business</a>
+             <a href="https://achaibo.github.io/tengu-codeflow-portal/clinical-ops-100x-master-portal.html" target="_blank">🛠️ Clinical Ops 100X Master Portal</a>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Achaibo AI Consulting. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
