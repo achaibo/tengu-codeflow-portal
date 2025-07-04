@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic AI for Baton Rouge's Visionary Brands | TENGU 100X</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* ========================================
+        CITY THEME & COLOR VARIABLES
+        To create a new city page, just change these colors.
+        Baton Rouge Theme: Baton Rouge Spirit (Purple & Gold)
+        ========================================
+        */
+        :root {
+            --primary-color: #582C83; /* A deep, spirited purple */
+            --secondary-color: #FDB813; /* A bright, energetic gold */
+            --background-color: #f9f9f9; /* A clean, light off-white */
+            --text-color: #333333;
+            --light-text-color: #555555;
+            --white-color: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Header Section --- */
+        .header {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.8em;
+            font-weight: 900;
+            margin: 0 0 10px 0;
+            line-height: 1.2;
+        }
+        .header h1 span {
+            color: var(--secondary-color);
+        }
+        .header .sub-header {
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* --- Main Content Sections --- */
+        section {
+            padding: 60px 0;
+        }
+        section h2 {
+            font-size: 2.2em;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+        }
+
+        /* --- Call-to-Action Button --- */
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            text-align: center;
+            padding: 20px 40px;
+            font-size: 1.4em;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 20px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        .cta-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* --- Pain Points & Solutions List Styling --- */
+        .pain-points-list, .solutions-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .pain-points-list li, .solutions-list li {
+            background: var(--white-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+        }
+        .pain-points-list li::before, .solutions-list li::before {
+            font-size: 1.5em;
+            margin-right: 15px;
+            color: var(--primary-color);
+        }
+        .pain-points-list li::before { content: '❌'; }
+        .solutions-list li::before { content: '✅'; }
+
+        .source-text {
+            display: block;
+            font-size: 0.8em;
+            color: var(--light-text-color);
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        /* --- Testimonial Section --- */
+        .testimonial {
+            background-color: var(--white-color);
+            padding: 40px;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-top: 50px;
+        }
+        .testimonial-text {
+            font-size: 1.3em;
+            font-style: italic;
+            color: var(--light-text-color);
+            margin: 0 0 20px 0;
+            text-align: center;
+        }
+        .testimonial-author {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-align: right;
+        }
+        .testimonial-author span {
+            font-weight: 400;
+            color: var(--light-text-color);
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: #1e1e1e;
+            color: #f0f0f0;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .footer .tagline {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .footer .copyright {
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 { font-size: 2.2em; }
+            section h2 { font-size: 1.8em; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <h1>Strategic AI for <span>Baton Rouge's</span> Visionary Brands</h1>
+            <p class="sub-header">Led by TENGU 100X — We build custom AI solutions that free you from the daily grind so you can focus on what truly matters: <strong>growth</strong>.</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section id="intro">
+            <h2>Your Local Partner in Growth.</h2>
+            <p style="text-align: center; font-size: 1.1em; max-width: 700px; margin: 0 auto;">As a Baton Rouge business owner myself, I understand the unique challenges and opportunities in our community. Are you stuck managing tasks instead of building your legacy? I build powerful, intelligent partners to amplify sales and streamline operations, right here from our home base.</p>
+            <div class="cta-container">
+                <a href="https://tidycal.com/achaibo/ai4growth" class="cta-button">Book Your FREE AI Discovery Call</a>
+            </div>
+        </section>
+
+        <section id="pain-points">
+            <h2>The Real Obstacles Holding You Back</h2>
+            <ul class="pain-points-list">
+                <li><strong>Economic Uncertainty:</strong> Navigating cash flow and profitability when economic conditions are a top concern. <span class="source-text">(Nearly 1 in 4 Louisiana small business owners report inflation as their single biggest problem.)</span></li>
+                <li><strong>Sales & Lead Chaos:</strong> Promising leads slipping through the cracks because you can't respond fast enough or your follow-up is inconsistent.</li>
+                <li><strong>Marketing Overwhelm:</strong> Creating compelling content for ads and social media feels like a second full-time job.</li>
+                <li><strong>"Wearing All Hats" Fatigue:</strong> Administrative "busy work" prevents you from focusing on high-value, strategic growth.</li>
+            </ul>
+        </section>
+
+        <section id="solution">
+            <h2>Your Solution: A Custom AI Business Assistant</h2>
+            <p style="text-align: center; font-size: 1.1em; max-width: 700px; margin: 0 auto 40px;">Think of it as your own private, intelligent agent, meticulously trained on <strong>your</strong> business's unique knowledge. It's designed to be an extension of you, directly tackling your daily frustrations.</p>
+            <ul class="solutions-list">
+                <li><strong>Accelerate Sales & Leads:</strong> Draft follow-up emails in seconds, summarize client calls for quick context, and pre-qualify new leads automatically.</li>
+                <li><strong>Automate Operations:</strong> Streamline daily tasks like internal reporting, scheduling communications, and even onboarding new team members.</li>
+                <li><strong>Create Effortless Content:</strong> Generate engaging social media posts, product descriptions, or email campaign ideas on demand.</li>
+                <li><strong>Build an Intelligent Knowledge Hub:</strong> Get instant, accurate answers from your internal documents, policies, and product specs.</li>
+            </ul>
+            <div class="cta-container">
+                <a href="https://tidycal.com/achaibo/ai4growth" class="cta-button">I'm Ready to Automate & Grow</a>
+            </div>
+        </section>
+
+        <section id="testimonial-section">
+            <h2>What Baton Rouge Leaders Are Saying</h2>
+            <div class="testimonial">
+                <p class="testimonial-text">"Working with TENGU 100X was a game-changer. Our custom AI doesn't just save us time, it actively helps us close deals. We've cut down our administrative workload by over 10 hours a week, allowing us to focus on our clients. It's the best investment we've made this year."</p>
+                <p class="testimonial-author">
+                    — D. Martin, <span>Owner of a Local Baton Rouge Restaurant</span>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="tagline">TENGU 100X — Your Partner in Strategic AI Implementation.</p>
+            <p class="copyright">&copy; 2025 Achaibo Consulting. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
