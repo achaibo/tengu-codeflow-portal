@@ -3,155 +3,241 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strategic AI for Visionary Brands</title>
+    <title>Strategic AI for Houston's Visionary Brands | TENGU 100X</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
+        /* ========================================
+        CITY THEME & COLOR VARIABLES
+        To create a new city page, just change these colors.
+        Houston Theme: Bold Blue & Gold
+        ========================================
+        */
+        :root {
+            --primary-color: #002D62; /* A strong, professional blue */
+            --secondary-color: #FFC72C; /* A vibrant, energetic gold/yellow */
+            --background-color: #eaf2ff; /* A soft, light blue to complement the theme */
+            --text-color: #333333;
+            --light-text-color: #555555;
+            --white-color: #ffffff;
+        }
+
         body {
-            font-family: sans-serif;
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
             margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-            color: #333;
+            background-color: var(--background-color);
+            color: var(--text-color);
         }
+
         .container {
-            max-width: 800px;
-            margin: auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        h1, h2, h3 {
-            color: #1a1a1a;
-        }
-        h1 {
-            font-size: 2em;
+
+        /* --- Header Section --- */
+        .header {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 60px 20px;
             text-align: center;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
         }
-        h2 {
-            font-size: 1.5em;
-            margin-top: 30px;
+        .header h1 {
+            font-size: 2.8em;
+            font-weight: 900;
+            margin: 0 0 10px 0;
+            line-height: 1.2;
         }
-        h3 {
+        .header h1 span {
+            color: var(--secondary-color);
+        }
+        .header .sub-header {
             font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
         }
-        p, li {
-            font-size: 1em;
+
+        /* --- Main Content Sections --- */
+        section {
+            padding: 60px 0;
         }
-        ul {
-            list-style-type: disc;
-            padding-left: 20px;
-        }
-        .cta-button {
-            display: block;
-            width: 100%;
-            background-color: #e64a19; /* Orange-red button color */
-            color: #ffffff;
+        section h2 {
+            font-size: 2.2em;
+            font-weight: 700;
             text-align: center;
-            padding: 20px;
-            font-size: 1.5em;
-            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+        }
+
+        /* --- Call-to-Action Button --- */
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            text-align: center;
+            padding: 20px 40px;
+            font-size: 1.4em;
+            font-weight: 700;
             text-decoration: none;
-            border-radius: 5px;
-            margin-top: 30px;
-            transition: background-color 0.3s ease;
+            border-radius: 8px;
+            margin-top: 20px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
         .cta-button:hover {
-            background-color: #c23b0c; /* Slightly darker orange for hover */
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
         }
-        .sub-header {
-            text-align: center;
-            font-style: italic;
-            color: #555;
-            margin-bottom: 20px;
-        }
-        .source-text {
-            font-size: 0.9em;
-            color: #666;
-            font-style: italic;
-        }
-        footer {
-            background-color: #ffcc80; /* Light orange for footer */
-            color: white;
-            padding: 20px;
+        .cta-container {
             text-align: center;
             margin-top: 40px;
+        }
+
+        /* --- Pain Points & Solutions List Styling --- */
+        .pain-points-list, .solutions-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .pain-points-list li, .solutions-list li {
+            background: var(--white-color);
+            padding: 20px;
             border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
         }
-        footer .tagline {
-            font-size: 1.2em;
+        .pain-points-list li::before, .solutions-list li::before {
+            font-size: 1.5em;
+            margin-right: 15px;
+            color: var(--primary-color);
+        }
+        .pain-points-list li::before { content: '❌'; }
+        .solutions-list li::before { content: '✅'; }
+
+        .source-text {
+            display: block;
+            font-size: 0.8em;
+            color: var(--light-text-color);
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        /* --- Testimonial Section --- */
+        .testimonial {
+            background-color: var(--white-color);
+            padding: 40px;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-top: 50px;
+        }
+        .testimonial-text {
+            font-size: 1.3em;
+            font-style: italic;
+            color: var(--light-text-color);
+            margin: 0 0 20px 0;
+            text-align: center;
+        }
+        .testimonial-author {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-align: right;
+        }
+        .testimonial-author span {
+            font-weight: 400;
+            color: var(--light-text-color);
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: #1e1e1e;
+            color: #f0f0f0;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .footer .tagline {
+            font-size: 1.1em;
             font-weight: bold;
+            margin-bottom: 10px;
         }
-        footer .copyright {
-            font-size: 1em;
-            font-weight: normal;
+        .footer .copyright {
+            font-size: 0.9em;
         }
+
+        @media (max-width: 600px) {
+            .header h1 { font-size: 2.2em; }
+            section h2 { font-size: 1.8em; }
+        }
+
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Strategic AI for Visionary Brands, Led by Houston’s #1 AI Marketing Oracle — TENGU 100X</h1>
+    <header class="header">
+        <div class="container">
+            <h1>Strategic AI for <span>Houston's</span> Visionary Brands</h1>
+            <p class="sub-header">Led by TENGU 100X — We build custom AI solutions that free you from the daily grind so you can focus on what truly matters: <strong>growth</strong>.</p>
+        </div>
+    </header>
 
-        <h2>Houston Small Business Owners: Stop Juggling, Start Growing.</h2>
+    <main class="container">
 
-        <p>Are you stuck in the relentless cycle of <strong>managing your business</strong> instead of <strong>growing your business</strong>? You're not alone. In Houston, <strong>81% of firms have fewer than 20 employees</strong>, meaning dedicated owners like you are stretched thin, constantly fighting fires instead of building their empire.</p>
+        <section id="intro">
+            <h2>Stop Juggling, Start Scaling.</h2>
+            <p style="text-align: center; font-size: 1.1em; max-width: 700px; margin: 0 auto;">You're a dedicated Houston business owner, but are you stuck managing tasks instead of building your empire? Imagine a powerful, intelligent partner that amplifies your sales and streamlines your operations. This isn't just "AI" – it's a custom-built brain for your business.</p>
+            <div class="cta-container">
+                <a href="https://tidycal.com/achaibo/ai4growth" class="cta-button">Book Your FREE AI Discovery Call</a>
+            </div>
+        </section>
 
-        <p>Imagine a powerful, intelligent partner that frees you from the daily grind, amplifies your sales efforts, and ensures your business runs like a well-oiled machine. This isn't just about "AI" – it's about providing <strong>you</strong> with a custom AI brain that directly addresses your biggest struggles.</p>
+        <section id="pain-points">
+            <h2>The Real Obstacles Holding You Back</h2>
+            <ul class="pain-points-list">
+                <li><strong>The Staffing Squeeze:</strong> Constantly trying to do the work of many, leading to burnout and missed opportunities. <span class="source-text">(39% of Texas small business owners struggle to fill job openings.)</span></li>
+                <li><strong>Sales & Lead Chaos:</strong> Promising leads slipping through the cracks because you can't respond fast enough or your follow-up is inconsistent.</li>
+                <li><strong>Marketing Overwhelm:</strong> Creating compelling content for ads and social media feels like a second full-time job.</li>
+                <li><strong>"Wearing All Hats" Fatigue:</strong> Administrative "busy work" prevents you from focusing on high-value, strategic growth.</li>
+            </ul>
+        </section>
 
-        <a href="https://tidycal.com/achaibo/ai4growth" class="cta-button">Book Your FREE 15-Minute AI Discovery Call Now!</a>
+        <section id="solution">
+            <h2>Your Solution: A Custom AI Business Assistant</h2>
+            <p style="text-align: center; font-size: 1.1em; max-width: 700px; margin: 0 auto 40px;">Think of it as your own private, intelligent agent, meticulously trained on <strong>your</strong> business's unique knowledge. It's designed to be an extension of you, directly tackling your daily frustrations.</p>
+            <ul class="solutions-list">
+                <li><strong>Accelerate Sales & Leads:</strong> Draft follow-up emails in seconds, summarize client calls for quick context, and pre-qualify new leads automatically.</li>
+                <li><strong>Automate Operations:</strong> Streamline daily tasks like internal reporting, scheduling communications, and even onboarding new team members.</li>
+                <li><strong>Create Effortless Content:</strong> Generate engaging social media posts, product descriptions, or email campaign ideas on demand.</li>
+                <li><strong>Build an Intelligent Knowledge Hub:</strong> Get instant, accurate answers from your internal documents, policies, and product specs.</li>
+            </ul>
+            <div class="cta-container">
+                <a href="https://tidycal.com/achaibo/ai4growth" class="cta-button">I'm Ready to Automate & Grow</a>
+            </div>
+        </section>
 
-        <h2>The Real Obstacles Holding Your Business Back</h2>
+        <section id="testimonial-section">
+            <h2>What Houston Leaders Are Saying</h2>
+            <div class="testimonial">
+                <p class="testimonial-text">"Working with TENGU 100X was a game-changer. Our custom AI doesn't just save us time, it actively helps us close deals. We've cut down our administrative workload by over 10 hours a week, allowing us to focus on our clients. It's the best investment we've made this year."</p>
+                <p class="testimonial-author">
+                    — A.J. Rodriguez, <span>Owner of a Houston-Based Contracting Firm</span>
+                </p>
+            </div>
+        </section>
+    </main>
 
-        <p>We understand the unique pressures of running a local business in Houston. You're dedicated, but these common pain points are costing you time, money, and peace of mind:</p>
-        <ul>
-            <li><strong>The Staffing Squeeze:</strong> Finding and keeping reliable talent is harder than ever. This leaves you and your small team trying to do the work of many, leading to burnout and missed opportunities. <span class="source-text">(Source: 39% of Texas small business owners struggle to fill job openings.)</span></li>
-            <li><strong>Sales & Lead Management Chaos:</strong> Are promising leads slipping through the cracks because you can't respond fast enough? Is your sales process bogged down by manual follow-ups and scattered information?</li>
-            <li><strong>Marketing Overwhelm:</strong> Consistently creating compelling content for ads, social media, or your website feels like a full-time job in itself, draining your energy and budget.</li>
-            <li><strong>Customer Service Strain:</strong> Customers expect instant answers, 24/7. Can your lean team truly deliver that, or are inquiries going unanswered after hours, leading to frustrated clients?</li>
-            <li><strong>"Wearing All the Hats" Fatigue:</strong> From administrative tasks to data entry, you're doing it all. This "busy work" prevents you from focusing on strategic growth and the high-value activities that truly move the needle.</li>
-        </ul>
-
-        <a href="https://tidycal.com/achaibo/ai4growth" class="cta-button">Book Your FREE 15-Minute AI Discovery Call Now!</a>
-
-        <h2>Your Solution: A Custom GPT – Your Ultimate Business Assistant.</h2>
-
-        <p>So, what exactly is a Custom GPT? Forget the vague buzzwords. Think of it as <strong>your own private, intelligent agent</strong> – meticulously built by me, TENGU 100X, and trained specifically on <strong>your</strong> business's unique knowledge, processes, and goals.</p>
-
-        <p>It's designed to be an extension of <strong>you</strong>, directly tackling your daily frustrations and amplifying your efforts.</p>
-
-        <h3>How Your Custom GPT Will Transform <em>Your</em> Business Operations & Drive Sales:</h3>
-        <ul>
-            <li><strong>Sales & Lead Acceleration:</strong> Imagine an AI that helps you draft compelling follow-up emails, summarizes client interactions for quick context, or even pre-qualifies incoming leads by gathering essential information. <strong>This frees up your sales team (or you!) to focus on closing deals, not chasing details.</strong></li>
-            <li><strong>Automated Admin & Operational Efficiency:</strong> Say goodbye to endless manual tasks. Your GPT can draft internal reports, organize information, manage calendars, and even help onboard new team members by providing instant access to company knowledge. <strong>This streamlines your daily operations, making your business run smoother than ever.</strong></li>
-            <li><strong>Effortless Marketing & Content Creation:</strong> Need engaging social media posts for the week? A draft for a new product description? Or even ideas for your next email campaign? Your GPT acts as your always-on content creator, helping you maintain a consistent, powerful online presence with minimal effort. <span class="source-text">(Source: Marketing and content creation is the #1 AI use case for small businesses in 2025.)</span></li>
-            <li><strong>Intelligent Knowledge Hub:</strong> Stop wasting time searching for information. Your custom GPT instantly pulls answers from your internal documents (FAQs, policies, product specs), empowering you and your team with immediate, accurate data.</li>
-            <li><strong>Bridging Houston's Language Gaps (Internally & Externally):</strong> Beyond customer service, your GPT can assist with internal communications across diverse teams. It can also help you quickly generate basic marketing materials or understand customer inquiries in Spanish, Vietnamese, or other languages, ensuring you're serving all of Houston's vibrant communities.</li>
-        </ul>
-
-        <a href="https://tidycal.com/achaibo/ai4growth" class="cta-button">Book Your FREE 15-Minute AI Discovery Call Now!</a>
-
-        <h2>Who Benefits Most in Houston? Businesses Ready for a Breakthrough.</h2>
-        <p>While the power of AI is universal, we've pinpointed Houston sectors that are perfectly primed to see immediate, tangible results with a custom GPT for <strong>supercharging their internal operations and sales processes</strong>:</p>
-        <ul>
-            <li><strong>Real Estate Agencies:</strong> Speed up property research, draft listing descriptions faster, manage client communications efficiently, and streamline lead qualification.</li>
-            <li><strong>Retail Shops & E-Commerce:</strong> Quickly generate product descriptions, analyze sales trends, assist with inventory management, and draft promotional content.</li>
-            <li><strong>Restaurants, Cafés & Hospitality:</strong> Automate staff scheduling communications, draft menu updates, manage internal inventory notes, and process vendor inquiries more efficiently.</li>
-            <li><strong>Home Services & Contractors:</strong> Expedite quote generation, manage job site notes, draft client proposals, and streamline administrative paperwork.</li>
-            <li><strong>Professional Services (Consultants, Agencies, Law, Accounting):</strong> Accelerate research, summarize complex documents, draft client emails and proposals, and enhance internal knowledge management.</li>
-            <li><strong>Healthcare & Wellness Practices:</strong> Streamline patient intake forms, draft internal reports, manage administrative tasks, and help generate basic patient information sheets.</li>
-        </ul>
-
-        <a href="https://tidycal.com/achaibo/ai4growth" class="cta-button">Book Your FREE 15-Minute AI Discovery Call Now!</a>
-
-    </div>
-
-    <footer>
-        <p class="tagline">Led by Houston’s #1 AI Marketing Oracle — TENGU 100X. Unlock your business’s full potential with tailored AI solutions that work for you.</p>
-        <p class="copyright">&copy; 2025 Achaibo Consulting.</p>
+    <footer class="footer">
+        <div class="container">
+            <p class="tagline">TENGU 100X — Your Partner in Strategic AI Implementation.</p>
+            <p class="copyright">&copy; 2025 Achaibo Consulting. All Rights Reserved.</p>
+        </div>
     </footer>
 
 </body>
