@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the Mastermind!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* ========================================
+        MASTERMIND THEME & COLOR VARIABLES
+        ========================================
+        */
+        :root {
+            --primary-color: #483D8B; /* A deep, intellectual indigo */
+            --secondary-color: #D4AF37; /* A rich, classic gold */
+            --background-color: #f8f9fa; /* A very light, premium grey */
+            --text-color: #333333;
+            --light-text-color: #555555;
+            --white-color: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--background-color) 70%, #e0e5ed); /* Subtle gradient background */
+        }
+
+        .welcome-container {
+            background-color: var(--white-color);
+            padding: 60px; /* Slightly more padding */
+            border-radius: 12px; /* Slightly more rounded */
+            box-shadow: 0 12px 35px rgba(0,0,0,0.12); /* Slightly stronger shadow */
+            text-align: center;
+            max-width: 650px; /* Slightly wider */
+            width: 90%;
+        }
+
+        .welcome-container h1 {
+            font-size: 2.8em; /* Slightly larger */
+            font-weight: 900;
+            color: var(--primary-color);
+            margin: 0 0 15px 0;
+        }
+
+        .welcome-container .subtitle {
+            font-size: 1.3em; /* Slightly larger */
+            color: var(--light-text-color);
+            margin-bottom: 50px; /* More space */
+        }
+
+        .welcome-container h3 {
+            font-size: 1.6em; /* Slightly larger */
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-top: 50px; /* More space */
+            margin-bottom: 25px;
+            border-top: 2px solid #ddd; /* More visible divider */
+            padding-top: 35px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            text-align: center;
+            padding: 22px 45px; /* Slightly larger button */
+            font-size: 1.5em; /* Slightly larger text */
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 10px; /* More rounded */
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smoother transition */
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4); /* Subtle shadow using gold color */
+        }
+        .cta-button:hover {
+            transform: scale(1.08); /* More pronounced hover effect */
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        .instructions {
+            font-size: 1.15em; /* Slightly larger */
+            color: var(--light-text-color);
+            margin-top: 40px;
+            text-align: left; /* Align instructions to the left for better readability */
+        }
+        .instructions strong {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        .instructions p, .instructions ul {
+            margin-bottom: 15px;
+        }
+        .instructions ul {
+            padding-left: 25px;
+        }
+        .instructions li {
+            margin-bottom: 8px;
+        }
+
+        .footer-note {
+            margin-top: 50px;
+            font-size: 0.95em;
+            color: #777; /* Slightly darker */
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="welcome-container">
+        <h1>🎉 You're In! Welcome to the Mastermind.</h1>
+        <p class="subtitle">Your journey to AI-powered growth has begun. We're thrilled to have you.</p>
+        
+        <h3>Your Crucial First Steps:</h3>
+
+        <a href="https://join.slack.com/t/achaiboclinical/shared_invite/zt-38sj71k42-bTuKBk1BHpcS1OmC8YM2JA" class="cta-button">Click Here to Join Our Private Slack</a>
+
+        <div class="instructions">
+            <p><strong>1. Click the button above</strong> to be instantly connected to our exclusive Slack workspace.</p>
+            <p><strong>2. Find the `#ai-advantage-mastermind` channel.</strong> Once you've joined, you'll be automatically added to our private channel. This is where all the magic happens.</p>
+            <p><strong>3. Review the Canvas.</strong> Inside the channel, look for the **Canvas** at the top. It contains:</p>
+            <ul>
+                <li>Our detailed call schedule.</li>
+                <li>The permanent Zoom links for all live sessions.</li>
+                <li>Access to the TENGU 100X Resource Vault.</li>
+            </ul>
+        </div>
+
+        <p class="footer-note">A confirmation email with your receipt is on its way. We can't wait to see you in the community!</p>
+    </div>
+
+</body>
+</html>
+
