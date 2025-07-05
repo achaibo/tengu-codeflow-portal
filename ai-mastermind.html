@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The AI Advantage Mastermind | TENGU 100X</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* ========================================
+        MASTERMIND THEME & COLOR VARIABLES
+        Theme: Deep Indigo & Gold
+        ========================================
+        */
+        :root {
+            --primary-color: #483D8B; /* A deep, intellectual indigo */
+            --secondary-color: #D4AF37; /* A rich, classic gold */
+            --background-color: #f8f9fa; /* A very light, premium grey */
+            --text-color: #333333;
+            --light-text-color: #555555;
+            --white-color: #ffffff;
+            --dark-section-bg: #1e1e1e;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Header Section --- */
+        .header {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 3em;
+            font-weight: 900;
+            margin: 0 0 15px 0;
+            line-height: 1.2;
+        }
+        .header h1 span {
+            color: var(--secondary-color);
+        }
+        .header .sub-header {
+            font-size: 1.25em;
+            max-width: 650px;
+            margin: 0 auto 30px auto;
+            opacity: 0.9;
+        }
+
+        /* --- Main Content Sections --- */
+        section {
+            padding: 70px 0;
+        }
+        section h2 {
+            font-size: 2.4em;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+        }
+        .section-intro-text {
+            font-size: 1.1em;
+            text-align: center;
+            max-width: 700px;
+            margin: -30px auto 50px auto;
+            color: var(--light-text-color);
+        }
+
+        /* --- Call-to-Action Button --- */
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            text-align: center;
+            padding: 20px 40px;
+            font-size: 1.4em;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+        .cta-container { text-align: center; margin-top: 40px; }
+        .cta-subtext { text-align: center; margin-top: 15px; font-weight: 700; color: var(--primary-color); }
+
+
+        /* --- Value & Feature Lists --- */
+        .feature-list {
+            list-style-type: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .feature-list li {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        .feature-list li::before {
+            content: '✅';
+            color: var(--primary-color);
+            font-size: 1.4em;
+            margin-right: 15px;
+            line-height: 1.2;
+        }
+
+        /* --- Value Stack Section --- */
+        .value-stack-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .value-stack-list li {
+            background: var(--white-color);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            font-size: 1.1em;
+        }
+        .value-stack-list strong {
+            color: var(--primary-color);
+            display: block;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        .value-stack-list .value-text {
+            font-style: italic;
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+        
+        /* --- About the Founder Section --- */
+        .about-section {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* --- Testimonials Section --- */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+        .testimonial-card {
+            background-color: var(--white-color);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 5px solid var(--secondary-color);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+        }
+        .testimonial-text {
+            font-size: 1.1em;
+            font-style: italic;
+            color: var(--light-text-color);
+            margin: 0 0 20px 0;
+        }
+        .testimonial-author {
+            font-size: 1em;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        .testimonial-author span {
+            font-weight: 400;
+            color: var(--light-text-color);
+            display: block;
+            font-size: 0.9em;
+        }
+        
+        /* --- Pricing Section --- */
+        .pricing-box {
+            background: var(--white-color);
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            padding: 40px;
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .pricing-box .price {
+            font-size: 3em;
+            font-weight: 900;
+            color: var(--primary-color);
+        }
+        .pricing-box .price span {
+            font-size: 0.5em;
+            font-weight: 400;
+            color: var(--light-text-color);
+        }
+        .pricing-box .includes-text {
+            font-weight: 700;
+            margin: 20px 0;
+            color: var(--primary-color);
+        }
+
+        /* --- FAQ Section --- */
+        .faq-item {
+            margin-bottom: 30px;
+            border-left: 3px solid var(--secondary-color);
+            padding-left: 20px;
+        }
+        .faq-item h3 {
+            font-size: 1.3em;
+            margin: 0 0 5px 0;
+            color: var(--primary-color);
+        }
+        
+        /* --- Footer --- */
+        .footer {
+            background-color: var(--dark-section-bg);
+            color: #f0f0f0;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .footer .tagline { font-size: 1.1em; font-weight: bold; margin-bottom: 10px; }
+        .footer .copyright { font-size: 0.9em; }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.5em; }
+            section h2 { font-size: 2em; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <h1>Stop Guessing, Start Growing.<br>Join <span>The AI Advantage Mastermind</span>.</h1>
+            <p class="sub-header">This is an exclusive group coaching program where you get the expert strategy, live support, and accountability needed to turn AI from a buzzword into your most powerful business advantage.</p>
+            <a href="#pricing" class="cta-button">Join the Mastermind</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="problem">
+            <div class="container">
+                <h2>AI is Evolving at Lightning Speed.<br>Are You Being Left Behind?</h2>
+                <p class="section-intro-text">If you're like most driven entrepreneurs, you see the massive potential of AI. But the reality is often frustrating. You feel like you're on the outside looking in, while your competitors are getting further ahead.</p>
+                <ul class="feature-list">
+                    <li>You're overwhelmed by the sheer number of AI tools and don't know where to start.</li>
+                    <li>You've tried a few apps, but they feel like disconnected toys, not a cohesive growth strategy.</li>
+                    <li>You're wasting precious time on YouTube tutorials that offer information but no real-world action plan.</li>
+                    <li>You lack a trusted expert to ask for specific advice about *your* business challenges.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="solution" style="background-color: #fff;">
+            <div class="container">
+                <h2>The AI Advantage Mastermind is Your Solution</h2>
+                <p class="section-intro-text">This isn't another course. It's a "done-with-you" accelerator that bridges the gap between frustrating DIY and expensive custom development. We give you the keys to the kingdom.</p>
+                <ul class="feature-list" style="max-width: 800px; margin: 0 auto;">
+                     <li><strong>This Mastermind is for you if...</strong></li>
+                     <li>You're a hands-on entrepreneur who wants to understand and control your own AI strategy.</li>
+                     <li>You want direct, live access to an expert to get your specific questions answered.</li>
+                     <li>You thrive in a community of driven peers who provide feedback and accountability.</li>
+                     <li>You want a clear, actionable plan after every session, not just more theory.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="value-stack">
+            <div class="container">
+                <h2>Here's Everything You Get When You Join</h2>
+                <ul class="value-stack-list">
+                    <li>
+                        <strong>2x Monthly Live AI Strategy Masterclasses</strong>
+                        Get cutting-edge training on what's working *right now* in AI for marketing, sales, and operations.
+                        <p class="value-text">(Value: $1,000/mo)</p>
+                    </li>
+                    <li>
+                        <strong>2x Monthly Live Q&A "Hot Seats"</strong>
+                        Bring your biggest challenge to the group and get personalized, expert coaching to solve it on the spot.
+                        <p class="value-text">(Value: $1,000/mo)</p>
+                    </li>
+                    <li>
+                        <strong>Customized Action Plans &amp; Frameworks</strong>
+                        Never leave a session wondering what to do next. Get tailored plans and proven frameworks for immediate implementation.
+                        <p class="value-text">(Value: $500/mo)</p>
+                    </li>
+                    <li>
+                        <strong>Private Mastermind Community on Slack</strong>
+                        Join our private group of visionary entrepreneurs to share wins, get feedback 24/7, and stay motivated.
+                        <p class="value-text">(Priceless!)</p>
+                    </li>
+                     <li>
+                        <strong>The TENGU 100X Resource Vault</strong>
+                        Get exclusive access to my curated library of the best AI tools, killer prompts, and tested workflows.
+                        <p class="value-text">(Value: $250/mo)</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="about" style="background-color: #fff;">
+            <div class="container">
+                <h2>Your Guide to AI-Powered Growth</h2>
+                <div class="about-section">
+                    <p>I'm not just a theorist; I'm a practitioner. After building dozens of custom AI solutions for businesses across the country, I've seen firsthand what truly works. I've distilled these powerful strategies into a repeatable playbook.</p>
+                    <p>My mission is to take the complexity out of AI and put its power directly into the hands of entrepreneurs like you. I believe the best results come not from just giving you a tool, but by giving you the knowledge to wield it effectively. Let's build your advantage, together.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials">
+            <div class="container">
+                <h2>Real Results from Visionary Entrepreneurs</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Before the Mastermind, I was completely overwhelmed. Now I have a clear, actionable plan for AI that's already saving me 10+ hours a week. I'm finally working ON my business, not just IN it."</p>
+                        <p class="testimonial-author">
+                            J. Rodriguez
+                            <span>Founder, E-commerce Brand</span>
+                        </p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"The 'Hot Seat' session alone was worth the monthly price. I got a specific strategy for my marketing funnel that helped me land two new high-ticket clients within three weeks. This isn't a cost, it's an investment."</p>
+                        <p class="testimonial-author">
+                            S. Chen
+                            <span>Marketing Consultant</span>
+                        </p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"The community is the secret weapon. Having a group of sharp, motivated entrepreneurs to bounce ideas off of is a game-changer. You can't get this kind of real-time feedback from a course."</p>
+                        <p class="testimonial-author">
+                            M. Davis
+                            <span>Owner, Local Service Business</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" style="background-color: #fff;">
+            <div class="container">
+                <h2>Ready to Build Your AI Advantage?</h2>
+                 <div class="pricing-box">
+                     <div class="price">$500 <span>/ month</span></div>
+                     <p>Get immediate access to all masterclasses, live coaching calls, the private community, and the resource vault.</p>
+                     <p class="includes-text">Your investment includes access for you + one key team member.</p>
+                     <div class="cta-container">
+                         <a href="[YOUR_PAYPAL_LINK_HERE]" class="cta-button">Join the Mastermind</a>
+                     </div>
+                 </div>
+                 <p class="cta-subtext">Spots are limited to 30 businesses to ensure personalized attention.</p>
+            </div>
+        </section>
+
+         <section id="faq">
+            <div class="container">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-item">
+                    <h3>How is this different from your custom AI service?</h3>
+                    <p>My custom service is "done-for-you"—we build everything. This Mastermind is "done-with-you"—we give you the strategy, guidance, and support to build your own AI capabilities. It's about empowering you, not just delivering a tool.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What if I'm a complete AI beginner?</h3>
+                    <p>This is the perfect place for you. We start with foundational concepts and build from there. The goal is to make you confident and competent, regardless of your starting point.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What if I miss a live session?</h3>
+                    <p>No problem. All sessions are recorded and uploaded to our private Member Hub within 24 hours, so you can watch them anytime, anywhere.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What is the time commitment?</h3>
+                    <p>We recommend dedicating about 4-5 hours per month. This includes two 90-minute live sessions plus an estimated 1-2 hours per week for implementing what you've learned.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="tagline">TENGU 100X — Your Partner in Strategic AI Implementation.</p>
+            <p class="copyright">&copy; 2025 Achaibo Consulting. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+
