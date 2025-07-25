@@ -3,95 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strategic AI for Lagos's Visionary Brands | TENGU 100X</title>
+    <title>Your Growth Partner for the Lagos Hustle</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Lagos Theme: Bold Green & Ivory White */
-        :root {
-            --primary-color: #008751; /* A strong, Nigerian green */
-            --secondary-color: #FFFFFF; /* A clean, crisp white */
-            --background-color: #f0f4f0; /* A very light, subtle green-grey */
-            --text-color: #333333;
-            --light-text-color: #555555;
-            --white-color: #ffffff;
+        body {
+            font-family: 'Inter', sans-serif;
         }
-        body { font-family: 'Inter', sans-serif; line-height: 1.7; margin: 0; background-color: var(--background-color); color: var(--text-color); }
-        .container { max-width: 850px; margin: 0 auto; padding: 0 20px; }
-        .header { background-color: var(--primary-color); color: var(--white-color); padding: 60px 20px; text-align: center; }
-        .header h1 { font-size: 2.8em; font-weight: 900; margin: 0 0 10px 0; line-height: 1.2; }
-        .header h1 span { color: var(--secondary-color); text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
-        .header .sub-header { font-size: 1.2em; max-width: 600px; margin: 0 auto; opacity: 0.9; }
-        section { padding: 60px 0; }
-        section h2 { font-size: 2.2em; font-weight: 700; text-align: center; margin-top: 0; margin-bottom: 40px; color: var(--primary-color); }
-        .cta-button { display: inline-block; background-color: var(--secondary-color); color: var(--primary-color); text-align: center; padding: 20px 40px; font-size: 1.4em; font-weight: 700; text-decoration: none; border-radius: 8px; margin-top: 20px; transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
-        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); }
-        .cta-container { text-align: center; margin-top: 40px; }
-        .list { list-style-type: none; padding: 0; }
-        .list li { background: var(--white-color); padding: 20px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); font-size: 1.1em; display: flex; align-items: center; }
-        .list li::before { font-size: 1.5em; margin-right: 15px; color: var(--primary-color); }
-        .pain-points-list li::before { content: '❌'; }
-        .solutions-list li::before { content: '✅'; }
-        .testimonial { background-color: var(--white-color); padding: 40px; border-radius: 8px; border-left: 5px solid var(--primary-color); box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 50px; }
-        .testimonial-text { font-size: 1.3em; font-style: italic; color: var(--light-text-color); margin: 0 0 20px 0; text-align: center; }
-        .testimonial-author { font-size: 1.1em; font-weight: 700; color: var(--primary-color); text-align: right; }
-        .testimonial-author span { font-weight: 400; color: var(--light-text-color); }
-        .footer { background-color: #1e1e1e; color: #f0f0f0; padding: 40px 20px; text-align: center; margin-top: 40px; }
-        .footer .tagline { font-size: 1.1em; font-weight: bold; margin-bottom: 10px; }
-        .footer .copyright { font-size: 0.9em; }
+        /* Lagos Theme: Bold Green & Ivory White */
+        .bg-nigerian-green { background-color: #008751; }
+        .text-nigerian-green { color: #008751; }
+        .hover\:bg-nigerian-green-dark:hover { background-color: #00663d; }
+        
+        .bg-ivory-white { background-color: #FFFFFF; }
+        .text-ivory-white { color: #FFFFFF; }
+        .hover\:bg-ivory-white-dark:hover { background-color: #f2f2f2; }
+
+        .bg-light-green-gray { background-color: #f0f4f0; }
+        .section-title {
+            font-size: 2.25rem; /* 36px */
+            font-weight: 800;
+            line-height: 2.5rem; /* 40px */
+        }
     </style>
 </head>
-<body>
-    <header class="header">
-        <div class="container">
-            <h1>AI Solutions for your <span>Lagos</span> Hustle</h1>
-            <p class="sub-header">Led by TENGU 100X — We build custom AI assistants that free you from daily operational stress so you can focus on the real goal: <strong>growth</strong>.</p>
-        </div>
+<body class="bg-light-green-gray text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-nigerian-green shadow-lg">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-white font-bold text-xl">
+                    Growth Partner
+                </div>
+                <div>
+                    <a href="#contact" class="bg-ivory-white text-nigerian-green font-bold py-2 px-4 rounded-lg hover:bg-ivory-white-dark transition duration-300">Contact Us</a>
+                </div>
+            </div>
+        </nav>
     </header>
-    <main class="container">
-        <section>
-            <h2>No Time for Wahala. E don do.</h2>
-            <p style="text-align: center; font-size: 1.1em; max-width: 700px; margin: 0 auto;">You're a dedicated Lagos business owner, but are you stuck managing small-small tasks instead of building your empire? Imagine a sharp, intelligent partner that boosts your sales and streamlines your work, making your Lagos hustle smoother.</p>
-            <div class="cta-container">
-                <a href="https://tidycal.com/achaibo/ai4growth" class="cta-button">Book Your FREE AI Discovery Call</a>
+
+    <!-- Hero Section -->
+    <section class="bg-nigerian-green text-white">
+        <div class="container mx-auto px-6 py-24 text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+                AI Solutions for Your <span class="text-ivory-white">Lagos</span> Hustle
+            </h1>
+            <p class="mt-4 text-lg md:text-xl max-w-3xl mx-auto opacity-90">
+                We provide expert solutions that free you from daily stress so you can focus on the real goal: <strong>growth</strong>.
+            </p>
+            <div class="mt-8">
+                <a href="#services" class="bg-ivory-white text-nigerian-green font-bold text-lg py-4 px-8 rounded-lg hover:bg-ivory-white-dark transition duration-300 shadow-xl">Explore Our Solutions</a>
             </div>
-        </section>
-        <section>
-            <h2>The Real Gobe Holding You Back</h2>
-            <ul class="list pain-points-list">
-                <li>Struggling with the high cost of operations and staff matter.</li>
-                <li>Promising leads are lost because of slow response or inconsistent follow-up.</li>
-                <li>Creating marketing content feels like another full-time job.</li>
-                <li>"Oga at the top" fatigue from handling every single task yourself.</li>
-            </ul>
-        </section>
-        <section>
-            <h2>Your Solution: A Custom AI Oga for Your Business</h2>
-            <p style="text-align: center; font-size: 1.1em; max-width: 700px; margin: 0 auto 40px;">Think of it as your personal, intelligent agent, trained on your unique business knowledge to handle your daily frustrations and customer gbas gbos.</p>
-            <ul class="list solutions-list">
-                <li>Instantly follow-up with leads, no more "I will do it later."</li>
-                <li>Automate daily reports and staff communication.</li>
-                <li>Generate sharp, engaging content for social media and emails.</li>
-                <li>Build a smart knowledge base for your entire team.</li>
-            </ul>
-            <div class="cta-container">
-                <a href="https://tidycal.com/achaibo/ai4growth" class="cta-button">I'm Ready to Automate & Grow</a>
+        </div>
+    </section>
+
+    <!-- Core Advantage Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title text-center text-gray-800 mb-4">No Time for Wahala. E don do.</h2>
+            <p class="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-12">You're a dedicated Lagos business owner, but are you stuck managing small-small tasks instead of building your empire? Let's make your hustle smoother.</p>
+            <div class="max-w-3xl mx-auto">
+                <h3 class="text-3xl font-bold mb-6 text-nigerian-green text-center">The Real Gobe Holding You Back</h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start bg-gray-50 p-4 rounded-lg shadow-sm">
+                        <span class="text-red-500 font-bold text-xl mr-4">❌</span>
+                        <span class="text-gray-700">Struggling with the high cost of operations and staff matter.</span>
+                    </li>
+                    <li class="flex items-start bg-gray-50 p-4 rounded-lg shadow-sm">
+                        <span class="text-red-500 font-bold text-xl mr-4">❌</span>
+                        <span class="text-gray-700">Promising leads are lost because of slow response or inconsistent follow-up.</span>
+                    </li>
+                    <li class="flex items-start bg-gray-50 p-4 rounded-lg shadow-sm">
+                        <span class="text-red-500 font-bold text-xl mr-4">❌</span>
+                        <span class="text-gray-700">Creating marketing content feels like another full-time job.</span>
+                    </li>
+                     <li class="flex items-start bg-gray-50 p-4 rounded-lg shadow-sm">
+                        <span class="text-red-500 font-bold text-xl mr-4">❌</span>
+                        <span class="text-gray-700">"Oga at the top" fatigue from handling every single task yourself.</span>
+                    </li>
+                </ul>
             </div>
-        </section>
-        <section>
-            <h2>Wetin Lagos Leaders Dey Talk</h2>
-            <div class="testimonial">
-                <p class="testimonial-text">"In a market as fast as Lagos, you can't afford to be slow. TENGU 100X built us an AI that handles customer inquiries instantly. This thing is sharp! It has seriously boosted our efficiency and helped us close more deals."</p>
-                <p class="testimonial-author">— T. Adebayo, <span>Founder of a Lagos-Based Fintech Startup</span></p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-light-green-gray">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title text-center text-gray-800 mb-12">Your Solution: A Custom Oga for Your Business</h2>
+            <p class="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-12">Think of it as your personal, intelligent agent, trained to handle your daily frustrations and customer gbas gbos.</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service Card 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 text-center">
+                    <h3 class="text-xl font-bold mb-2 text-nigerian-green">Instant Follow-Up</h3>
+                    <p class="text-gray-600">Instantly follow-up with leads, no more "I will do it later."</p>
+                </div>
+                <!-- Service Card 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 text-center">
+                    <h3 class="text-xl font-bold mb-2 text-nigerian-green">Automate Reports</h3>
+                    <p class="text-gray-600">Automate daily reports and streamline staff communication effortlessly.</p>
+                </div>
+                <!-- Service Card 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 text-center">
+                    <h3 class="text-xl font-bold mb-2 text-nigerian-green">Engaging Content</h3>
+                    <p class="text-gray-600">Generate sharp, engaging content for your social media and emails.</p>
+                </div>
+                <!-- Service Card 4 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 text-center">
+                    <h3 class="text-xl font-bold mb-2 text-nigerian-green">Smart Knowledge Base</h3>
+                    <p class="text-gray-600">Build a smart knowledge base for your entire team to get answers quickly.</p>
+                </div>
             </div>
-        </section>
-    </main>
-    <footer class="footer">
-        <div class="container">
-            <p class="tagline">TENGU 100X — Your Partner in Strategic AI Implementation.</p>
-            <p class="copyright">&copy; 2025 Achaibo Consulting. All Rights Reserved.</p>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="section-title text-gray-800 mb-4">Wetin Lagos Leaders Dey Talk</h2>
+                <div class="bg-gray-100 p-8 rounded-xl shadow-inner">
+                    <p class="text-lg italic text-gray-700">
+                        "In a market as fast as Lagos, you can't afford to be slow. They built us a solution that handles customer inquiries instantly. This thing is sharp! It has seriously boosted our efficiency and helped us close more deals."
+                    </p>
+                    <p class="mt-6 font-bold text-nigerian-green">
+                        — T. Adebayo
+                    </p>
+                    <p class="text-sm text-gray-500">Founder of a Lagos-Based Fintech Startup</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="bg-nigerian-green">
+        <div class="container mx-auto px-6 py-20 text-center text-white">
+            <h2 class="text-3xl font-bold mb-4">Ready to Automate & Grow?</h2>
+            <p class="max-w-2xl mx-auto mb-8">
+                Contact us today for a free discovery session. Let's discuss your business challenges and how our solutions can help you succeed.
+            </p>
+            <a href="https://tidycal.com/achaibo/ai4growth" class="bg-ivory-white text-nigerian-green font-bold text-lg py-4 px-8 rounded-lg hover:bg-ivory-white-dark transition duration-300 shadow-xl">
+                Book Your FREE Discovery Call
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 Growth Partner. All Rights Reserved.</p>
+            <p class="text-sm mt-2 opacity-70">Your Strategic Partner in Lagos</p>
         </div>
     </footer>
+
 </body>
 </html>
