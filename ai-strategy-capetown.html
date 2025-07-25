@@ -3,95 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strategic AI for Cape Town's Creative Brands | TENGU 100X</title>
+    <title>Your Growth Partner for Cape Town's Creative Brands</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
-        /* South Africa Theme: Joburg Gold & Diamond Black */
-        :root {
-            --primary-color: #1c1c1c; /* A strong, deep black/charcoal */
-            --secondary-color: #FFD700; /* A powerful, metallic gold */
-            --background-color: #f5f5f5; /* A premium light grey */
-            --text-color: #333333;
-            --light-text-color: #555555;
-            --white-color: #ffffff;
+        body {
+            font-family: 'Inter', sans-serif;
         }
-        body { font-family: 'Inter', sans-serif; line-height: 1.7; margin: 0; background-color: var(--background-color); color: var(--text-color); }
-        .container { max-width: 850px; margin: 0 auto; padding: 0 20px; }
-        .header { background-color: var(--primary-color); color: var(--white-color); padding: 60px 20px; text-align: center; }
-        .header h1 { font-size: 2.8em; font-weight: 900; margin: 0 0 10px 0; line-height: 1.2; }
-        .header h1 span { color: var(--secondary-color); }
-        .header .sub-header { font-size: 1.2em; max-width: 600px; margin: 0 auto; opacity: 0.9; }
-        section { padding: 60px 0; }
-        section h2 { font-size: 2.2em; font-weight: 700; text-align: center; margin-top: 0; margin-bottom: 40px; color: var(--primary-color); }
-        .cta-button { display: inline-block; background-color: var(--secondary-color); color: var(--primary-color); text-align: center; padding: 20px 40px; font-size: 1.4em; font-weight: 700; text-decoration: none; border-radius: 8px; margin-top: 20px; transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
-        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); }
-        .cta-container { text-align: center; margin-top: 40px; }
-        .list { list-style-type: none; padding: 0; }
-        .list li { background: var(--white-color); padding: 20px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); font-size: 1.1em; display: flex; align-items: center; }
-        .list li::before { font-size: 1.5em; margin-right: 15px; color: var(--primary-color); }
-        .pain-points-list li::before { content: '❌'; }
-        .solutions-list li::before { content: '✅'; }
-        .testimonial { background-color: var(--white-color); padding: 40px; border-radius: 8px; border-left: 5px solid var(--primary-color); box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 50px; }
-        .testimonial-text { font-size: 1.3em; font-style: italic; color: var(--light-text-color); margin: 0 0 20px 0; text-align: center; }
-        .testimonial-author { font-size: 1.1em; font-weight: 700; color: var(--primary-color); text-align: right; }
-        .testimonial-author span { font-weight: 400; color: var(--light-text-color); }
-        .footer { background-color: #1e1e1e; color: #f0f0f0; padding: 40px 20px; text-align: center; margin-top: 40px; }
-        .footer .tagline { font-size: 1.1em; font-weight: bold; margin-bottom: 10px; }
-        .footer .copyright { font-size: 0.9em; }
+        /* Cape Town Theme: Ocean Blue & Sunset Gold */
+        .bg-ocean-blue { background-color: #005A9C; }
+        .text-ocean-blue { color: #005A9C; }
+        .hover\:bg-ocean-blue-dark:hover { background-color: #004a80; }
+        
+        .bg-sunset-gold { background-color: #FDB813; }
+        .text-sunset-gold { color: #FDB813; }
+        .hover\:bg-sunset-gold-dark:hover { background-color: #e4a611; }
+
+        .bg-sand-beige { background-color: #fcf9f3; }
+        .section-title {
+            font-size: 2.25rem; /* 36px */
+            font-weight: 800;
+            line-height: 2.5rem; /* 40px */
+        }
     </style>
 </head>
-<body>
-    <header class="header">
-        <div class="container">
-            <h1>Strategic AI for <span>Cape Town's</span> Creative Brands</h1>
-            <p class="sub-header">Led by TENGU 100X — We build custom AI solutions that free you from the daily grind so you can focus on what truly matters: <strong>growth</strong>.</p>
-        </div>
+<body class="bg-sand-beige text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-ocean-blue shadow-lg">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-white font-bold text-xl">
+                    Growth Partner
+                </div>
+                <div>
+                    <a href="#contact" class="bg-sunset-gold text-ocean-blue font-bold py-2 px-4 rounded-lg hover:bg-sunset-gold-dark transition duration-300">Contact Us</a>
+                </div>
+            </div>
+        </nav>
     </header>
-    <main class="container">
-        <section>
-            <h2>Yoh! Stop the Admin, Start Innovating.</h2>
-            <p style="text-align: center; font-size: 1.1em; max-width: 700px; margin: 0 auto;">As a creative Cape Town entrepreneur, are you stuck managing admin instead of building your vision? Imagine a powerful, intelligent partner that amplifies your creativity and streamlines your operations.</p>
-            <div class="cta-container">
-                <a href="https://tidycal.com/achaibo/ai4growth" class="cta-button">Book Your FREE AI Discovery Call</a>
+
+    <!-- Hero Section -->
+    <section class="bg-ocean-blue text-white">
+        <div class="container mx-auto px-6 py-24 text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+                Strategic Solutions for <span class="text-sunset-gold">Cape Town's</span> Creative Brands
+            </h1>
+            <p class="mt-4 text-lg md:text-xl max-w-3xl mx-auto opacity-90">
+                We provide expert solutions that free you from the daily grind so you can focus on what truly matters: <strong>your creative vision</strong>.
+            </p>
+            <div class="mt-8">
+                <a href="#services" class="bg-sunset-gold text-ocean-blue font-bold text-lg py-4 px-8 rounded-lg hover:bg-sunset-gold-dark transition duration-300 shadow-xl">Explore Our Solutions</a>
             </div>
-        </section>
-        <section>
-            <h2>The Real Issues Slowing You Down</h2>
-            <ul class="list pain-points-list">
-                <li>The competition in the creative and tech space is intense.</li>
-                <li>Promising clients are lost because you can't follow up quickly enough.</li>
-                <li>Creating marketing content feels like a separate full-time job.</li>
-                <li>Admin tasks are preventing you from focusing on innovative, high-value work.</li>
-            </ul>
-        </section>
-        <section>
-            <h2>Your Solution: A Smart AI Assistant, Sharp Sharp.</h2>
-            <p style="text-align: center; font-size: 1.1em; max-width: 700px; margin: 0 auto 40px;">An intelligent agent trained on your unique business knowledge to handle the boring stuff, so you can focus on being brilliant.</p>
-            <ul class="list solutions-list">
-                <li>Accelerate client acquisition with instant, personalized follow-ups.</li>
-                <li>Automate operations like project reporting and scheduling.</li>
-                <li>Generate effortless content for social media and email campaigns.</li>
-                <li>Build an intelligent knowledge hub for your creative team.</li>
-            </ul>
-            <div class="cta-container">
-                <a href="https://tidycal.com/achaibo/ai4growth" class="cta-button">I'm Ready to Automate & Grow</a>
+        </div>
+    </section>
+
+    <!-- Core Advantage Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title text-center text-gray-800 mb-4">Yoh! Stop the Admin, Start Innovating.</h2>
+            <p class="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-12">As a creative Cape Town entrepreneur, are you stuck managing admin instead of building your vision? Let's amplify your creativity and streamline your operations.</p>
+            <div class="max-w-3xl mx-auto">
+                <h3 class="text-3xl font-bold mb-6 text-ocean-blue text-center">The Real Issues Slowing You Down</h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start bg-gray-50 p-4 rounded-lg shadow-sm">
+                        <span class="text-red-500 font-bold text-xl mr-4">❌</span>
+                        <span class="text-gray-700">The competition in the creative and tech space is intense.</span>
+                    </li>
+                    <li class="flex items-start bg-gray-50 p-4 rounded-lg shadow-sm">
+                        <span class="text-red-500 font-bold text-xl mr-4">❌</span>
+                        <span class="text-gray-700">Promising clients are lost because you can't follow up quickly enough.</span>
+                    </li>
+                    <li class="flex items-start bg-gray-50 p-4 rounded-lg shadow-sm">
+                        <span class="text-red-500 font-bold text-xl mr-4">❌</span>
+                        <span class="text-gray-700">Creating marketing content feels like a separate full-time job.</span>
+                    </li>
+                     <li class="flex items-start bg-gray-50 p-4 rounded-lg shadow-sm">
+                        <span class="text-red-500 font-bold text-xl mr-4">❌</span>
+                        <span class="text-gray-700">Admin tasks are preventing you from focusing on innovative, high-value work.</span>
+                    </li>
+                </ul>
             </div>
-        </section>
-        <section>
-            <h2>What Cape Town's Innovators Are Saying</h2>
-            <div class="testimonial">
-                <p class="testimonial-text">"The AI solution from TENGU 100X has transformed our client workflow. It automates our initial project scoping and follow-ups, which has freed up our team to focus on creative strategy. An essential tool for any modern agency in the city."</p>
-                <p class="testimonial-author">— Thando Ndlovu, <span>Founder of a Woodstock Creative Studio</span></p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-sand-beige">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title text-center text-gray-800 mb-12">Your Solution: A Smart Partner, Sharp Sharp.</h2>
+            <p class="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-12">An intelligent partner trained on your unique business knowledge to handle the boring stuff, so you can focus on being brilliant.</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service Card 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 text-center">
+                    <h3 class="text-xl font-bold mb-2 text-ocean-blue">Accelerate Clients</h3>
+                    <p class="text-gray-600">Win more clients with instant, personalized follow-ups that show you're on the ball.</p>
+                </div>
+                <!-- Service Card 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 text-center">
+                    <h3 class="text-xl font-bold mb-2 text-ocean-blue">Automate Projects</h3>
+                    <p class="text-gray-600">Streamline your project reporting, client updates, and scheduling automatically.</p>
+                </div>
+                <!-- Service Card 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 text-center">
+                    <h3 class="text-xl font-bold mb-2 text-ocean-blue">Effortless Content</h3>
+                    <p class="text-gray-600">Generate brilliant content for your social media and email campaigns in minutes.</p>
+                </div>
+                <!-- Service Card 4 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 text-center">
+                    <h3 class="text-xl font-bold mb-2 text-ocean-blue">Creative Knowledge Hub</h3>
+                    <p class="text-gray-600">Build a central, smart database for your creative team to get instant, accurate answers.</p>
+                </div>
             </div>
-        </section>
-    </main>
-    <footer class="footer">
-        <div class="container">
-            <p class="tagline">TENGU 100X — Your Partner in Strategic AI Implementation.</p>
-            <p class="copyright">&copy; 2025 Achaibo Consulting. All Rights Reserved.</p>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="section-title text-gray-800 mb-4">What Cape Town's Innovators Are Saying</h2>
+                <div class="bg-gray-100 p-8 rounded-xl shadow-inner">
+                    <p class="text-lg italic text-gray-700">
+                        "This solution has transformed our client workflow. It automates our initial project scoping and follow-ups, which has freed up our team to focus on creative strategy. An essential tool for any modern agency in the city."
+                    </p>
+                    <p class="mt-6 font-bold text-ocean-blue">
+                        — Thando Ndlovu
+                    </p>
+                    <p class="text-sm text-gray-500">Founder of a Woodstock Creative Studio</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="bg-ocean-blue">
+        <div class="container mx-auto px-6 py-20 text-center text-white">
+            <h2 class="text-3xl font-bold mb-4">Ready to Automate & Innovate?</h2>
+            <p class="max-w-2xl mx-auto mb-8">
+                Contact us today for a free discovery session. Let's discuss your business challenges and how our solutions can help you succeed.
+            </p>
+            <a href="https://tidycal.com/achaibo/ai4growth" class="bg-sunset-gold text-ocean-blue font-bold text-lg py-4 px-8 rounded-lg hover:bg-sunset-gold-dark transition duration-300 shadow-xl">
+                Book Your FREE Discovery Call
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 Growth Partner. All Rights Reserved.</p>
+            <p class="text-sm mt-2 opacity-70">Your Strategic Partner in Cape Town</p>
         </div>
     </footer>
+
 </body>
 </html>
