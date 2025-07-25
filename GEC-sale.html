@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Optometry Equipment Sale | Galveston, TX</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Offset for fixed header when jumping to sections */
+        :target {
+            scroll-margin-top: 100px;
+        }
+        /* Fade-in animation for sections */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white/90 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-blue-600">Galveston Eye Care</a>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#opportunity" class="text-gray-600 hover:text-blue-600 transition-colors">The Opportunity</a>
+                <a href="#catalog" class="text-gray-600 hover:text-blue-600 transition-colors">Equipment Catalog</a>
+                <a href="#contact" class="text-gray-600 hover:text-blue-600 transition-colors">Contact</a>
+                <a href="#contact" class="bg-blue-600 text-white font-semibold px-5 py-2 rounded-lg hover:bg-blue-700 transition-colors shadow-sm hover:shadow-md">Inquire Now</a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <a href="#opportunity" class="block py-3 px-6 text-gray-700 hover:bg-gray-100">The Opportunity</a>
+            <a href="#catalog" class="block py-3 px-6 text-gray-700 hover:bg-gray-100">Equipment Catalog</a>
+            <a href="#contact" class="block py-3 px-6 text-gray-700 hover:bg-gray-100">Contact</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="relative text-white">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-800 to-cyan-600 opacity-80"></div>
+            <div class="min-h-[60vh] bg-cover bg-center flex items-center" style="background-image: url('https://lh3.googleusercontent.com/u/0/d/1Xy_Jz-g7b8d-n9Y-p8Jk_Z-qL6w-H9O9=w1920-h1080'); background-blend-mode: overlay;">
+                <div class="container mx-auto px-6 text-center relative">
+                    <span class="bg-yellow-400 text-yellow-900 font-bold text-sm px-4 py-1 rounded-full uppercase tracking-wider">Limited-Time Opportunity</span>
+                    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight my-4 drop-shadow-lg">Premium Optometry Equipment Sale</h1>
+                    <p class="text-xl md:text-2xl font-light text-gray-200 mb-8 drop-shadow-md">Acquire a full suite of professional-grade equipment in Galveston, TX.</p>
+                    <a href="#catalog" class="bg-white text-blue-600 font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition-transform transform hover:scale-105 shadow-xl">
+                        Explore the Inventory
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Opportunity Section -->
+        <section id="opportunity" class="py-20 bg-white fade-in-section">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold mb-4 text-gray-900">Your Turnkey Practice Starts Here</h2>
+                <div class="max-w-3xl mx-auto">
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        This is a rare chance to acquire a complete inventory of high-quality, meticulously maintained optometry equipment. Avoid the high costs and logistical headaches of sourcing individual pieces. This collection provides everything you need to launch a new practice or upgrade your current one instantly. This is a limited-time opportunity to secure a professional-grade setup at an exceptional value.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Equipment Catalog Link Section -->
+        <section id="catalog" class="py-20 bg-gray-50 fade-in-section">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl font-bold mb-4 text-gray-900">Access the Full Equipment Catalog</h2>
+                    <p class="text-lg text-gray-600 mb-10">
+                        To provide full transparency, we've organized all assets into a shared folder. When you click the link, you will find everything clearly categorized for your review.
+                    </p>
+                </div>
+
+                <!-- What's Inside Section -->
+                <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg border border-gray-200">
+                    <h3 class="font-bold text-2xl mb-6 text-center text-gray-800">What's Inside the Catalog?</h3>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <!-- Item 1: Optical Equipment -->
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0">
+                                <div class="bg-blue-100 text-blue-600 rounded-lg p-3">
+                                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-900">Optical Equipment</h4>
+                                <p class="text-gray-600">A folder containing photos of all core diagnostic and clinical machines, including the slit lamp, phoropter, lens edgers, and more.</p>
+                            </div>
+                        </div>
+                        <!-- Item 2: Eyewear Displays -->
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0">
+                                <div class="bg-blue-100 text-blue-600 rounded-lg p-3">
+                                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414-.336.75-.75.75h-1.5m1.5 0v.375c0 .621-.504 1.125-1.125 1.125h-17.25" /></svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-900">Eyewear Display & Storage</h4>
+                                <p class="text-gray-600">Photos of all retail fixtures, including glass display cabinets, shelving units, and storage solutions for frames.</p>
+                            </div>
+                        </div>
+                        <!-- Item 3: Miscellaneous -->
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0">
+                                <div class="bg-blue-100 text-blue-600 rounded-lg p-3">
+                                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" /></svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-900">Miscellaneous Office Equipment</h4>
+                                <p class="text-gray-600">Includes photos of office essentials like the printer, waiting room chairs, and other administrative assets.</p>
+                            </div>
+                        </div>
+                        <!-- Item 4: Comprehensive List -->
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0">
+                                <div class="bg-blue-100 text-blue-600 rounded-lg p-3">
+                                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-gray-900">Comprehensive Equipment List</h4>
+                                <p class="text-gray-600">A detailed document with a full inventory, descriptions, conditions, and **all available serial numbers** for your records.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-8">
+                        <a href="https://drive.google.com/drive/folders/1w_MCrTcTS7yTUNoft9b22vK6twgUpV0L?usp=sharing" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-600 text-white font-bold py-4 px-10 rounded-lg hover:bg-blue-700 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl">
+                            Open "Galveston Eye Care Equipment" Folder
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-gray-800 text-white fade-in-section">
+            <div class="container mx-auto px-6 text-center">
+
+                <h2 class="text-3xl font-bold mb-4">Ready to Make a Move?</h2>
+
+                <p class="max-w-2xl mx-auto text-gray-300 mb-10">For pricing and to schedule a viewing, contact Dr. Ngala directly. Serious inquiries only, as this equipment is available for a limited time.</p>
+
+                <div class="bg-white text-gray-800 rounded-lg shadow-xl p-8 max-w-lg mx-auto inline-block text-left transform hover:scale-105 transition-transform duration-300">
+
+                    <h3 class="text-2xl font-bold mb-2">Dr. John Ngala</h3>
+                    <p class="text-gray-600 mb-6">Galveston Eye Care</p>
+                    <div class="space-y-5">
+                        <p class="flex items-center text-lg">
+                            <svg class="w-6 h-6 mr-4 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                            <a href="tel:+17135609475" class="hover:underline">+1 (713) 560-9475</a>
+                        </p>
+                        <p class="flex items-center text-lg">
+                            <svg class="w-6 h-6 mr-4 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            <a href="mailto:galvestoneyecare@gmail.com" class="hover:underline">galvestoneyecare@gmail.com</a>
+                        </p>
+                        <p class="flex items-center text-lg mt-2">
+                            <svg class="w-6 h-6 mr-4 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Availability: Mon - Fri, 9am - 5pm</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-6">
+        <div class="container mx-auto px-6 text-center text-gray-400">
+            <p>&copy; 2025 Galveston Eye Care. All Rights Reserved.</p>
+            <p class="text-sm mt-2">Website created to facilitate the sale of the practice equipment.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- Mobile Menu Toggle ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileLinks = mobileMenu.getElementsByTagName('a');
+        for (let link of mobileLinks) {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        }
+
+        // --- Scroll Animations ---
+        const sections = document.querySelectorAll('.fade-in-section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+</body>
+</html>
