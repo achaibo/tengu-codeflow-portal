@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study | A Strategic Plan for BEAM Therapeutics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* A very light, clean gray */
+            color: #1e293b; /* Slate 800 for main text */
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #0891b2, #0284c7, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .section-hidden {
+            display: none;
+        }
+        .nav-link.active {
+            color: #0ea5e9; /* Sky 500 */
+            font-weight: 600;
+            border-bottom: 2px solid #0ea5e9;
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-link:hover {
+            color: #0ea5e9;
+            border-bottom-color: #0ea5e9;
+        }
+        .cta-button {
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px -5px rgba(14, 165, 233, 0.3);
+        }
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        .list-item-custom {
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .list-item-custom::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #0ea5e9;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white/90 backdrop-blur-xl sticky top-0 z-50 border-b border-slate-200 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="nav-link active" data-target="home">
+                <div class="flex items-center space-x-3">
+                    <svg class="h-8 w-8 text-sky-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span class="text-xl font-bold text-slate-800">Patient Access & Advocacy Plan</span>
+                </div>
+            </a>
+            <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                <a href="#" class="nav-link text-slate-600" data-target="challenge">The Challenge</a>
+                <a href="#" class="nav-link text-slate-600" data-target="solution">The Solution</a>
+                <a href="#" class="nav-link text-slate-600" data-target="impact">Impact</a>
+                <a href="#" class="nav-link text-slate-600" data-target="value">My Value</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-slate-800 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#" class="block py-2 text-slate-600 font-medium nav-link" data-target="challenge">The Challenge</a>
+            <a href="#" class="block py-2 text-slate-600 font-medium nav-link" data-target="solution">The Solution</a>
+            <a href="#" class="block py-2 text-slate-600 font-medium nav-link" data-target="impact">Impact</a>
+            <a href="#" class="block py-2 text-slate-600 font-medium nav-link" data-target="value">My Value</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 md:py-20">
+
+        <!-- Home Section -->
+        <section id="home" class="page-section">
+            <div class="text-center">
+                <p class="text-sky-600 font-semibold uppercase tracking-wider">From Science to Patient</p>
+                <h1 class="mt-2 text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight tracking-tight">
+                    A Strategic Approach to Scaling <span class="gradient-text">BEAM's Gene Editing Pipeline.</span>
+                </h1>
+                <p class="mt-6 max-w-3xl mx-auto text-lg text-slate-600">
+                    BEAM’s base editing platform has the potential to deliver lifelong cures. Success hinges not only on technical precision—it requires patient trust, equitable access, and readiness across site networks to deliver these therapies effectively. This is a proposed Patient Access & Advocacy Operations Plan to overcome delivery bottlenecks, improve diversity, and strengthen long-term engagement.
+                </p>
+                <div class="mt-10 flex justify-center gap-4">
+                    <a href="#" class="cta-button nav-link bg-sky-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg" data-target="solution">View The Strategic Solution</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Challenge Section -->
+        <section id="challenge" class="page-section section-hidden">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900">The Challenge Overview</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-lg text-slate-600">While the science is groundbreaking, the last mile to the patient is the most delicate and mission-critical phase. These are the primary bottlenecks in patient-centric delivery for BEAM.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card">
+                    <h3 class="text-xl font-bold text-slate-900">Delivery Complexity</h3>
+                    <p class="mt-3 text-slate-600">*Ex vivo* and *in vivo* modalities demand different practitioner skill sets, infrastructure, and coordination, creating significant operational challenges.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-bold text-slate-900">Practitioner Education Gaps</h3>
+                    <p class="mt-3 text-slate-600">Specialty centers may be new to base editing workflows, including conditioning regimens, LNP infusion protocols, and unique long-term follow-up requirements.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-bold text-slate-900">Patient Identification</h3>
+                    <p class="mt-3 text-slate-600">Rare disease populations are dispersed and often unaware of trial options, with higher barriers to entry existing in underserved communities.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-bold text-slate-900">Diversity & Inclusion Mandates</h3>
+                    <p class="mt-3 text-slate-600">Upcoming FDA and EU regulations require proactive, documented strategies for inclusive recruitment, making diversity a regulatory necessity.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-bold text-slate-900">Long-Term Retention</h3>
+                    <p class="mt-3 text-slate-600">Multi-year tracking is essential to prove the durability of "curative" claims, but patient fatigue and disengagement risk are high over such long periods.</p>
+                </div>
+                 <div class="card bg-slate-800 text-white">
+                    <h3 class="text-xl font-bold text-white">Why This Matters Now</h3>
+                    <p class="mt-3 text-slate-300">As BEAM advances, patient access and operational inclusivity will directly impact regulatory success, payer acceptance, and market adoption.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Solution Section -->
+        <section id="solution" class="page-section section-hidden">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900">A Patient-Centered Operational Framework</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-lg text-slate-600">This framework is designed to proactively address each challenge with a specific, measurable, and patient-focused set of initiatives.</p>
+            </div>
+
+            <div class="space-y-12">
+                <div>
+                    <h3 class="text-3xl font-bold text-slate-800 border-b-4 border-sky-500 pb-3 mb-8 inline-block">A. Education & Readiness</h3>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="card"><strong>Practitioner Bootcamps:</strong> On-site and virtual training modules on *ex vivo* logistics, *in vivo* infusion safety, and decentralized monitoring tools.</div>
+                        <div class="card"><strong>Patient-Friendly Materials:</strong> Co-create plain-language explanations of base editing, leveraging patient advocacy groups to build trust and comprehension.</div>
+                        <div class="card"><strong>Community Touchpoints:</strong> Partner with patient organizations, rare disease coalitions, and local health systems to create “educational champions” in the community.</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-3xl font-bold text-slate-800 border-b-4 border-cyan-500 pb-3 mb-8 inline-block">B. Diversity & DCT Integration</h3>
+                     <div class="grid md:grid-cols-3 gap-8">
+                        <div class="card"><strong>Diversity Outreach Map:</strong> Identify trial site catchment areas against demographic disease prevalence data to ensure representative access.</div>
+                        <div class="card"><strong>Decentralized Trial Elements:</strong> Use remote consent, telemedicine, and mobile phlebotomy for stable patients to reduce travel burden.</div>
+                        <div class="card"><strong>Culturally Tailored Recruitment:</strong> Partner with minority physician networks, advocacy groups, and faith-based health outreach initiatives.</div>
+                    </div>
+                </div>
+                
+                 <div>
+                    <h3 class="text-3xl font-bold text-slate-800 border-b-4 border-indigo-500 pb-3 mb-8 inline-block">C. Strategic Site & Advocacy Relationships</h3>
+                     <div class="grid md:grid-cols-2 gap-8">
+                        <div class="card"><strong>Site Relationship Model:</strong> Build strong operational and advocacy ties with KOLs, site coordinators, and community liaisons beyond standard sponsor-CRO interactions.</div>
+                        <div class="card"><strong>Embedded Patient Advocates:</strong> Place trained patient navigators in high-enrollment sites to support trial retention and act as a bridge between patients and the study team.</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-3xl font-bold text-slate-800 border-b-4 border-violet-500 pb-3 mb-8 inline-block">D. Retention & Long-Term Follow-Up</h3>
+                     <div class="grid md:grid-cols-2 gap-8">
+                        <div class="card"><strong>Retention Scorecard:</strong> Monitor engagement risk factors per patient (e.g., missed appointments) and deploy interventions before disengagement occurs.</div>
+                        <div class="card"><strong>Engagement Rewards:</strong> Recognize patient milestones (e.g., anniversary of treatment) in ethical, regulatory-compliant ways to maintain connection and show appreciation.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Impact Section -->
+        <section id="impact" class="page-section section-hidden">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900">Impact Projection</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-lg text-slate-600">By implementing this integrated approach, BEAM can achieve tangible, measurable results that directly accelerate its path to regulatory and commercial success.</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card">
+                    <p class="text-4xl font-bold gradient-text">20-30%</p>
+                    <h3 class="mt-2 text-xl font-bold text-slate-900">Increase in Diversity</h3>
+                    <p class="mt-2 text-slate-600">Exceed baseline rare disease trial norms, satisfying regulatory mandates and ensuring results are generalizable.</p>
+                </div>
+                 <div class="card">
+                    <p class="text-4xl font-bold gradient-text">40%</p>
+                    <h3 class="mt-2 text-xl font-bold text-slate-900">Reduction in Onboarding Time</h3>
+                    <p class="mt-2 text-slate-600">Reduce practitioner onboarding time through targeted, modular training, accelerating trial timelines.</p>
+                </div>
+                 <div class="card">
+                    <p class="text-4xl font-bold gradient-text">>90%</p>
+                    <h3 class="mt-2 text-xl font-bold text-slate-900">Retention Rate</h3>
+                    <p class="mt-2 text-slate-600">Raise retention in multi-year follow-up, securing the data integrity needed for regulatory approval of "curative" claims.</p>
+                </div>
+                 <div class="card">
+                    <p class="text-4xl font-bold gradient-text">Expanded</p>
+                    <h3 class="mt-2 text-xl font-bold text-slate-900">Patient Pipeline</h3>
+                    <p class="mt-2 text-slate-600">Build a larger recruitment pool via trusted community advocacy partnerships, especially in underrepresented populations.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Value Proposition Section -->
+        <section id="value" class="page-section section-hidden">
+             <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900">My Value Proposition to BEAM</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-lg text-slate-600">My experience is a direct match for the challenges and opportunities at BEAM. I bring a ready-made toolkit to execute this strategic plan.</p>
+            </div>
+            <div class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-xl shadow-lg border border-slate-200">
+                <ul class="space-y-6">
+                    <li class="list-item-custom">
+                        <strong class="text-slate-800">Global Reach & Complexity Management:</strong> Experience in global oncology trials translates directly to managing BEAM’s rare disease and multi-modality pipelines.
+                    </li>
+                    <li class="list-item-custom">
+                        <strong class="text-slate-800">DEI Strategy Experience:</strong> Designed and executed diversity action plans with measurable recruitment improvements, ready to meet and exceed FDA expectations.
+                    </li>
+                    <li class="list-item-custom">
+                        <strong class="text-slate-800">DCT Implementation:</strong> Proven track record integrating remote monitoring, telehealth, and home health solutions into regulated trial environments.
+                    </li>
+                     <li class="list-item-custom">
+                        <strong class="text-slate-800">Patient Advocacy Mindset:</strong> Committed to ensuring patients not only access therapy but remain supported and engaged through every stage of the journey.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-400">
+        <div class="container mx-auto px-6 py-8 text-center text-sm">
+             <p class="font-bold text-white">From Science to Patient: A Strategic Approach to Scaling BEAM Therapeutics' Gene Editing Pipeline</p>
+             <p class="mt-2">A Case Study by Tengu Muna</p>
+            <div class="mt-6 border-t border-slate-700 pt-6 text-xs">
+                <p>&copy; <span id="year"></span> All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple SPA (Single Page Application) navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pageSections = document.querySelectorAll('.page-section');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function showPage(targetId) {
+            pageSections.forEach(section => {
+                section.style.display = section.id === targetId ? 'block' : 'none';
+            });
+            window.scrollTo(0, 0);
+
+            // Update active link styles
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.target === targetId) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = e.currentTarget.dataset.target;
+                showPage(targetId);
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Show home page by default
+        showPage('home');
+    </script>
+
+</body>
+</html>
