@@ -18,17 +18,18 @@
         .container-wrapper {
             flex-grow: 1;
         }
+        /* Updated Tab Styles */
         .tab-active {
-            border-color: #3b82f6;
-            color: #3b82f6;
-            background-color: #eff6ff;
+            background-color: #2563eb; /* blue-600 */
+            color: white;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
         }
         .section-card {
             background-color: white;
-            padding: 2rem 2.5rem; /* Increased padding */
-            border-radius: 0.75rem; /* 12px */
+            padding: 2rem 2.5rem;
+            border-radius: 0.75rem;
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            border: 1px solid #e5e7eb; /* slate-200 */
+            border: 1px solid #e5e7eb;
         }
     </style>
 </head>
@@ -44,21 +45,21 @@
             </header>
 
             <!-- Tab Navigation -->
-            <div class="mb-10 border-b border-slate-200">
-                <nav class="flex flex-wrap -mb-px" aria-label="Tabs">
-                    <button class="tab-btn tab-active w-full sm:w-auto text-center sm:text-left whitespace-nowrap py-4 px-4 border-b-2 font-medium text-base" data-tab="promise">
+            <div class="mb-12 flex justify-center">
+                <nav class="flex flex-wrap justify-center gap-2 p-2 bg-slate-100 rounded-full border border-slate-200 shadow-sm" aria-label="Tabs">
+                    <button class="tab-btn tab-active w-full sm:w-auto text-center whitespace-nowrap py-2.5 px-6 rounded-full font-medium text-base transition-all duration-300" data-tab="promise">
                         🚀 The Promise
                     </button>
-                    <button class="tab-btn w-full sm:w-auto text-center sm:text-left whitespace-nowrap py-4 px-4 border-b-2 font-medium text-base text-slate-500 hover:text-blue-600 hover:border-blue-300" data-tab="opportunity">
+                    <button class="tab-btn w-full sm:w-auto text-center whitespace-nowrap py-2.5 px-6 rounded-full font-medium text-base text-slate-600 hover:bg-white hover:text-blue-600 transition-all duration-300" data-tab="opportunity">
                         🎯 The Opportunity
                     </button>
-                    <button class="tab-btn w-full sm:w-auto text-center sm:text-left whitespace-nowrap py-4 px-4 border-b-2 font-medium text-base text-slate-500 hover:text-blue-600 hover:border-blue-300" data-tab="blueprint">
+                    <button class="tab-btn w-full sm:w-auto text-center whitespace-nowrap py-2.5 px-6 rounded-full font-medium text-base text-slate-600 hover:bg-white hover:text-blue-600 transition-all duration-300" data-tab="blueprint">
                         🗺️ The Blueprint
                     </button>
-                    <button class="tab-btn w-full sm:w-auto text-center sm:text-left whitespace-nowrap py-4 px-4 border-b-2 font-medium text-base text-slate-500 hover:text-blue-600 hover:border-blue-300" data-tab="pipeline">
+                    <button class="tab-btn w-full sm:w-auto text-center whitespace-nowrap py-2.5 px-6 rounded-full font-medium text-base text-slate-600 hover:bg-white hover:text-blue-600 transition-all duration-300" data-tab="pipeline">
                         💡 The Pipeline
                     </button>
-                     <button class="tab-btn w-full sm:w-auto text-center sm:text-left whitespace-nowrap py-4 px-4 border-b-2 font-medium text-base text-slate-500 hover:text-blue-600 hover:border-blue-300" data-tab="partnership">
+                     <button class="tab-btn w-full sm:w-auto text-center whitespace-nowrap py-2.5 px-6 rounded-full font-medium text-base text-slate-600 hover:bg-white hover:text-blue-600 transition-all duration-300" data-tab="partnership">
                         🌟 The Partnership
                     </button>
                 </nav>
@@ -208,12 +209,12 @@
                 // Deactivate all buttons
                 tabButtons.forEach(btn => {
                     btn.classList.remove('tab-active');
-                    btn.classList.add('text-slate-500', 'hover:text-blue-600', 'hover:border-blue-300');
+                    btn.classList.add('text-slate-600', 'hover:bg-white', 'hover:text-blue-600');
                 });
 
                 // Activate the clicked button
                 button.classList.add('tab-active');
-                button.classList.remove('text-slate-500', 'hover:text-blue-600', 'hover:border-blue-300');
+                button.classList.remove('text-slate-600', 'hover:bg-white', 'hover:text-blue-600');
 
                 // Hide all panes
                 tabPanes.forEach(pane => {
@@ -232,4 +233,3 @@
 
 </body>
 </html>
-
