@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Karius Therapeutics Strategic Plan | Tengu Muna</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #0891b2, #2563eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #0891b2;
+            transition: width 0.3s ease;
+        }
+        .nav-link.active, .nav-link:hover {
+            color: #0e7490;
+        }
+        .nav-link.active::after, .nav-link:hover::after {
+            width: 100%;
+        }
+        .page-content {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-slate-800">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto px-6">
+            <nav class="flex justify-between items-center py-4">
+                <div class="text-xl font-extrabold gradient-text">
+                    Case Study
+                </div>
+                <div class="hidden md:flex items-center space-x-10 text-sm font-medium text-slate-600">
+                    <button class="nav-link active" data-target="summary">Executive Summary</button>
+                    <button class="nav-link" data-target="challenges">Core Challenges</button>
+                    <button class="nav-link" data-target="strategy">Strategic Plan</button>
+                    <button class="nav-link" data-target="conclusion">Conclusion</button>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden text-slate-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200">
+            <div class="px-6 pb-4 pt-2 flex flex-col space-y-2">
+                <button class="nav-link-mobile text-left py-2 text-slate-600" data-target="summary">Executive Summary</button>
+                <button class="nav-link-mobile text-left py-2 text-slate-600" data-target="challenges">Core Challenges</button>
+                <button class="nav-link-mobile text-left py-2 text-slate-600" data-target="strategy">Strategic Plan</button>
+                <button class="nav-link-mobile text-left py-2 text-slate-600" data-target="conclusion">Conclusion</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Page Content Area -->
+        <div id="page-container">
+
+            <!-- Executive Summary Page -->
+            <div id="summary" class="page-content">
+                <section class="text-center py-12">
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-slate-800">Karius Therapeutics Strategic Monitoring & Site Management Plan Proposal</h1>
+                    <p class="mt-4 text-2xl md:text-3xl font-semibold gradient-text">By Tengu Muna</p>
+                </section>
+                <div class="bg-white p-8 md:p-12 rounded-2xl shadow-xl mb-10">
+                    <p class="text-slate-600 leading-relaxed text-lg text-center">
+                        This case study presents a strategic approach to overcoming the unique challenges of monitoring clinical trials for vulnerable populations, informed by 19 years of global research experience. The proposed strategies are built on the following three foundational pillars.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Pillar Card 1 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg transition-transform transform hover:-translate-y-1">
+                        <h4 class="text-2xl font-bold text-cyan-800 mb-3">Site Relationship Management</h4>
+                        <p class="text-slate-500">Ensuring seamless trial execution across global centers by developing targeted recruitment strategies and fostering strong site partnerships.</p>
+                    </div>
+                    <!-- Pillar Card 2 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg transition-transform transform hover:-translate-y-1">
+                        <h4 class="text-2xl font-bold text-cyan-800 mb-3">Patient-Centric Recruitment</h4>
+                        <p class="text-slate-500">Implementing community-driven programs and creating culturally tailored outreach to ensure diverse patient representation.</p>
+                    </div>
+                    <!-- Pillar Card 3 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg transition-transform transform hover:-translate-y-1">
+                        <h4 class="text-2xl font-bold text-cyan-800 mb-3">Data Integrity & Compliance</h4>
+                        <p class="text-slate-500">Maintaining high standards of data integrity through robust monitoring systems, real-time alerts, and ongoing site audits.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Core Challenges Page -->
+            <div id="challenges" class="page-content hidden">
+
+                <section class="text-center py-12">
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-slate-800">Core Challenges & Strategic Mitigations</h1>
+                </section>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Card 1 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg transition-transform transform hover:-translate-y-1">
+                        <h4 class="text-2xl font-bold text-cyan-800 mb-3">Patient Enrollment</h4>
+                        <p class="font-semibold text-slate-600 mb-4">Recruiting vulnerable, immunocompromised patients is difficult.</p>
+                        <p class="text-slate-500"><strong class="text-slate-700">Mitigation:</strong> Implement targeted outreach to specialists and employ family-first logistics, offering travel and care support to reduce patient burden.</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg transition-transform transform hover:-translate-y-1">
+                        <h4 class="text-2xl font-bold text-cyan-800 mb-3">Diverse Populations</h4>
+                        <p class="font-semibold text-slate-600 mb-4">Trials must be representative to ensure broad applicability.</p>
+                        <p class="text-slate-500"><strong class="text-slate-700">Mitigation:</strong> Launch community outreach programs and develop culturally tailored recruitment campaigns to ensure greater inclusivity.</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg transition-transform transform hover:-translate-y-1">
+                        <h4 class="text-2xl font-bold text-cyan-800 mb-3">Data Integrity</h4>
+                        <p class="font-semibold text-slate-600 mb-4">Ensuring accuracy of novel genomic data is critical.</p>
+                        <p class="text-slate-500"><strong class="text-slate-700">Mitigation:</strong> Use real-time monitoring and automated alerts to immediately notify teams of discrepancies, ensuring sample integrity.</p>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg transition-transform transform hover:-translate-y-1">
+                        <h4 class="text-2xl font-bold text-cyan-800 mb-3">Logistical Complexity</h4>
+                        <p class="font-semibold text-slate-600 mb-4">Managing trial consistency at major institutions is complex.</p>
+                        <p class="text-slate-500"><strong class="text-slate-700">Mitigation:</strong> Use a hybrid monitoring approach (on-site & remote) and conduct regular teleconferences with site leads.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Strategic Plan Page -->
+            <div id="strategy" class="page-content hidden">
+                <section class="text-center py-12">
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-slate-800">A Strategic Plan for Trial Success</h1>
+                </section>
+                <div class="space-y-10">
+                    <!-- Pillar 1 -->
+                    <div class="bg-white p-8 md:p-10 rounded-2xl shadow-xl">
+                        <h3 class="text-3xl font-bold text-cyan-700 mb-2">Pillar 1: Site Management</h3>
+                        <p class="text-slate-500 text-lg mb-6">Ensure smooth trial execution through proactive partnership.</p>
+                        <ul class="space-y-4 text-slate-600">
+                            <li class="flex items-start"><span class="mr-3 text-cyan-500">✓</span><div><strong class="text-slate-700">Strategic Site Onboarding:</strong> Conduct a "Day in the Life" simulation of the study workflow to resolve operational gaps before the first patient is enrolled.</div></li>
+                            <li class="flex items-start"><span class="mr-3 text-cyan-500">✓</span><div><strong class="text-slate-700">Dedicated Support:</strong> Assign dedicated site managers as a single point of contact, fostering strong relationships and addressing challenges swiftly.</div></li>
+                        </ul>
+                    </div>
+
+                    <!-- Pillar 2 -->
+                    <div class="bg-white p-8 md:p-10 rounded-2xl shadow-xl">
+                        <h3 class="text-3xl font-bold text-cyan-700 mb-2">Pillar 2: Patient Engagement</h3>
+                        <p class="text-slate-500 text-lg mb-6">Enhance enrollment and retention by addressing logistical, emotional, and financial barriers.</p>
+                        <ul class="space-y-4 text-slate-600">
+                            <li class="flex items-start"><span class="mr-3 text-cyan-500">✓</span><div><strong class="text-slate-700">Diverse Outreach Programs:</strong> Implement community-driven recruitment in underserved areas using mobile pre-screening units and local advocacy groups.</div></li>
+                            <li class="flex items-start"><span class="mr-3 text-cyan-500">✓</span><div><strong class="text-slate-700">Comprehensive Retention Strategies:</strong> Provide patients with a robust support system including emotional support, financial aid, and telemedicine services.</div></li>
+                        </ul>
+                    </div>
+
+                    <!-- Pillar 3 -->
+                    <div class="bg-white p-8 md:p-10 rounded-2xl shadow-xl">
+                        <h3 class="text-3xl font-bold text-cyan-700 mb-2">Pillar 3: Data & Compliance</h3>
+                        <p class="text-slate-500 text-lg mb-6">Maintain constant audit-readiness while ensuring the highest standards of data integrity.</p>
+                        <ul class="space-y-4 text-slate-600">
+                            <li class="flex items-start"><span class="mr-3 text-cyan-500">✓</span><div><strong class="text-slate-700">Real-Time Compliance Monitoring:</strong> Utilize automated alerts to flag discrepancies, protocol deviations, or missing documentation, allowing for immediate correction.</div></li>
+                            <li class="flex items-start"><span class="mr-3 text-cyan-500">✓</span><div><strong class="text-slate-700">Regular Training & Audits:</strong> Develop a continuous training program and conduct periodic internal "mock" audits to ensure the entire team is confident and prepared for regulatory scrutiny.</div></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conclusion Page -->
+            <div id="conclusion" class="page-content hidden">
+                <section class="text-center py-12">
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-slate-800">Conclusion</h1>
+                </section>
+                <div class="bg-gradient-to-r from-cyan-600 to-blue-700 p-10 md:p-12 rounded-2xl shadow-2xl text-white">
+                    <p class="leading-relaxed text-xl">
+                        The success of Karius Therapeutics' innovative trials hinges on an operational strategy that is as sophisticated as its science. The three-pillar approach outlined here provides a comprehensive framework for navigating the complexities of modern clinical research. Ultimately, this is a site management philosophy that relies on fostering true partnerships with clinical sites. By implementing this robust, site-centric strategy, Karius can ensure the highest standards of data integrity, meet enrollment goals, and accelerate the delivery of its revolutionary diagnostic technology to the vulnerable patients who need it most.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-400 mt-16">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 Tengu Muna. All Rights Reserved.</p>
+            <p class="text-sm mt-2">Strategic Clinical Operations Consultant</p>
+        </div>
+    </footer>
+
+    <script>
+        const pageContainer = document.getElementById('page-container');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const mobileNavLinks = document.querySelectorAll('.nav-link-mobile');
+        const pages = document.querySelectorAll('.page-content');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function showPage(targetId) {
+            // Hide all pages
+            pages.forEach(page => {
+                page.classList.add('hidden');
+            });
+
+            // Show the target page
+            const targetPage = document.getElementById(targetId);
+            if (targetPage) {
+                targetPage.classList.remove('hidden');
+            }
+
+            // Update active state for desktop nav
+            navLinks.forEach(link => {
+                if (link.getAttribute('data-target') === targetId) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+
+            // Close mobile menu after selection
+            mobileMenu.classList.add('hidden');
+        }
+
+        // Desktop navigation
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                const targetId = link.getAttribute('data-target');
+                showPage(targetId);
+            });
+        });
+
+        // Mobile navigation
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                const targetId = link.getAttribute('data-target');
+                showPage(targetId);
+            });
+        });
+
+        // Mobile menu toggle
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Initially show the summary page
+        showPage('summary');
+    </script>
+
+</body>
+</html>
