@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Global Patient Advocacy Atlas — Entrada/DMD</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* Custom styles */
+    .chip { font-size:.75rem; padding:.2rem .5rem; border-radius:9999px; border:1px solid rgba(0,0,0,.06) }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:0.75rem; box-shadow:0 4px 10px rgba(0,0,0,.04) }
+    .shade { background:linear-gradient(180deg, rgba(99,102,241,.08), transparent) }
+    /* Print-friendly tweaks */
+    @media print { .no-print { display:none } .tab-pane{ display:block !important } }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans">
+  <!-- HERO -->
+  <header class="shade">
+    <div class="mx-auto max-w-7xl px-4 py-8 md:py-12">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div class="max-w-3xl">
+          <h1 class="text-3xl md:text-5xl font-extrabold text-indigo-700 leading-tight">
+            Global Patient Advocacy Atlas
+          </h1>
+          <p class="mt-3 text-lg md:text-xl text-slate-600">
+            A self-explaining, color-coded map of how patient advocacy and trial engagement work across regions—regulators, ethics paths, community orgs, nuanced strategies, and interview-ready soundbites.
+          </p>
+        </div>
+        <!-- Decorative mini world banner (inline SVG) -->
+        <svg width="260" height="120" viewBox="0 0 520 240" class="mx-auto">
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#6366f1"/><stop offset="100%" stop-color="#22c55e"/>
+            </linearGradient>
+          </defs>
+          <circle cx="120" cy="120" r="100" fill="url(#g)" opacity=".2"/>
+          <circle cx="260" cy="120" r="100" fill="url(#g)" opacity=".25"/>
+          <circle cx="400" cy="120" r="100" fill="url(#g)" opacity=".2"/>
+          <text x="260" y="130" text-anchor="middle" fill="#4f46e5" font-size="22" font-weight="700">Regions at a Glance</text>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- UNDERSTANDING THIS ATLAS -->
+  <section class="mx-auto max-w-7xl px-4 pb-4 md:pb-8">
+    <div class="card p-6 md:p-8">
+      <h2 class="text-2xl font-bold text-indigo-700 mb-3">Understanding This Atlas</h2>
+      <p class="text-slate-700 leading-relaxed">
+        This atlas is designed to provide a clear, at-a-glance overview of the patient advocacy landscape in key regions around the world. Navigating global clinical trial engagement requires understanding the unique blend of regulatory hurdles, cultural nuances, and logistical challenges specific to each country.
+      </p>
+      <p class="text-slate-700 leading-relaxed mt-3">This tool helps you:</p>
+      <ul class="list-disc pl-6 mt-3 text-slate-700 space-y-1">
+        <li><strong>Compare Regions:</strong> Use the tabs at the top to switch between major regions like the Americas, Europe, and APAC.</li>
+        <li><strong>Visualize Barriers:</strong> The chart for each region shows the average mix of challenges—from logistics and travel to cultural trust and language barriers.</li>
+        <li><strong>Drill Down into Countries:</strong> Each country card details the specific regulatory bodies, ethics processes, and key patient organizations you need to know.</li>
+        <li><strong>Get Actionable Insights:</strong> The "Insight" on each card offers a concise, practical soundbite for how to approach advocacy in that specific market.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TABS -->
+  <nav class="no-print sticky top-0 z-40 bg-white/90 backdrop-blur border-y border-slate-200">
+    <div class="mx-auto max-w-7xl px-4">
+      <div class="flex flex-wrap gap-2 py-3" id="tabs">
+        <!-- Buttons injected by JS -->
+      </div>
+    </div>
+  </nav>
+
+  <!-- PANES -->
+  <main class="mx-auto max-w-7xl px-4 py-8" id="panes">
+    <!-- Panes injected by JS -->
+  </main>
+
+  <footer class="mx-auto max-w-7xl px-4 pb-16">
+    <div class="text-xs text-slate-500">
+      Color legend: <span class="chip" style="background:#eef2ff">Americas</span>
+      <span class="chip" style="background:#ecfeff">Europe</span>
+      <span class="chip" style="background:#fff7ed">UK/CH/Turkey</span>
+      <span class="chip" style="background:#f0fdf4">Africa</span>
+      <span class="chip" style="background:#f5f3ff">APAC</span>
+    </div>
+  </footer>
+
+  <script>
+    // ----------- Palette & Regions -------------
+    const REGIONS = [
+      { id: 'americas', label: 'Americas', color: '#6366f1', bg: '#eef2ff' },
+      { id: 'europe', label: 'Europe (EU West & East)', color: '#06b6d4', bg: '#ecfeff' },
+      { id: 'ukchtur', label: 'UK / Switzerland / Turkey', color: '#f59e0b', bg: '#fff7ed' },
+      { id: 'africa', label: 'Africa', color: '#22c55e', bg: '#f0fdf4' },
+      { id: 'apac', label: 'APAC', color: '#8b5cf6', bg: '#f5f3ff' },
+    ];
+
+    // ----------- Dataset -------------
+    // Each country: {region, name, regulator, ethics, orgs[], nuances, interview, barrierMix{logistics,regulatory,culture,language}}
+    const DATA = [
+      // AMERICAS
+      { region:'americas', name:'United States',
+         regulator:'FDA (CDER/CBER)',
+        ethics:'IRBs (central & local); community sites may insist on local IRB reviews.',
+        orgs:['Parent Project Muscular Dystrophy (PPMD)','CureDuchenne','Muscular Dystrophy Association (MDA)','Black Health Matters','National Medical Association (NMA)'],
+        nuances:'Strongest advocacy infra globally; diversity plans expected. Pair national DMD orgs with minority health associations; logistics stipends + childcare win trust.',
+        interview:'“I pair PPMD with NMA/Black Health Matters and AAPI groups, plus travel concierge—awareness + logistics moves the needle in the U.S.”',
+        barrierMix:{logistics:30, regulatory:20, culture:25, language:25}
+      },
+      { region:'americas', name:'Canada',
+        regulator:'Health Canada (HPFB)',
+         ethics:'Institutional REBs; multi-site studies often need multiple provincial REB approvals.',
+        orgs:['Muscular Dystrophy Canada','Canadian Organization for Rare Disorders (CORD)'],
+        nuances:'National system but geographic dispersion; prioritize virtual participation, bilingual (EN/FR) materials, Indigenous community engagement.',
+        interview:'“In Canada I plan bilingual outreach and REB coordination, plus equity paths for Indigenous and rural families.”',
+        barrierMix:{logistics:35, regulatory:20, culture:25, language:20}
+      },
+      { region:'americas', name:'Brazil',
+        regulator:'ANVISA',
+        ethics:'CONEP/CEPs (national + local committees); timelines can be lengthy.',
+        orgs:['Casa Hunter','Instituto Vidas Raras'],
+        nuances:'Transport is the #1 barrier; WhatsApp is the dominant education channel; parental leadership drives trust.',
+        interview:'“Brazil runs on WhatsApp + family leaders—pair travel stipends with clinic-anchored info days.”',
+        barrierMix:{logistics:45, regulatory:25, culture:20, language:10}
+      },
+      { region:'americas', name:'Mexico',
+        regulator:'COFEPRIS',
+        ethics:'Local Research Ethics Committees; national bioethics oversight.',
+        orgs:['FEMEXER (Federación Mexicana de Enfermedades Raras)'],
+        nuances:'Grassroots/faith networks outperform mass media; Spanish-first microsites and WhatsApp hotlines matter.',
+        interview:'“In Mexico I lean on FEMEXER and parish/community leaders + WhatsApp helplines.”',
+        barrierMix:{logistics:40, regulatory:20, culture:30, language:10}
+      },
+      { region:'americas', name:'Argentina',
+        regulator:'ANMAT',
+        ethics:'Institutional ECs; dual approvals required (regulatory + ethics).',
+        orgs:['FADEPOF (Federación Argentina de Enfermedades Poco Frecuentes)'],
+        nuances:'Urban-centric sites (Buenos Aires); build travel + lodging support; emphasize transparency.',
+        interview:'“Argentina needs upfront lodging support and family-first briefings in Spanish.”',
+        barrierMix:{logistics:40, regulatory:25, culture:25, language:10}
+      },
+      { region:'americas', name:'Chile',
+        regulator:'ISP (Instituto de Salud Pública)',
+        ethics:'CEC (Comités Ético-Científicos)',
+        orgs:['Umbrella rare disease coalitions; partner via hospital channels'],
+        nuances:'Smaller footprint; hospital-led outreach works best; WhatsApp + clinic days.',
+        interview:'“In Chile I go hospital-first with WhatsApp follow-ups to sustain momentum.”',
+        barrierMix:{logistics:35, regulatory:25, culture:30, language:10}
+      },
+
+      // EUROPE (EU WEST/EAST under EUCTR umbrella)
+      { region:'europe', name:'Germany (EU West)',
+        regulator:'BfArM / Paul-Ehrlich-Institut (PEI) under EUCTR',
+        ethics:'State Ethics Committees (Ethik-Kommissionen)',
+        orgs:['DGM (Deutsche Gesellschaft für Muskelkranke e.V.)'],
+        nuances:'Expect scientific rigor; provide German-language materials; align with DGM early.',
+        interview:'“In Germany I lead with data clarity + DGM co-authored family explainers.”',
+        barrierMix:{logistics:20, regulatory:35, culture:30, language:15}
+      },
+      { region:'europe', name:'France (EU West)',
+        regulator:'ANSM under EUCTR',
+        ethics:'CPP (Comités de Protection des Personnes)',
+        orgs:['AFM-Téléthon'],
+        nuances:'AFM-Téléthon is a force multiplier; co-create content; emphasize public-good narrative.',
+        interview:'“France responds to AFM-Téléthon partnership + transparent science storytelling.”',
+        barrierMix:{logistics:20, regulatory:30, culture:35, language:15}
+      },
+      { region:'europe', name:'Netherlands (EU West)',
+        regulator:'CCMO under EUCTR',
+        ethics:'METCs (local ethics committees)',
+        orgs:['Duchenne Parent Project (NL)'],
+        nuances:'Parent-scholar culture; iterate materials with DPP; clear open-label pathways help.',
+        interview:'“I co-design journey maps with DPP for Dutch families—clarity builds trust.”',
+        barrierMix:{logistics:20, regulatory:30, culture:30, language:20}
+      },
+      { region:'europe', name:'Spain (EU West)',
+        regulator:'AEMPS under EUCTR',
+        ethics:'CEIm (Comités de Ética de la Investigación con medicamentos)',
+        orgs:['Federación ASEM (neuromuscular federation)'],
+        nuances:'Spanish-first; family and clinician champions; regional differences matter.',
+        interview:'“Spain needs CEIm-ready Spanish kits + clinician advocates in each region.”',
+        barrierMix:{logistics:25, regulatory:30, culture:30, language:15}
+      },
+      { region:'europe', name:'Italy (EU West)',
+        regulator:'AIFA under EUCTR',
+        ethics:'Comitati Etici (regional ethics committees)',
+        orgs:['Parent Project aps (Italy)'],
+        nuances:'Parent Project aps is pivotal; emphasize continuity (OLE) and caregiver relief.',
+        interview:'“In Italy I partner with Parent Project aps and talk tangible relief for caregivers.”',
+        barrierMix:{logistics:25, regulatory:30, culture:30, language:15}
+      },
+      { region:'europe', name:'Poland (EU East)',
+        regulator:'URPL under EUCTR',
+        ethics:'Bioethics Committees (local)',
+        orgs:['EURORDIS-linked national neuromuscular orgs'],
+        nuances:'Rapidly expanding hub; Polish-language explainers and regional outreach needed.',
+        interview:'“Poland responds to local-language webinars and regional clinic days.”',
+        barrierMix:{logistics:30, regulatory:30, culture:25, language:15}
+      },
+      { region:'europe', name:'Czech Republic (EU East)',
+        regulator:'SÚKL under EUCTR',
+        ethics:'Institutional Ethics Committees',
+        orgs:['Parent Project, z.s. (Czech)'],
+        nuances:'Parent-driven; emphasize realistic travel plans and milestone visibility.',
+        interview:'“Czech families value parent peer voices + transparent timelines.”',
+        barrierMix:{logistics:30, regulatory:25, culture:30, language:15}
+      },
+      { region:'europe', name:'Hungary (EU East)',
+        regulator:'National Institute of Pharmacy & Nutrition (OGYÉI) under EUCTR',
+        ethics:'Institutional ECs',
+        orgs:['RIROSZ (Hungarian Rare Diseases Alliance)'],
+        nuances:'Smaller orgs; physician champions carry weight; Hungarian-first materials.',
+        interview:'“Hungary requires physician-led sessions and Hungarian-first packets.”',
+        barrierMix:{logistics:30, regulatory:30, culture:25, language:15}
+      },
+
+      // UK / CH / TURKEY
+      { region:'ukchtur', name:'United Kingdom',
+        regulator:'MHRA',
+        ethics:'HRA/REC (centralized ethics)',
+        orgs:['Muscular Dystrophy UK','Genetic Alliance UK'],
+        nuances:'NHS integration enables national roll-outs; tailor for South Asian & Afro-Caribbean communities.',
+        interview:'“In the UK I go via MD-UK + NHS Trusts, with culturally tailored comms for London/Birmingham hubs.”',
+        barrierMix:{logistics:25, regulatory:30, culture:30, language:15}
+      },
+      { region:'ukchtur', name:'Switzerland',
+        regulator:'Swissmedic',
+        ethics:'Cantonal Ethics Committees',
+        orgs:['ProRaris (Swiss Rare Disease Alliance)'],
+        nuances:'High-quality sites; multilingual country (DE/FR/IT); align with ProRaris for credibility.',
+        interview:'“Switzerland needs multilingual packs and ProRaris co-signs.”',
+        barrierMix:{logistics:20, regulatory:35, culture:30, language:15}
+      },
+      { region:'ukchtur', name:'Turkey',
+        regulator:'TITCK',
+        ethics:'Local hospital/university ECs',
+        orgs:['DMD Türkiye (Duchenne association)','Local rare disease NGOs'],
+        nuances:'Physician-anchored advocacy; fund travel to Ankara/Istanbul; family guidance sessions.',
+        interview:'“Turkey is hospital-anchored—neurologist partnerships + travel support keep families enrolled.”',
+        barrierMix:{logistics:40, regulatory:30, culture:20, language:10}
+      },
+
+      // AFRICA
+      { region:'africa', name:'South Africa',
+        regulator:'SAHPRA',
+        ethics:'Institutional HRECs (e.g., Wits HREC, UCT HREC)',
+        orgs:['Rare Diseases South Africa'],
+        nuances:'Growing footprint; equity lens vital; partner with urban centers and community health workers.',
+        interview:'“In South Africa, Rare Diseases SA + city clinics + transport vouchers are the trifecta.”',
+        barrierMix:{logistics:45, regulatory:25, culture:20, language:10}
+      },
+
+      // APAC
+      { region:'apac', name:'China',
+        regulator:'NMPA',
+        ethics:'Hospital IRBs; local governance strong',
+        orgs:['Chinese Organization for Rare Disorders (CORD)'],
+        nuances:'Family-centered decisions; WeChat groups + physician champions dominate.',
+        interview:'“China runs on WeChat + physician trust—embed both.”',
+        barrierMix:{logistics:30, regulatory:35, culture:25, language:10}
+      },
+      { region:'apac', name:'Japan',
+        regulator:'PMDA',
+        ethics:'Institutional IRBs; conservative cadence',
+        orgs:['Japan Muscular Dystrophy Association'],
+        nuances:'Trust over time; meticulous transparency; long-term retention once trust is earned.',
+        interview:'“Japan rewards patience and precision—trust first, then speed.”',
+        barrierMix:{logistics:20, regulatory:35, culture:35, language:10}
+      },
+      { region:'apac', name:'South Korea',
+        regulator:'MFDS',
+        ethics:'Institutional IRBs',
+        orgs:['Korean Muscular Dystrophy Association'],
+        nuances:'Physician-led decisions; urban, efficient systems; concise materials win.',
+        interview:'“Korea = physician-first engagement with crisp, clinical materials.”',
+        barrierMix:{logistics:20, regulatory:30, culture:35, language:15}
+      },
+      { region:'apac', name:'Taiwan',
+        regulator:'TFDA',
+        ethics:'Institutional IRBs',
+        orgs:['Taiwan Foundation for Rare Disorders (TFRD)'],
+        nuances:'Physician-centered; small but responsive community networks.',
+        interview:'“In Taiwan I go through treating neurologists + TFRD to reach families fast.”',
+        barrierMix:{logistics:20, regulatory:30, culture:30, language:20}
+      },
+      { region:'apac', name:'Singapore',
+        regulator:'HSA',
+        ethics:'Domain Specific Review Boards (DSRBs) via hospital clusters',
+        orgs:['Rare Disorders Society (Singapore)'],
+        nuances:'Hub model; hospital-anchored advocacy; small population → high touch.',
+        interview:'“Singapore favors precision advocacy via hospital clusters + RDSS.”',
+        barrierMix:{logistics:15, regulatory:35, culture:35, language:15}
+      },
+      { region:'apac', name:'Australia',
+        regulator:'TGA',
+        ethics:'HRECs (centralized ethics), site governance',
+        orgs:['Muscular Dystrophy Foundation Australia'],
+        nuances:'Trial-friendly; strong rare-disease coalitions; emphasize remote-friendly follow-ups.',
+        interview:'“Australia is ethics-streamlined—lean into MDF + telehealth flex.”',
+        barrierMix:{logistics:25, regulatory:25, culture:35, language:15}
+      },
+      { region:'apac', name:'New Zealand',
+        regulator:'Medsafe',
+        ethics:'HDECs (Health & Disability Ethics Committees)',
+        orgs:['Muscular Dystrophy Association of New Zealand (MDANZ)'],
+        nuances:'Culturally respectful engagement with Māori; small but committed networks.',
+        interview:'“In NZ: partner with MDANZ and respect Kaupapa Māori approaches.”',
+        barrierMix:{logistics:30, regulatory:25, culture:35, language:10}
+      },
+      { region:'apac', name:'India',
+        regulator:'CDSCO',
+        ethics:'Institutional Ethics Committees (IECs)',
+        orgs:['Organization for Rare Diseases India (ORDI)'],
+        nuances:'Multilingual, regional diversity; WhatsApp + local languages; transport is real.',
+        interview:'“India needs multilingual, state-level advocacy + stipends for long travel.”',
+        barrierMix:{logistics:45, regulatory:25, culture:20, language:10}
+      },
+      { region:'apac', name:'Malaysia',
+        regulator:'NPRA',
+        ethics:'MREC (MOH) + institutional RECs',
+        orgs:['Malaysian Rare Disorders Society'],
+        nuances:'Emerging hub; mix of Malay/Chinese/Indian languages; hospital-led outreach works.',
+        interview:'“Malaysia: hospital-first with trilingual explainers and family meetups.”',
+        barrierMix:{logistics:30, regulatory:25, culture:30, language:15}
+      },
+      { region:'apac', name:'Philippines',
+        regulator:'FDA Philippines',
+        ethics:'Institutional IRBs; SJREB for DOH hospitals',
+        orgs:['Philippine Society for Orphan Disorders (PSOD)'],
+        nuances:'Faith/community leaders as gatekeepers; text/WhatsApp primary channels.',
+        interview:'“In the Philippines, partner with PSOD + faith leaders and use text/WhatsApp bridges.”',
+        barrierMix:{logistics:40, regulatory:25, culture:25, language:10}
+      },
+    ];
+
+    // Aggregate barrier mix by region
+    function aggregateMix(regionId) {
+      const items = DATA.filter(d => d.region === regionId);
+      const base = { logistics:0, regulatory:0, culture:0, language:0 };
+      if (!items.length) return base;
+      items.forEach(d => {
+        base.logistics += d.barrierMix.logistics;
+        base.regulatory += d.barrierMix.regulatory;
+        base.culture   += d.barrierMix.culture;
+        base.language  += d.barrierMix.language;
+      });
+      // Average
+      Object.keys(base).forEach(k => base[k] = Math.round(base[k]/items.length));
+      return base;
+    }
+
+    // Render Tabs
+    const tabsEl = document.getElementById('tabs');
+    REGIONS.forEach((r, i) => {
+      const b = document.createElement('button');
+      b.textContent = r.label;
+      b.className = "px-4 py-2 rounded-full border border-slate-200 text-sm font-semibold transition-colors duration-200";
+      b.dataset.tab = r.id;
+
+      // Set the first tab as active by default
+      if (i === 0) {
+        b.style.backgroundColor = r.color;
+        b.style.color = '#ffffff';
+      }
+
+      tabsEl.appendChild(b);
+    });
+
+    // Render Panes
+    const panesEl = document.getElementById('panes');
+    REGIONS.forEach((r,i)=>{
+      const pane = document.createElement('section');
+      pane.id = r.id;
+      pane.className = "tab-pane "+(i===0?'':'hidden');
+      // Header + chart
+      const mix = aggregateMix(r.id);
+      pane.innerHTML = `
+        <div class="mb-8">
+          <div class="flex items-center justify-between flex-wrap gap-4">
+            <h2 class="text-2xl md:text-3xl font-bold" style="color:${r.color}">${r.label}</h2>
+            <span class="chip" style="background:${r.bg}; color:#0f172a">Avg. barrier mix • click bars for tooltips</span>
+          </div>
+          <div class="mt-4 bg-white border border-slate-200 rounded-xl p-4">
+            <canvas id="chart-${r.id}" height="80"></canvas>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6" id="grid-${r.id}"></div>
+      `;
+      panesEl.appendChild(pane);
+
+      // Chart
+      const ctx = pane.querySelector(`#chart-${r.id}`).getContext('2d');
+      new Chart(ctx, {
+        type:'bar',
+        data:{
+          labels:['Logistics','Regulatory','Culture/Trust','Language'],
+          datasets:[{
+            label:'Barrier %',
+            data:[mix.logistics, mix.regulatory, mix.culture, mix.language],
+            backgroundColor:[r.color+'33', r.color+'33', r.color+'33', r.color+'33'],
+            borderColor:[r.color, r.color, r.color, r.color],
+            borderWidth:1.5
+          }]
+        },
+        options:{
+          plugins:{ legend:{ display:false }, tooltip:{ enabled:true } },
+          scales:{ y:{ beginAtZero:true, max:100, ticks:{ stepSize:20 } } }
+        }
+      });
+
+      // Cards
+      const grid = pane.querySelector(`#grid-${r.id}`);
+      DATA.filter(d=>d.region===r.id).forEach(d=>{
+        const card = document.createElement('article');
+        card.className = "card p-5";
+        card.innerHTML = `
+          <div class="flex items-start justify-between gap-4">
+            <h3 class="text-xl font-bold text-slate-800">${d.name}</h3>
+            <span class="chip" style="background:${r.bg}">${d.regulator}</span>
+          </div>
+          <div class="mt-3 text-sm text-slate-600">
+            <div class="mb-2"><strong class="text-slate-800">Ethics Path:</strong> ${d.ethics}</div>
+            <div class="mb-2"><strong class="text-slate-800">Key Orgs:</strong> ${d.orgs.join(', ')}</div>
+            <div class="mb-2"><strong class="text-slate-800">Nuances:</strong> ${d.nuances}</div>
+            <div class="mt-3 p-3 rounded-lg" style="background:${r.bg}">
+              <span class="block text-xs uppercase tracking-wide text-slate-500 mb-1">Insight</span>
+              <p class="text-slate-800">${d.interview}</p>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    });
+
+    // Tab logic
+    tabsEl.addEventListener('click', (e)=>{
+      if(e.target.tagName !== 'BUTTON') return;
+      const targetId = e.target.dataset.tab;
+      const activeRegion = REGIONS.find(r => r.id === targetId);
+
+      if (!activeRegion) return;
+
+      // Reset styles for all buttons
+      document.querySelectorAll('#tabs button').forEach(b => {
+        b.style.backgroundColor = '';
+        b.style.color = '';
+      });
+
+      // Apply active styles to the clicked button
+      e.target.style.backgroundColor = activeRegion.color;
+      e.target.style.color = '#ffffff';
+
+      // Show the correct pane
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.add('hidden'));
+      document.getElementById(targetId).classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>
