@@ -1,10 +1,8 @@
----
-
 **License:** This repository is licensed under the **Apache License 2.0**. See `LICENSE` for full text.
 
 **Commercial / enterprise use & sponsored work:** If you are interested in commercial licensing, enterprise support, or collaboration, please contact me via the email on my GitHub profile or open an issue and I will respond. Unauthorized mass reuse or redistribution is not welcomed.
 
----
+
 
 
 # Welcome to the Future of Clinical Trials
