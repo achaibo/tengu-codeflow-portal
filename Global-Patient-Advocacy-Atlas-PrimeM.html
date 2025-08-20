@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Global Patient Advocacy Atlas — Prime Medicine</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .chip { font-size:.75rem; padding:.2rem .5rem; border-radius:9999px; border:1px solid rgba(0,0,0,.06) }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:0.75rem; box-shadow:0 4px 10px rgba(0,0,0,.04) }
+    .shade { background:linear-gradient(180deg, rgba(99,102,241,.08), transparent) }
+    .chip-toggle { cursor:pointer; user-select:none }
+    .chip-active { outline:2px solid #4f46e5; box-shadow:0 0 0 2px #c7d2fe inset }
+    @media print { .no-print { display:none } .tab-pane{ display:block !important } }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans">
+  <!-- HERO -->
+  <header class="shade">
+    <div class="mx-auto max-w-7xl px-4 py-8 md:py-12">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div class="max-w-3xl">
+          <h1 class="text-3xl md:text-5xl font-extrabold text-indigo-700 leading-tight">
+            Global Patient Advocacy Atlas — Prime Medicine
+          </h1>
+          <p class="mt-3 text-lg md:text-xl text-slate-700">
+            A color‑coded, interview‑ready map aligning Prime Medicine’s patient‑first strategy with
+            region‑specific advocacy pathways for <span class="font-semibold">Chronic Granulomatous Disease (CGD)</span>,
+            <span class="font-semibold">Wilson’s Disease</span>, and <span class="font-semibold">Cystic Fibrosis (CF)</span> — including regulators, ethics routes, key
+            advocacy partners, cultural nuances, and fast actions for Clinical Ops & BD.
+          </p>
+          <p class="mt-2 text-sm text-slate-500">Programs reflect the accompanying case study and can be extended to additional indications as the pipeline evolves.</p>
+        </div>
+        <!-- Decorative mini world banner (inline SVG) -->
+        <svg width="260" height="120" viewBox="0 0 520 240" class="mx-auto" role="img" aria-label="Regions at a glance">
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#6366f1"/><stop offset="100%" stop-color="#22c55e"/>
+            </linearGradient>
+          </defs>
+          <circle cx="120" cy="120" r="100" fill="url(#g)" opacity=".2"/>
+          <circle cx="260" cy="120" r="100" fill="url(#g)" opacity=".25"/>
+          <circle cx="400" cy="120" r="100" fill="url(#g)" opacity=".2"/>
+          <text x="260" y="130" text-anchor="middle" fill="#4f46e5" font-size="22" font-weight="700">Regions at a Glance</text>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- HOW TO USE -->
+  <section class="mx-auto max-w-7xl px-4 pb-4 md:pb-8">
+    <div class="card p-6 md:p-8">
+      <h2 class="text-2xl font-bold text-indigo-700 mb-3">Using This Atlas</h2>
+      <ol class="list-decimal pl-6 mt-3 text-slate-700 space-y-1">
+        <li><span class="font-semibold">Switch regions</span> with the tabs. Cards summarize regulators, ethics routes, core advocacy orgs, and one tactical insight.</li>
+        <li><span class="font-semibold">Filter by program</span> (CGD, Wilson’s, CF) to tailor outreach and partner engagement.</li>
+        <li><span class="font-semibold">Read the chart</span> as the average barrier mix for visible cards. Filters update the chart in real time.</li>
+      </ol>
+      <p class="mt-3 text-xs text-slate-500">Source: Prime Medicine patient‑first strategy and program‑specific advocacy plan; verify local requirements before external use.</p>
+    </div>
+  </section>
+
+  <!-- PROGRAM FILTERS -->
+  <section class="no-print sticky top-0 z-40 bg-white/90 backdrop-blur border-y border-slate-200">
+    <div class="mx-auto max-w-7xl px-4 py-3">
+      <div class="flex flex-wrap gap-2 items-center" id="programBar" aria-label="Program filters">
+        <span class="text-xs uppercase tracking-wider text-slate-500">Filter:</span>
+        <!-- chips injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- TABS -->
+  <nav class="no-print bg-white border-b border-slate-200">
+    <div class="mx-auto max-w-7xl px-4">
+      <div class="flex flex-wrap gap-2 py-3" id="tabs" role="tablist" aria-label="Regions">
+        <!-- Buttons injected by JS -->
+      </div>
+    </div>
+  </nav>
+
+  <!-- PANES -->
+  <main class="mx-auto max-w-7xl px-4 py-8" id="panes">
+    <!-- Panes injected by JS -->
+  </main>
+
+  <footer class="mx-auto max-w-7xl px-4 pb-16">
+    <div class="text-xs text-slate-500">
+      Legend: <span class="chip" style="background:#eef2ff">Americas</span>
+      <span class="chip" style="background:#ecfeff">Europe</span>
+      <span class="chip" style="background:#fff7ed">MENA</span>
+      <span class="chip" style="background:#f0fdf4">Africa</span>
+      <span class="chip" style="background:#f5f3ff">APAC</span>
+    </div>
+  </footer>
+
+  <script>
+    // ------------- Regions & Palette ---------------
+    const REGIONS = [
+      { id: 'americas', label: 'Americas', color: '#6366f1', bg: '#eef2ff' },
+      { id: 'europe', label: 'Europe (EU West & East)', color: '#06b6d4', bg: '#ecfeff' },
+      { id: 'mena', label: 'Middle East & North Africa (MENA)', color: '#f59e0b', bg: '#fff7ed' },
+      { id: 'africa', label: 'Africa', color: '#16a34a', bg: '#f0fdf4' },
+      { id: 'apac', label: 'APAC', color: '#8b5cf6', bg: '#f5f3ff' },
+    ];
+
+    // ------------- Programs ---------------
+    const PROGRAMS = [
+      'CGD',
+      'Wilson\'s Disease',
+      'Cystic Fibrosis'
+    ];
+
+    const activeFilters = new Set();
+
+    // ------------- Dataset ---------------
+    // Each country: {region, name, regulator, ethics, orgs[], nuances, interview, actions[], barrierMix{logistics,regulatory,culture,language}, programs[]}
+    const DATA = [
+      // AMERICAS
+      { region:'americas', name:'United States',
+        regulator:'FDA (CBER: cell & gene; CDER: small molecules)',
+        ethics:'Central & local IRBs; pediatric review for CGD/CF as needed.',
+        orgs:['Immune Deficiency Foundation (CGD)','Jeffrey Modell Foundation (CGD)','American Liver Foundation (Wilson\'s)','Wilson Disease Association','Cystic Fibrosis Foundation (CFF)'],
+        nuances:'High variability by payer; emphasize bilingual materials (EN/ES); at‑home visits and remote monitoring enable school/work continuity.',
+        actions:['CGD: pre‑screen via PID centers & JMF network; parent support circles','Wilson\'s: hepatology referral fast‑track + navigator microsite','CF: hybrid DCT model with respiratory therapy kits + adherence texting'],
+        interview:'“In the U.S. I anchor PID/hepatology/CF centers, then remove logistics (travel, childcare) and provide bilingual consent.”',
+        barrierMix:{logistics:30, regulatory:20, culture:30, language:20},
+        programs:['CGD','Wilson\'s Disease','Cystic Fibrosis']
+      },
+      { region:'americas', name:'Canada',
+        regulator:'Health Canada (HPFB/BRDD)',
+        ethics:'Institutional REBs; provincial coordination for multicenter studies.',
+        orgs:['Canadian PID network (CGD)','Canadian Liver Foundation','Cystic Fibrosis Canada'],
+        nuances:'Bilingual EN/FR; vast geography → travel support & telehealth vital.',
+        actions:['Set provincial REB roadmap; CF home‑spirometry; Wilson\'s clinic referral templates'],
+        interview:'“Canada = bilingual toolkits + provincial REB roadmap + home‑based assessments.”',
+        barrierMix:{logistics:35, regulatory:20, culture:25, language:20},
+        programs:['CGD','Wilson\'s Disease','Cystic Fibrosis']
+      },
+
+      { region:'americas', name:'Brazil',
+        regulator:'ANVISA',
+        ethics:'CONEP/CEPs (national + local ECs)',
+        orgs:['Brazilian PID Group (CGD)','Brazilian Society of Hepatology','Associação Brasileira de Fibrose Cística'],
+        nuances:'Public (SUS) vs. private access gap; WhatsApp for patient education; travel stipends are critical.',
+        actions:['CGD: Partner with public hospitals for screening','Wilson\'s: WhatsApp support groups','CF: Navigate reimbursement for therapies'],
+        interview:'“Brazil runs on WhatsApp and family networks—pair travel vouchers with clear SUS navigation.”',
+        barrierMix:{logistics:45, regulatory:25, culture:20, language:10},
+        programs:['CGD','Wilson\'s Disease','Cystic Fibrosis']
+      },
+      { region:'americas', name:'Mexico',
+        regulator:'COFEPRIS',
+        ethics:'Local Research Ethics Committees',
+        orgs:['Fundación Mexicana para la Salud Hepática','Asociación Mexicana de Fibrosis Quística'],
+        nuances:'Spanish-first hotlines; leverage faith & community networks; financial toxicity is a primary barrier.',
+        actions:['Create Spanish-language microsites','Partner with faith leaders for outreach','Provide clear cost information'],
+        interview:'“Mexico = Spanish microsite + WhatsApp hotline + clinic/faith leader briefings.”',
+        barrierMix:{logistics:40, regulatory:20, culture:30, language:10},
+        programs:['Wilson\'s Disease','Cystic Fibrosis']
+      },
+      { region:'americas', name:'Argentina',
+        regulator:'ANMAT',
+        ethics:'Institutional ECs; dual approvals needed.',
+        orgs:['Asociación Argentina para el Estudio de las Enfermedades del Hígado','FIPAN (CF Foundation)'],
+        nuances:'Urban-centric sites; emphasize lodging support; clear path to NGS reimbursement.',
+        actions:['Provide lodging support for families','Clarify NGS reimbursement pathways','Work with hospital navigators'],
+        interview:'“Argentina needs upfront lodging + clear testing and reimbursement pathways.”',
+        barrierMix:{logistics:40, regulatory:25, culture:25, language:10},
+        programs:['Wilson\'s Disease','Cystic Fibrosis']
+      },
+
+      // EUROPE
+      { region:'europe', name:'Germany (EU West)',
+        regulator:'BfArM/PEI under EUCTR',
+        ethics:'State Ethics Committees.',
+        orgs:['ESID / national PID network (CGD)','German Liver Foundation','Mukoviszidose e.V. (CF)'],
+        nuances:'German‑language explainers; strong registry infrastructure supports pre‑screen.',
+        actions:['CGD: ESID registry pre‑ID + family mentor calls','Wilson\'s: hepatology centers + clear copper monitoring schedule','CF: EHR‑linked navigator outreach + at‑home physio guidance'],
+        interview:'“Germany rewards precision: registries + navigator scripts in German.”',
+        barrierMix:{logistics:20, regulatory:35, culture:30, language:15},
+        programs:['CGD','Wilson\'s Disease','Cystic Fibrosis']
+      },
+      { region:'europe', name:'France (EU West)',
+        regulator:'ANSM / EUCTR',
+        ethics:'CPP (Comités de Protection des Personnes).',
+        orgs:['PID networks (CGD)','ERN RARE‑LIVER','Vaincre la Mucoviscidose (CF)'],
+        nuances:'French‑first materials; public‑good narrative resonates for advanced therapeutics.',
+        actions:['Wilson\'s: national registry messaging + referral letters','CF: caregiver supports + travel stipends','CGD: hospital navigator partnerships'],
+        interview:'“France responds to national networks + transparent science storytelling.”',
+        barrierMix:{logistics:20, regulatory:30, culture:35, language:15},
+        programs:['CGD','Wilson\'s Disease','Cystic Fibrosis']
+      },
+
+      { region:'europe', name:'Netherlands (EU West)',
+        regulator:'CCMO under EUCTR',
+        ethics:'METCs (local ethics committees)',
+        orgs:['Dutch PID Foundation','Dutch Liver Patient Association','Nederlandse Cystic Fibrosis Stichting'],
+        nuances:'Patient groups are highly knowledgeable; clear open-label extension messaging improves retention.',
+        actions:['Co-design materials with patient organizations','Use EHR-based navigator outreach','Provide clear post-trial access info'],
+        interview:'“NL = co‑design with patient orgs + EHR‑based navigator outreach.”',
+        barrierMix:{logistics:20, regulatory:30, culture:30, language:20},
+        programs:['CGD', 'Wilson\'s Disease', 'Cystic Fibrosis']
+      },
+      { region:'europe', name:'Spain (EU West)',
+        regulator:'AEMPS under EUCTR',
+        ethics:'CEIm (regional ethics)',
+        orgs:['Asociación Española de Pacientes con Inmunodeficiencias Primarias','Federación Nacional de Enfermos y Trasplantados Hepáticos','Federación Española de Fibrosis Quística'],
+        nuances:'Spanish-first; regional differences; family and clinician champions drive enrollment.',
+        actions:['Create region-specific engagement plans','Empower clinician advocates','Provide family support services'],
+        interview:'“Spain needs CEIm‑ready Spanish kits + clinician advocates in each region.”',
+        barrierMix:{logistics:25, regulatory:30, culture:30, language:15},
+        programs:['CGD', 'Wilson\'s Disease', 'Cystic Fibrosis']
+      },
+      { region:'europe', name:'Italy (EU West)',
+        regulator:'AIFA / EUCTR',
+        ethics:'Comitati Etici (regional).',
+        orgs:['Wilson Disease Association (EU links)','ERN RARE‑LIVER','Lega Italiana Fibrosi Cistica'],
+        nuances:'University liver clinics enable rapid referral; youth/student orgs can amplify outreach.',
+        actions:['Wilson\'s: clinic‑embedded genetic testing days + student ambassador campaign','CGD: pediatric PID center linkage','CF: align with regional CF centers & caregiver relief'],
+        interview:'“Italy responds to liver‑clinic pathways + student advocates for Wilson\'s.”',
+        barrierMix:{logistics:25, regulatory:30, culture:30, language:15},
+        programs:['Wilson\'s Disease','CGD','Cystic Fibrosis']
+      },
+      { region:'europe', name:'Poland (EU East)',
+        regulator:'URPL under EUCTR',
+        ethics:'Local Bioethics Committees',
+        orgs:['Polish Society for Primary Immunodeficiencies','Polish Liver Association','Polskie Towarzystwo Walki z Mukowiscydozą'],
+        nuances:'Local-language webinars; regional clinic days; clarity on testing access outside capitals.',
+        actions:['Host Polish-language webinars','Organize regional clinic days','Map testing access points'],
+        interview:'“Poland responds to Polish‑first explainers + regional clinic days.”',
+        barrierMix:{logistics:30, regulatory:30, culture:25, language:15},
+        programs:['CGD', 'Wilson\'s Disease', 'Cystic Fibrosis']
+      },
+      { region:'europe', name:'Czech Republic (EU East)',
+        regulator:'SÚKL under EUCTR',
+        ethics:'Institutional Ethics Committees',
+        orgs:['Czech National PID Group','Czech Hepatology Society','Klub nemocných cystickou fibrózou'],
+        nuances:'Peer-to-peer voices and transparent milestones improve adherence.',
+        actions:['Facilitate peer mentor calls','Provide clear trial timelines and scan schedules','Partner with hospital navigators'],
+        interview:'“Czech sites: peer mentor calls + clear scan schedules.”',
+        barrierMix:{logistics:30, regulatory:25, culture:30, language:15},
+        programs:['CGD', 'Wilson\'s Disease', 'Cystic Fibrosis']
+      },
+      { region:'europe', name:'Hungary (EU East)',
+        regulator:'NIPN (OGYÉI) under EUCTR',
+        ethics:'Institutional ECs',
+        orgs:['Hungarian PID Patient Organization','Hungarian Society of Gastroenterology','Országos Cisztás Fibrózis Egyesület'],
+        nuances:'Physician-led outreach; Hungarian-first materials; travel support outside Budapest.',
+        actions:['Organize physician-led informational sessions','Provide Hungarian-language materials','Offer travel vouchers'],
+        interview:'“Hungary = physician‑anchored sessions + travel vouchers.”',
+        barrierMix:{logistics:30, regulatory:30, culture:25, language:15},
+        programs:['CGD', 'Wilson\'s Disease', 'Cystic Fibrosis']
+      },
+      { region:'europe', name:'United Kingdom',
+        regulator:'MHRA',
+        ethics:'HRA/REC (centralized).',
+        orgs:['PID UK (CGD)','British Liver Trust','Cystic Fibrosis Trust'],
+        nuances:'NHS integration enables national roll‑outs; tailor for diverse communities.',
+        actions:['Wilson\'s: NHS hepatology fast‑track pathway','CF: Trust center navigator scripts + home‑visit cadence','CGD: PID UK family circles + language‑appropriate consent'],
+        interview:'“UK = NHS Trusts + culturally tailored comms in London/Birmingham.”',
+        barrierMix:{logistics:25, regulatory:30, culture:30, language:15},
+        programs:['CGD','Wilson\'s Disease','Cystic Fibrosis']
+      },
+
+      // MENA
+      { region:'mena', name:'Jordan',
+        regulator:'JFDA',
+        ethics:'Institutional IRBs; MOH coordination.',
+        orgs:['Regional PID clinics (CGD)','JMF/IDF affiliates'],
+        nuances:'Higher CGD prevalence; family‑centered decisions; Arabic‑first materials.',
+        actions:['CGD: decentralized hub at community hospital; Arabic parent circles; travel vouchers'],
+        interview:'“Jordan = local hub + Arabic materials + parent support to reduce travel fears.”',
+        barrierMix:{logistics:45, regulatory:25, culture:20, language:10},
+        programs:['CGD']
+      },
+      { region:'mena', name:'Saudi Arabia',
+        regulator:'SFDA',
+        ethics:'Hospital IRBs.',
+        orgs:['National PID centers','University hospitals (CGD)'],
+        nuances:'Consanguinity patterns → targeted genetic outreach; trust via clinician champions.',
+        actions:['CGD: clinician‑led webinars; family navigator; local genetic testing access'],
+        interview:'“Saudi = physician champions + family counseling + local testing.”',
+        barrierMix:{logistics:40, regulatory:25, culture:25, language:10},
+        programs:['CGD']
+      },
+      { region:'mena', name:'Egypt',
+        regulator:'EDA',
+        ethics:'Institutional IRBs; national oversight evolving.',
+        orgs:['PID clinics (CGD)','University hospitals'],
+        nuances:'Access gaps outside Cairo; SMS/WhatsApp primary channels.',
+        actions:['CGD: WhatsApp hotline; travel & lodging stipends; Arabic explainers'],
+        interview:'“Egypt = hotline + stipends + Arabic consent to drive retention.”',
+        barrierMix:{logistics:45, regulatory:25, culture:20, language:10},
+        programs:['CGD']
+      },
+      { region:'mena', name:'UAE',
+        regulator:'MOHAP',
+        ethics:'DHA/HAAD Ethics Committees',
+        orgs:['UAE Genetic Diseases Association', 'Regional PID networks'],
+        nuances:'High rate of genetic disorders; well-funded healthcare system; diverse expatriate population.',
+        actions:['CGD: Partner with genetic screening programs', 'Provide materials in Arabic and English', 'Engage with specialized pediatric centers'],
+        interview:'“UAE = leverage genetic screening infrastructure + multilingual materials for a diverse population.”',
+        barrierMix:{logistics:30, regulatory:30, culture:25, language:15},
+        programs:['CGD']
+      },
+
+      // AFRICA
+      { region:'africa', name:'South Africa',
+        regulator:'SAHPRA',
+        ethics:'Institutional HRECs',
+        orgs:['South African PID Association', 'Liver Foundation of South Africa', 'South African Cystic Fibrosis Association'],
+        nuances:'Urban hubs; equity lens; transport vouchers + Community Health Worker (CHW) partnerships.',
+        actions:['CGD: Work with CHWs for community outreach', 'Wilson\'s: Partner with urban liver clinics', 'CF: Provide transport vouchers for clinic visits'],
+        interview:'“South Africa = city clinics + CHWs + transport vouchers to overcome stigma & cost.”',
+        barrierMix:{logistics:45, regulatory:25, culture:20, language:10},
+        programs:['CGD', 'Wilson\'s Disease', 'Cystic Fibrosis']
+      },
+
+      // APAC
+      { region:'apac', name:'Japan',
+        regulator:'PMDA',
+        ethics:'Institutional IRBs.',
+        orgs:['Japanese Society for Pediatric Immunology (CGD)','Japan Liver Society','Japanese CF groups/centers'],
+        nuances:'High precision‑medicine literacy; meticulous transparency expectations.',
+        actions:['Wilson\'s: clinic co‑developed explainers; rapid diagnostic referral','CF: trusted center navigators; adherence apps','CGD: pediatric PID centers + caregiver scripts'],
+        interview:'“Japan rewards precision & patience—set expectations early and deliver consistently.”',
+        barrierMix:{logistics:20, regulatory:35, culture:35, language:10},
+        programs:['CGD','Wilson\'s Disease','Cystic Fibrosis']
+      },
+      { region:'apac', name:'China',
+        regulator:'NMPA',
+        ethics:'Hospital IRBs; strong local governance.',
+        orgs:['National liver & hepatology societies (Wilson\'s)','CF centers (limited)','Regional PID clinics (CGD)'],
+        nuances:'Family‑centered decisions; WeChat groups + physician champions dominate outreach.',
+        actions:['Wilson\'s: hepatology referral microsite on WeChat + copper monitoring education','CGD: JMF/IDF‑linked clinician network','CF: urban center enrollment + remote follow‑ups'],
+        interview:'“China runs on WeChat + physician trust—clinic partnerships first, then community groups.”',
+        barrierMix:{logistics:30, regulatory:35, culture:25, language:10},
+        programs:['CGD','Wilson\'s Disease','Cystic Fibrosis']
+      },
+      { region:'apac', name:'South Korea',
+        regulator:'MFDS',
+        ethics:'Institutional IRBs.',
+        orgs:['Korean PID network (CGD)','Korean Association for the Study of the Liver','CF centers'],
+        nuances:'Physician‑first decisions; concise, clinical materials win.',
+        actions:['Wilson\'s: hepatology center talks + referral scripts','CF: center‑led outreach + home spirometry','CGD: pediatric immunology champions'],
+        interview:'“Korea = physician‑first engagement with crisp, clinical materials.”',
+        barrierMix:{logistics:20, regulatory:30, culture:35, language:15},
+        programs:['CGD','Wilson\'s Disease','Cystic Fibrosis']
+      },
+       { region:'apac', name:'Taiwan',
+        regulator:'TFDA',
+        ethics:'Institutional IRBs',
+        orgs:['Taiwanese PID Association', 'Taiwan Liver Research Foundation', 'Taiwan Cystic Fibrosis Association'],
+        nuances:'Physician-centered; small but responsive driver communities; Mandarin-first materials.',
+        actions:['Engage key opinion leaders in medicine', 'Develop Mandarin-language materials', 'Partner with local patient groups'],
+        interview:'“Taiwan = treating oncologist + small, fast‑moving patient groups.”',
+        barrierMix:{logistics:20, regulatory:30, culture:30, language:20},
+        programs:['CGD', 'Wilson\'s Disease', 'Cystic Fibrosis']
+      },
+      { region:'apac', name:'Singapore',
+        regulator:'HSA',
+        ethics:'DSRBs via hospital clusters',
+        orgs:['Singapore PID Network', 'Singapore Hepatology Society', 'CF awareness groups'],
+        nuances:'Hub model; hospital-anchored advocacy; small population → high-touch.',
+        actions:['Partner with hospital clusters for advocacy', 'Align on testing workflow with labs', 'High-touch engagement with patient navigators'],
+        interview:'“Singapore favors precision advocacy via hospital clusters; align on testing workflow.”',
+        barrierMix:{logistics:15, regulatory:35, culture:35, language:15},
+        programs:['CGD', 'Wilson\'s Disease', 'Cystic Fibrosis']
+      },
+      { region:'apac', name:'Australia',
+        regulator:'TGA',
+        ethics:'HRECs (centralized), site governance.',
+        orgs:['PID Australia','Australian Liver Association','Cystic Fibrosis Australia'],
+        nuances:'Navigator networks strong; telehealth vital for distance.',
+        actions:['CF: navigator‑led outreach + telehealth retention','Wilson\'s: clinic referral packs','CGD: national PID registry linkages'],
+        interview:'“Australia is streamlined—navigator‑led outreach + telehealth retention.”',
+        barrierMix:{logistics:25, regulatory:25, culture:35, language:15},
+        programs:['CGD','Wilson\'s Disease','Cystic Fibrosis']
+      },
+      { region:'apac', name:'New Zealand',
+        regulator:'Medsafe',
+        ethics:'HDECs (Health & Disability Ethics Committees)',
+        orgs:['IDFNZ (PID)', 'Liver Transplant Unit NZ', 'Cystic Fibrosis New Zealand'],
+        nuances:'Respect Kaupapa Māori; small but committed networks; travel support essential.',
+        actions:['Partner with Māori health organizations', 'Provide mobile navigation support', 'Offer travel support for families'],
+        interview:'“NZ = partner with Māori orgs + mobile navigation.”',
+        barrierMix:{logistics:30, regulatory:25, culture:35, language:10},
+        programs:['CGD', 'Wilson\'s Disease', 'Cystic Fibrosis']
+      },
+      { region:'apac', name:'India',
+        regulator:'CDSCO',
+        ethics:'Institutional Ethics Committees (IECs)',
+        orgs:['Foundation for Primary Immunodeficiency Diseases', 'Indian National Association for Study of the Liver', 'Cystic Fibrosis India'],
+        nuances:'Multilingual landscape; WhatsApp + local languages; travel and out-of-pocket costs are major barriers.',
+        actions:['Develop state-level advocacy plans', 'Use WhatsApp for communication', 'Provide stipends for travel and lost wages'],
+        interview:'“India needs state‑level, multilingual advocacy + stipends for travel and lost wages.”',
+        barrierMix:{logistics:45, regulatory:25, culture:20, language:10},
+        programs:['CGD', 'Wilson\'s Disease', 'Cystic Fibrosis']
+      },
+      { region:'apac', name:'Malaysia',
+        regulator:'NPRA',
+        ethics:'MREC (MOH) + institutional RECs',
+        orgs:['Malaysian PID Patient Society', 'Malaysian Liver Foundation', 'Malaysian CF Association'],
+        nuances:'Trilingual materials (BM/EN/ZH); hospital-led outreach works; emphasize biomarker access pathways.',
+        actions:['Create trilingual materials', 'Partner with hospitals for outreach', 'Navigate biomarker access pathways'],
+        interview:'“Malaysia = hospital‑first + trilingual explainers + NGS navigation.”',
+        barrierMix:{logistics:30, regulatory:25, culture:30, language:15},
+        programs:['CGD', 'Wilson\'s Disease', 'Cystic Fibrosis']
+      },
+      { region:'apac', name:'Philippines',
+        regulator:'FDA Philippines',
+        ethics:'Institutional IRBs; SJREB for DOH hospitals',
+        orgs:['Philippine Society for Primary Immunodeficiency', 'Hepatology Society of the Philippines', 'Philippine Society for Cystic Fibrosis'],
+        nuances:'Faith/community leaders as gatekeepers; text/WhatsApp primary channels; transport & lost-wage stipends crucial.',
+        actions:['Partner with faith and community leaders', 'Use text/WhatsApp for outreach', 'Provide stipends for transport and lost wages'],
+        interview:'“Philippines = faith/community leader partnerships + stipend clarity.”',
+        barrierMix:{logistics:40, regulatory:25, culture:25, language:10},
+        programs:['CGD', 'Wilson\'s Disease', 'Cystic Fibrosis']
+      }
+    ];
+
+    // ---------- DOM references ----------
+    const tabsEl = document.getElementById('tabs');
+    const panesEl = document.getElementById('panes');
+    const programBar = document.getElementById('programBar');
+
+    // ---------- Build program chips ----------
+    PROGRAMS.forEach(p => {
+      const s = document.createElement('span');
+      s.className = 'chip chip-toggle';
+      s.textContent = p;
+      s.setAttribute('role','button');
+      s.setAttribute('tabindex','0');
+      s.addEventListener('click', ()=>toggleFilter(s, p));
+      s.addEventListener('keypress', (e)=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); toggleFilter(s, p);} });
+      programBar.appendChild(s);
+    });
+
+    function toggleFilter(el, p){
+      if(activeFilters.has(p)){
+        activeFilters.delete(p);
+        el.classList.remove('chip-active');
+      } else {
+        activeFilters.add(p);
+        el.classList.add('chip-active');
+      }
+      renderAll();
+    }
+
+    // ---------- Utilities ----------
+    function visibleItems(regionId){
+      const items = DATA.filter(d => d.region === regionId);
+      if(activeFilters.size === 0) return items;
+      return items.filter(d => d.programs?.some(b => activeFilters.has(b)));
+    }
+
+    function aggregateMix(items){
+      const base = { logistics:0, regulatory:0, culture:0, language:0 };
+      if (!items.length) return base;
+      items.forEach(d => {
+        base.logistics += d.barrierMix.logistics;
+        base.regulatory += d.barrierMix.regulatory;
+        base.culture   += d.barrierMix.culture;
+        base.language  += d.barrierMix.language;
+      });
+      Object.keys(base).forEach(k => base[k] = Math.round(base[k]/items.length));
+      return base;
+    }
+
+    // ---------- Render tabs ----------
+    REGIONS.forEach((r, i) => {
+      const b = document.createElement('button');
+      b.textContent = r.label;
+      b.className = 'px-4 py-2 rounded-full border border-slate-200 text-sm font-semibold transition-colors duration-200';
+      b.dataset.tab = r.id;
+      b.setAttribute('role','tab');
+      if (i === 0) { b.style.backgroundColor = r.color; b.style.color = '#fff'; }
+      tabsEl.appendChild(b);
+    });
+
+    // ---------- Create panes & charts ----------
+    const charts = {}; // regionId -> chart instance
+
+    REGIONS.forEach((r,i)=>{
+      const pane = document.createElement('section');
+      pane.id = r.id;
+      pane.className = 'tab-pane ' + (i===0?'':'hidden');
+      pane.setAttribute('role','tabpanel');
+      pane.innerHTML = `
+        <div class="mb-8">
+          <div class="flex items-center justify-between flex-wrap gap-4">
+            <h2 class="text-2xl md:text-3xl font-bold" style="color:${r.color}">${r.label}</h2>
+            <span class="chip" style="background:${r.bg}; color:#0f172a">Avg. barrier mix — filters apply</span>
+          </div>
+          <div class="mt-4 bg-white border border-slate-200 rounded-xl p-4">
+            <canvas id="chart-${r.id}" height="80" aria-label="Barrier chart for ${r.label}" role="img"></canvas>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6" id="grid-${r.id}"></div>
+      `;
+      panesEl.appendChild(pane);
+
+      const ctx = pane.querySelector(`#chart-${r.id}`).getContext('2d');
+      const items = visibleItems(r.id);
+      const mix = aggregateMix(items);
+      charts[r.id] = new Chart(ctx, {
+        type:'bar',
+        data:{
+          labels:['Logistics','Regulatory','Culture/Trust','Language'],
+          datasets:[{
+            label:'Barrier %',
+            data:[mix.logistics, mix.regulatory, mix.culture, mix.language],
+            backgroundColor:[r.color+'33', r.color+'33', r.color+'33', r.color+'33'],
+            borderColor:[r.color, r.color, r.color, r.color],
+            borderWidth:1.5
+          }]
+        },
+        options:{
+          plugins:{ legend:{ display:false }, tooltip:{ enabled:true } },
+          scales:{ y:{ beginAtZero:true, max:100, ticks:{ stepSize:20 } } }
+        }
+      });
+    });
+
+    // ---------- Render all (cards + charts) ----------
+    function renderAll(){
+      REGIONS.forEach(r => {
+        const grid = document.getElementById(`grid-${r.id}`);
+        grid.innerHTML = '';
+        const items = visibleItems(r.id);
+        const mix = aggregateMix(items);
+        const chart = charts[r.id];
+        if(chart){
+          chart.data.datasets[0].data = [mix.logistics, mix.regulatory, mix.culture, mix.language];
+          chart.update();
+        }
+        if(items.length === 0){
+          const empty = document.createElement('div');
+          empty.className = 'text-sm text-slate-500 italic';
+          empty.textContent = 'No countries match the selected program filters in this region.';
+          grid.appendChild(empty);
+        } else {
+          items.forEach(d=>{
+            const card = document.createElement('article');
+            card.className = 'card p-5';
+            const tags = (d.programs||[]).map(b=>`<span class="chip" title="Program">${b}</span>`).join(' ');
+            const actions = (d.actions||[]).map(a=>`<li>${a}</li>`).join('');
+            card.innerHTML = `
+              <div class="flex items-start justify-between gap-4">
+                <h3 class="text-xl font-bold text-slate-800">${d.name}</h3>
+                <span class="chip" style="background:${r.bg}">${d.regulator}</span>
+              </div>
+              <div class="mt-3 text-sm text-slate-600">
+                <div class="mb-2"><strong class="text-slate-800">Ethics Path:</strong> ${d.ethics}</div>
+                <div class="mb-2"><strong class="text-slate-800">Key Orgs:</strong> ${d.orgs.join(', ')}</div>
+                <div class="mb-2"><strong class="text-slate-800">Nuances:</strong> ${d.nuances}</div>
+                <div class="mt-3 p-3 rounded-lg" style="background:${r.bg}">
+                  <span class="block text-xs uppercase tracking-wide text-slate-500 mb-1">Insight</span>
+                  <p class="text-slate-800">${d.interview}</p>
+                </div>
+                <div class="mt-3">
+                  <span class="block text-xs uppercase tracking-wide text-slate-500 mb-1">Fast Actions</span>
+                  <ul class="list-disc pl-5 space-y-1">${actions}</ul>
+                </div>
+                <div class="mt-3 flex flex-wrap gap-2">${tags}</div>
+              </div>
+            `;
+            grid.appendChild(card);
+          });
+        }
+      });
+    }
+
+    renderAll();
+
+    // ---------- Tab logic ----------
+    tabsEl.addEventListener('click', (e)=>{
+      if(e.target.tagName !== 'BUTTON') return;
+      const targetId = e.target.dataset.tab;
+      const activeRegion = REGIONS.find(r => r.id === targetId);
+      if (!activeRegion) return;
+      document.querySelectorAll('#tabs button').forEach(b => { b.style.backgroundColor=''; b.style.color=''; });
+      e.target.style.backgroundColor = activeRegion.color;
+      e.target.style.color = '#ffffff';
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.add('hidden'));
+      document.getElementById(targetId).classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>
