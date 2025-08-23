@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tengu Muna | Senior Clinical Research Associate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #0d9488, #2563eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 8px;
+        }
+        .nav-link.active {
+            color: #ffffff;
+            background: linear-gradient(to right, #14b8a6, #3b82f6);
+        }
+        .nav-link:not(.active):hover {
+            background-color: #f1f5f9;
+            color: #0f766e;
+        }
+        .page-content {
+            animation: fadeIn 0.6s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .tag {
+            transition: all 0.2s ease-in-out;
+        }
+        .tag:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .competency-card {
+             transition: all 0.3s ease-in-out;
+        }
+        .competency-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto px-6">
+            <nav class="flex justify-between items-center py-4">
+                <div class="text-xl font-extrabold gradient-text">
+                    Tengu Muna
+                </div>
+                <div class="hidden md:flex items-center space-x-4 text-sm font-medium text-slate-600">
+                    <button class="nav-link active" data-target="philosophy">My Philosophy</button>
+                    <button class="nav-link" data-target="competencies">Core Competencies</button>
+                    <button class="nav-link" data-target="framework">Strategic Framework</button>
+                    <button class="nav-link" data-target="expertise">Therapeutic Expertise</button>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden text-slate-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 bg-white">
+            <div class="px-6 pb-4 pt-2 flex flex-col space-y-2">
+                <button class="nav-link-mobile text-left py-2 text-slate-600" data-target="philosophy">My Philosophy</button>
+                <button class="nav-link-mobile text-left py-2 text-slate-600" data-target="competencies">Core Competencies</button>
+                <button class="nav-link-mobile text-left py-2 text-slate-600" data-target="framework">Strategic Framework</button>
+                <button class="nav-link-mobile text-left py-2 text-slate-600" data-target="expertise">Therapeutic Expertise</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Page Content Area -->
+        <div id="page-container">
+
+            <!-- My Philosophy Page (Landing Page) -->
+            <div id="philosophy" class="page-content">
+                <section class="text-center py-16">
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-slate-800">Strategic Clinical Monitoring</h1>
+                    <p class="mt-4 text-2xl md:text-4xl font-semibold gradient-text">A Framework for Success</p>
+                </section>
+                <div class="bg-white p-8 md:p-12 rounded-2xl shadow-xl">
+                    <h2 class="text-3xl font-bold text-center text-cyan-800 mb-6">My Monitoring Philosophy</h2>
+                    <p class="text-slate-600 leading-relaxed text-lg text-center max-w-3xl mx-auto">
+                        After 19 years in clinical research, I believe successful trial monitoring is built on a foundation of proactive partnership. My approach is a site management philosophy centered on empowering clinical sites with the training, resources, and collaborative support they need to excel. By fostering strong relationships and anticipating challenges, I ensure the highest standards of data integrity, meet enrollment goals, and help accelerate the delivery of vital therapies to patients.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Core Competencies Page -->
+            <div id="competencies" class="page-content hidden">
+
+                <section class="text-center py-12">
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-slate-800">Core Competencies</h1>
+                </section>
+
+                <!-- Highlight Card -->
+                <div class="mb-12 bg-gradient-to-r from-teal-500 to-cyan-600 text-white p-8 rounded-2xl shadow-2xl competency-card">
+                    <h4 class="text-3xl font-bold mb-3 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
+                        IVD & Diagnostics Expertise
+                    </h4>
+                    <p class="opacity-90">Specialized experience in managing complex global trials for *in vitro* diagnostics (IVD/CDx), ensuring compliance with specific regulatory standards like IVDR/EUCTR and overseeing the unique operational needs of diagnostic technologies.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Column 1: Strategic Oversight -->
+                    <div class="space-y-8">
+                        <h3 class="text-3xl font-bold text-cyan-800 border-b-4 border-cyan-300 pb-2">Strategic Oversight</h3>
+                        <div class="bg-white p-8 rounded-2xl shadow-lg competency-card">
+                            <h4 class="text-2xl font-bold text-cyan-800 mb-3">Global Monitoring Strategy</h4>
+                            <p class="text-slate-500">Designing and implementing multi-regional monitoring plans, defining CRA allocation, and leading CRO oversight.</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-2xl shadow-lg competency-card">
+                            <h4 class="text-2xl font-bold text-cyan-800 mb-3">Inspection & Audit Readiness</h4>
+                            <p class="text-slate-500">Leading all aspects of inspection readiness for pivotal trials (FDA, MHRA, PMDA), from site prep to CAPA resolution.</p>
+                        </div>
+                    </div>
+                    <!-- Column 2: Hands-On Execution -->
+
+                    <div class="space-y-8">
+                        <h3 class="text-3xl font-bold text-blue-800 border-b-4 border-blue-300 pb-2">Hands-On Execution</h3>
+                        <div class="bg-white p-8 rounded-2xl shadow-lg competency-card">
+                            <h4 class="text-2xl font-bold text-blue-800 mb-3">Site Management & Monitoring</h4>
+                            <p class="text-slate-500">Proficient in all visit types from qualification to close-out, with a proven ability to manage multiple complex study sites effectively.</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-2xl shadow-lg competency-card">
+                            <h4 class="text-2xl font-bold text-blue-800 mb-3">Data Integrity & Verification</h4>
+                            <p class="text-slate-500">Expertise in performing meticulous Source Data Verification (SDV) to ensure timely and accurate completion of CRFs in various EDC systems.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Strategic Framework Page -->
+            <div id="framework" class="page-content hidden">
+                <section class="text-center py-12">
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-slate-800">My Strategic Framework</h1>
+                </section>
+                <div class="space-y-10">
+                    <!-- Phase 1 -->
+                    <div class="bg-white p-8 md:p-10 rounded-2xl shadow-xl competency-card">
+                        <h3 class="text-3xl font-bold text-cyan-700 mb-2">Phase 1: Proactive Start-Up & Site Activation</h3>
+                        <p class="text-slate-500 text-lg mb-6">Flawless execution begins with meticulous planning.</p>
+                        <ul class="space-y-4 text-slate-600">
+                            <li class="flex items-start"><span class="mr-3 text-cyan-500 font-bold text-xl">✓</span><div><strong class="text-slate-700">Strategic Site Onboarding:</strong> Move beyond simple protocol review. I conduct a "Day in the Life" simulation of the study workflow to identify and resolve operational gaps before the first patient is enrolled.</div></li>
+                            <li class="flex items-start"><span class="mr-3 text-cyan-500 font-bold text-xl">✓</span><div><strong class="text-slate-700">Immersive Training:</strong> Deliver comprehensive training on the protocol, the science behind the therapy, and the specific patient profile to create site enthusiasm and ensure deep understanding.</div></li>
+                        </ul>
+                    </div>
+
+                    <!-- Phase 2 -->
+                    <div class="bg-white p-8 md:p-10 rounded-2xl shadow-xl competency-card">
+                        <h3 class="text-3xl font-bold text-cyan-700 mb-2">Phase 2: Dynamic & Adaptive Monitoring</h3>
+                        <p class="text-slate-500 text-lg mb-6">Maintain momentum through data-driven oversight.</p>
+                        <ul class="space-y-4 text-slate-600">
+                            <li class="flex items-start"><span class="mr-3 text-cyan-500 font-bold text-xl">✓</span><div><strong class="text-slate-700">Hybrid Monitoring Approach:</strong> Combine centralized, remote monitoring of EDC data with purposeful on-site visits focused on high-value activities like targeted SDV and relationship building.</div></li>
+                            <li class="flex items-start"><span class="mr-3 text-cyan-500 font-bold text-xl">✓</span><div><strong class="text-slate-700">Early Data Review:</strong> Work with data management to conduct frequent interim analyses to promptly identify recruitment bottlenecks, protocol deviations, or safety signals, enabling swift implementation of CAPA plans.</div></li>
+                        </ul>
+                    </div>
+
+                    <!-- Phase 3 -->
+                    <div class="bg-white p-8 md:p-10 rounded-2xl shadow-xl competency-card">
+                        <h3 class="text-3xl font-bold text-cyan-700 mb-2">Phase 3: Sustained Engagement & Inspection Readiness</h3>
+                        <p class="text-slate-500 text-lg mb-6">Finish strong by prioritizing quality and compliance.</p>
+                        <ul class="space-y-4 text-slate-600">
+                            <li class="flex items-start"><span class="mr-3 text-cyan-500 font-bold text-xl">✓</span><div><strong class="text-slate-700">Patient-Centric Retention:</strong> Develop robust patient support systems and work with sites to minimize the logistical burden on participants, reducing dropout rates in long-term trials.</div></li>
+                            <li class="flex items-start"><span class="mr-3 text-cyan-500 font-bold text-xl">✓</span><div><strong class="text-slate-700">Perpetual Inspection Readiness:</strong> Maintain an "always ready" TMF by ensuring contemporaneous document filing. I conduct internal "mock" audits to ensure the entire team is confident and prepared for regulatory scrutiny.</div></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Therapeutic Expertise Page -->
+            <div id="expertise" class="page-content hidden">
+                <section class="text-center py-12">
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-slate-800">Therapeutic Expertise</h1>
+                </section>
+                <div class="bg-white p-8 md:p-12 rounded-2xl shadow-xl">
+
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <span class="tag bg-teal-100 text-teal-800 font-medium px-4 py-2 rounded-full">Oncology</span>
+                        <span class="tag bg-cyan-100 text-cyan-800 font-medium px-4 py-2 rounded-full">Immunology</span>
+                        <span class="tag bg-sky-100 text-sky-800 font-medium px-4 py-2 rounded-full">Antiviral</span>
+                        <span class="tag bg-blue-100 text-blue-800 font-medium px-4 py-2 rounded-full">CNS</span>
+                        <span class="tag bg-indigo-100 text-indigo-800 font-medium px-4 py-2 rounded-full">Inflammation</span>
+                        <span class="tag bg-violet-100 text-violet-800 font-medium px-4 py-2 rounded-full">Autoimmune Disorders</span>
+                        <span class="tag bg-purple-100 text-purple-800 font-medium px-4 py-2 rounded-full">Endocrinology</span>
+                        <span class="tag bg-fuchsia-100 text-fuchsia-800 font-medium px-4 py-2 rounded-full">Cardiovascular</span>
+                        <span class="tag bg-pink-100 text-pink-800 font-medium px-4 py-2 rounded-full">Respiratory</span>
+                        <span class="tag bg-rose-100 text-rose-800 font-medium px-4 py-2 rounded-full">Ophthalmology</span>
+                        <span class="tag bg-teal-100 text-teal-800 font-medium px-4 py-2 rounded-full">Rare & Orphan Diseases</span>
+                        <span class="tag bg-cyan-100 text-cyan-800 font-medium px-4 py-2 rounded-full">Gene Therapies</span>
+                        <span class="tag bg-sky-100 text-sky-800 font-medium px-4 py-2 rounded-full">Infectious Diseases</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-400 mt-16">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 Tengu Muna. All Rights Reserved.</p>
+            <p class="text-sm mt-2">Strategic Clinical Operations Consultant</p>
+        </div>
+    </footer>
+
+    <script>
+        const pageContainer = document.getElementById('page-container');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const mobileNavLinks = document.querySelectorAll('.nav-link-mobile');
+        const pages = document.querySelectorAll('.page-content');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function showPage(targetId) {
+            pages.forEach(page => page.classList.add('hidden'));
+            const targetPage = document.getElementById(targetId);
+            if (targetPage) {
+                targetPage.classList.remove('hidden');
+            }
+            navLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('data-target') === targetId);
+            });
+            mobileMenu.classList.add('hidden');
+        }
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => showPage(link.getAttribute('data-target')));
+        });
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => showPage(link.getAttribute('data-target')));
+        });
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        showPage('philosophy');
+    </script>
+
+</body>
+</html>
