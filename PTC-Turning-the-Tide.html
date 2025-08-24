@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Turning the Tide on a Pivotal Global Trial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Add a subtle, animated gradient background */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #334155;
+            background: linear-gradient(-45deg, #f0f9ff, #f8fafc, #f1f5f9, #e0f2fe);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        h1, h2, h3 {
+            font-family: 'Roboto Slab', serif;
+        }
+        .header {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e2e8f0;
+        }
+        /* Tab container styling */
+        .tabs-container {
+            background-color: #1f2937; /* Dark gray background for the container */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1), 0 3px 6px rgba(0,0,0,0.08);
+        }
+        /* General tab styling */
+        .tab {
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s, opacity 0.3s, transform 0.2s;
+            border-bottom: 4px solid transparent;
+            color: white;
+        }
+        .tab:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* Individual Tab Colors */
+        .tab-background { background-color: #3b82f6; } /* Blue */
+        .tab-challenges { background-color: #ef4444; } /* Red */
+        .tab-strategies { background-color: #22c55e; } /* Green */
+        .tab-outcomes   { background-color: #8b5cf6; } /* Violet */
+        .tab-conclusion { background-color: #64748b; } /* Slate */
+
+        /* Active States for Each Tab */
+        .tab.active {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .tab-background.active { background-color: #ffffff; color: #3b82f6; border-bottom-color: #3b82f6; }
+        .tab-challenges.active { background-color: #ffffff; color: #ef4444; border-bottom-color: #ef4444; }
+        .tab-strategies.active { background-color: #ffffff; color: #22c55e; border-bottom-color: #22c55e; }
+        .tab-outcomes.active { background-color: #ffffff; color: #8b5cf6; border-bottom-color: #8b5cf6; }
+        .tab-conclusion.active { background-color: #ffffff; color: #64748b; border-bottom-color: #64748b; }
+
+        /* Content section with fade-in animation */
+        .content-section {
+            display: none;
+            background-color: #ffffff;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.07), 0 5px 10px rgba(0,0,0,0.04);
+            border-radius: 0 0 12px 12px;
+            border: 1px solid #e2e8f0;
+            border-top: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-section.active {
+            display: block;
+        }
+        .content-section h2 {
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .challenge-icon { background-color: #fee2e2; color: #b91c1c; }
+        .strategy-border { border-left-color: #1d4ed8; }
+        .strategy-title { color: #1e3a8a; }
+        .outcome-card {
+            background-color: #eff6ff;
+            border-color: #bfdbfe;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .outcome-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(30, 64, 175, 0.15);
+        }
+        .outcome-stat { color: #1e40af; }
+        .conclusion-box { background-color: #f1f5f9; border-left-color: #64748b; }
+
+        /* Footer styling */
+        .footer {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header Section -->
+    <div class="header text-center py-10 px-4 sticky top-0 z-10">
+        <div class="inline-block p-4 rounded-full bg-blue-100 mb-4 shadow-inner">
+            <svg class="h-16 w-16 text-blue-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" />
+            </svg>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold text-slate-900">Turning the Tide on a Pivotal Global Trial</h1>
+        <p class="mt-2 text-lg text-slate-600">Strategic Leadership in Complex Clinical Operations by Tengu Muna</p>
+    </div>
+
+    <!-- Main Content with Tabs -->
+    <div class="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-12">
+        <!-- Tab Navigation -->
+        <div class="tabs-container flex justify-center flex-wrap rounded-t-lg shadow-md overflow-hidden">
+            <div class="tab tab-background active py-4 px-6 cursor-pointer font-semibold" onclick="openTab(event, 'background')">Background</div>
+            <div class="tab tab-challenges py-4 px-6 cursor-pointer font-semibold" onclick="openTab(event, 'challenges')">Challenges</div>
+            <div class="tab tab-strategies py-4 px-6 cursor-pointer font-semibold" onclick="openTab(event, 'strategies')">Strategies</div>
+            <div class="tab tab-outcomes py-4 px-6 cursor-pointer font-semibold" onclick="openTab(event, 'outcomes')">Outcomes</div>
+            <div class="tab tab-conclusion py-4 px-6 cursor-pointer font-semibold" onclick="openTab(event, 'conclusion')">Conclusion</div>
+        </div>
+
+        <!-- Tab Content: Background -->
+        <div id="background" class="content-section active p-8 md:p-10">
+            <h2 class="text-3xl font-bold mb-6 text-blue-800">A High-Stakes Trial at a Crossroads</h2>
+            <p class="text-lg leading-relaxed">I was tasked with providing strategic oversight for a pivotal Phase III global trial evaluating a novel biologic therapy for <strong>non-small-cell lung cancer (NSCLC)</strong> and <strong>gastric cancer</strong>. This trial spanned over 200 sites... The situation demanded decisive, hands-on leadership to not only solve the immediate problems but to create a massive acceleration in study execution.</p>
+            <div class="footer">
+                <p>&copy; <span id="year-background"></span> Tengu Muna. All Rights Reserved.</p>
+            </div>
+        </div>
+
+        <!-- Tab Content: Challenges -->
+        <div id="challenges" class="content-section p-8 md:p-10">
+            <h2 class="text-3xl font-bold mb-8 text-red-800">Key Challenges Encountered</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Challenge Items -->
+                <div class="flex items-start"><div class="flex-shrink-0 h-12 w-12 rounded-full challenge-icon flex items-center justify-center font-bold text-2xl">1</div><div class="ml-4"><h3 class="text-xl font-bold text-slate-800">The Futility Analysis Deadline</h3><p class="mt-1 text-slate-600">A critical go/no-go milestone was at risk due to slow data entry, jeopardizing the soft data lock.</p></div></div>
+                <div class="flex items-start"><div class="flex-shrink-0 h-12 w-12 rounded-full challenge-icon flex items-center justify-center font-bold text-2xl">2</div><div class="ml-4"><h3 class="text-xl font-bold text-slate-800">Complex European Regulatory Landscape</h3><p class="mt-1 text-slate-600">Fragmented EUCTR submissions and IVDR approval delays stalled the critical CDx sample pipeline.</p></div></div>
+                <div class="flex items-start"><div class="flex-shrink-0 h-12 w-12 rounded-full challenge-icon flex items-center justify-center font-bold text-2xl">3</div><div class="ml-4"><h3 class="text-xl font-bold text-slate-800">Global Recruitment & Retention Deficits</h3><p class="mt-1 text-slate-600">Underperformance in US diversity sites and key LATAM/APAC regions was compounded by high screen failure rates.</p></div></div>
+                <div class="flex items-start"><div class="flex-shrink-0 h-12 w-12 rounded-full challenge-icon flex items-center justify-center font-bold text-2xl">4</div><div class="ml-4"><h3 class="text-xl font-bold text-slate-800">Inconsistent Monitoring Oversight</h3><p class="mt-1 text-slate-600">The hybrid model was leading to CRAs being bogged down in administrative tasks.</p></div></div>
+            </div>
+            <div class="footer">
+                <p>&copy; <span id="year-challenges"></span> Tengu Muna. All Rights Reserved.</p>
+            </div>
+        </div>
+
+        <!-- Tab Content: Strategies -->
+        <div id="strategies" class="content-section p-8 md:p-10">
+            <h2 class="text-3xl font-bold mb-8 text-blue-800">Strategic Actions & Solutions Implemented</h2>
+            <div class="space-y-6">
+                <!-- Strategy Items -->
+                <div class="p-6 bg-slate-50 rounded-lg border-l-4 strategy-border"><h3 class="text-xl font-bold strategy-title mb-2">Deployed a Hyper-Targeted, Country-by-Country Strategy</h3><p>I architected bespoke action plans for each country, addressing unique regulatory and recruitment barriers.</p></div>
+                <div class="p-6 bg-slate-50 rounded-lg border-l-4 strategy-border"><h3 class="text-xl font-bold strategy-title mb-2">Forged an Intense Collaboration with Companion Diagnostics</h3><p>I established a daily, hands-on partnership with the CDx group to push through lab approval delays.</p></div>
+                <div class="p-6 bg-slate-50 rounded-lg border-l-4 strategy-border"><h3 class="text-xl font-bold strategy-title mb-2">Optimized Patient Recruitment with Data-Driven Tools</h3><p>We developed a regional recruitment dashboard for real-time tracking and informed DEI advocacy.</p></div>
+                <div class="p-6 bg-slate-50 rounded-lg border-l-4 strategy-border"><h3 class="text-xl font-bold strategy-title mb-2">Executed a High-Urgency Data Cleaning Initiative</h3><p>I spearheaded a high-intensity data cleaning effort to achieve a successful soft data lock on time.</p></div>
+            </div>
+            <div class="footer">
+                <p>&copy; <span id="year-strategies"></span> Tengu Muna. All Rights Reserved.</p>
+            </div>
+        </div>
+
+        <!-- Tab Content: Outcomes -->
+        <div id="outcomes" class="content-section p-8 md:p-10">
+            <h2 class="text-3xl font-bold mb-8 text-green-800">Measurable Outcomes & Impact</h2>
+            <div class="grid sm:grid-cols-2 gap-8 text-center">
+                <!-- Outcome Cards -->
+                <div class="outcome-card p-6 rounded-lg shadow-lg"><p class="text-5xl font-bold outcome-stat">✓</p><p class="mt-2 text-xl font-bold text-slate-800">Massive Timeline Acceleration</p><p class="mt-1 text-slate-600">Met the critical futility analysis deadline and put the overall trial back on track.</p></div>
+                <div class="outcome-card p-6 rounded-lg shadow-lg"><p class="text-5xl font-bold outcome-stat">30%</p><p class="mt-2 text-xl font-bold text-slate-800">Uptick in Recruitment</p><p class="mt-1 text-slate-600">Achieved at priority sites due to targeted retention and diversity strategies.</p></div>
+                <div class="outcome-card p-6 rounded-lg shadow-lg"><p class="text-5xl font-bold outcome-stat">40%</p><p class="mt-2 text-xl font-bold text-slate-800">CDx Pipeline Optimized</p><p class="mt-1 text-slate-600">Reduced IVDR/CDx query backlog, activating the sample pipeline for timely stratification.</p></div>
+                <div class="outcome-card p-6 rounded-lg shadow-lg"><p class="text-5xl font-bold outcome-stat">0</p><p class="mt-2 text-xl font-bold text-slate-800">Critical Inspection Findings</p><p class="mt-1 text-slate-600">Successfully passed both FDA and MHRA inspections due to a culture of perpetual readiness.</p></div>
+            </div>
+            <div class="footer">
+                <p>&copy; <span id="year-outcomes"></span> Tengu Muna. All Rights Reserved.</p>
+            </div>
+        </div>
+
+        <!-- Tab Content: Conclusion -->
+        <div id="conclusion" class="content-section p-8 md:p-10">
+            <h2 class="text-3xl font-bold mb-6 text-slate-800">A Philosophy of Partnership</h2>
+            <div class="p-6 rounded-lg border-l-4 conclusion-box">
+                <p class="text-lg leading-relaxed">This experience demonstrates my philosophy of leadership: turning complex challenges into opportunities through proactive engagement, data-driven strategy, and a relentless focus on partnership... These are the same principles I apply to overcome the unique operational hurdles inherent in developing therapies for rare neurological and metabolic disorders.</p>
+            </div>
+            <div class="footer">
+                <p>&copy; <span id="year-conclusion"></span> Tengu Muna. All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+
+<script>
+    /**
+     * Handles switching between tabs in the UI.
+     * @param {Event} evt - The click event from the tab.
+     * @param {string} tabId - The ID of the content section to display.
+     */
+    function openTab(evt, tabId) {
+        // Hide all content sections first to allow for animation
+        const contentSections = document.getElementsByClassName('content-section');
+        for (let i = 0; i < contentSections.length; i++) {
+            contentSections[i].classList.remove('active');
+        }
+
+        // Deactivate all tabs
+        const tabLinks = document.getElementsByClassName('tab');
+        for (let i = 0; i < tabLinks.length; i++) {
+            tabLinks[i].classList.remove('active');
+        }
+
+        // Activate the selected tab and content
+        document.getElementById(tabId).classList.add('active');
+        evt.currentTarget.classList.add('active');
+    }
+
+    // Set the current year in all footer elements
+    function setCopyrightYear() {
+        const yearSpans = document.querySelectorAll('span[id^="year-"]');
+        const currentYear = new Date().getFullYear();
+        yearSpans.forEach(span => {
+            span.textContent = currentYear;
+        });
+    }
+
+    // Initial setup on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set the first tab and content to be active
+        document.querySelector('.tab-background').classList.add('active');
+        document.getElementById('background').classList.add('active');
+        // Set the copyright year
+        setCopyrightYear();
+    });
+</script>
+</body>
+</html>
