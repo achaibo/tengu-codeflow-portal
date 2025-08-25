@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tengu C. Muna - Clinical Trial Manager</title>
+    <!-- Google Fonts: Inter for a professional look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS for utility-first styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Custom Tailwind theme configuration
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#004d99',
+                        secondary: '#007bff',
+                        light: '#f4f7f6',
+                        accent: '#ffcc00',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-light text-gray-700">
+ 
+    <!-- Header Section -->
+    <header class="bg-primary text-white py-12 text-center shadow-lg">
+        <div class="container mx-auto px-6">
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight">Tengu C. Muna</h1>
+            <p class="text-xl md:text-2xl mt-2 text-blue-200">Senior Global Clinical Trial Manager | Recruitment & Retention Strategist</p>
+        </div>
+    </header>
+ 
+    <main class="container mx-auto p-6 md:p-12 max-w-6xl">
+        <!-- Tab Navigation -->
+        <div class="mb-10 border-b border-gray-200">
+            <nav class="-mb-px flex space-x-6" aria-label="Tabs">
+                <button onclick="changeTab(event, 'summary')" class="tab-link whitespace-nowrap py-4 px-1 border-b-2 font-medium text-lg border-primary text-primary transition-all duration-300">Summary</button>
+                <button onclick="changeTab(event, 'experience')" class="tab-link whitespace-nowrap py-4 px-1 border-b-2 font-medium text-lg border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 transition-all duration-300">Experience</button>
+                <button onclick="changeTab(event, 'skills')" class="tab-link whitespace-nowrap py-4 px-1 border-b-2 font-medium text-lg border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 transition-all duration-300">Skills</button>
+                <button onclick="changeTab(event, 'about')" class="tab-link whitespace-nowrap py-4 px-1 border-b-2 font-medium text-lg border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 transition-all duration-300">About & Contact</button>
+            </nav>
+        </div>
+ 
+        <!-- Tab Content -->
+        <div>
+            <!-- Professional Summary Tab -->
+            <div id="summary" class="tab-content bg-white p-8 rounded-xl shadow-md transition-all duration-300">
+                <h2 class="text-3xl font-bold text-primary mb-6">Professional Summary</h2>
+                <p class="text-lg leading-relaxed mb-4">
+                    Accomplished Clinical Operations Leader with 19 years of experience in managing high-complexity global trials across oncology, immunology, CNS, and rare diseases. Known for blending strategic leadership with hands-on execution, driving patient-centered recruitment strategies, and ensuring operational excellence in trial management. Adept at fostering cross-functional collaboration, navigating regulatory landscapes, and delivering data integrity in high-stakes environments.
+                </p>
+                <a href="https://www.notion.so/Global-Study-Manager-Patient-Advocacy-Consultant-Recruitment-Retention-Specialist-2559315af4bf80a7995fc3dbdc5c3c98?source=copy_link" target="_blank" class="inline-block mt-4 text-secondary font-semibold hover:underline text-lg">
+                    Explore My Full Professional Portfolio →
+                </a>
+            </div>
+ 
+            <!-- Professional Experience Tab -->
+            <div id="experience" class="tab-content hidden bg-white p-8 rounded-xl shadow-md transition-all duration-300">
+                <div class="flex justify-between items-center mb-8 pb-4 border-b border-gray-200">
+                    <h2 class="text-3xl font-bold text-primary">Experience Highlights</h2>
+                    <a href="https://www.notion.so/Global-Study-Manager-Patient-Advocacy-Consultant-Recruitment-Retention-Specialist-2559315af4bf80a7995fc3dbdc5c3c98?source=copy_link" target="_blank" class="bg-secondary text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors text-sm md:text-base">
+                        View Full CV →
+                    </a>
+                </div>
+                <div class="space-y-8">
+                    <!-- Highlight Item -->
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800">Global Trial Orchestration</h3>
+                        <p class="text-lg text-gray-600">Successfully orchestrated global monitoring operations for a pivotal Phase II/III oncology trial spanning over <strong>230 sites and 1,200 patients</strong> across North America, South America, and Europe. <span class="text-sm text-gray-500 font-medium block mt-1">(Daiichi Sankyo, Inc.)</span></p>
+                    </div>
+                    <!-- Highlight Item -->
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800">Inspection Readiness & Regulatory Success</h3>
+                        <p class="text-lg text-gray-600">Commanded all inspection readiness activities, leading to <strong>successful inspections by the FDA, MHRA, and PMDA</strong>. Proactively mitigated regulatory delays by devising country-specific strategies for IVDR and EUCTR compliance. <span class="text-sm text-gray-500 font-medium block mt-1">(Daiichi Sankyo, Inc.)</span></p>
+                    </div>
+                    <!-- Highlight Item -->
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800">Strategic Recruitment & Retention</h3>
+                        <p class="text-lg text-gray-600">Championed and executed multi-tiered patient recruitment and retention strategies, directly engaging with PIs and site staff to <strong>meet and exceed enrollment targets</strong> for high-priority programs. <span class="text-sm text-gray-500 font-medium block mt-1">(Daiichi Sankyo, Inc.)</span></p>
+                    </div>
+                    <!-- Highlight Item -->
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800">Consulting & Crisis Management</h3>
+                        <p class="text-lg text-gray-600">As a freelance consultant, designed and implemented targeted <strong>"SWAT" monitoring strategies</strong> to rapidly diagnose and resolve critical site-level challenges, preserving data integrity for early-phase trials. <span class="text-sm text-gray-500 font-medium block mt-1">(Achaibo Clinical)</span></p>
+                    </div>
+                    
+                    <!-- Highlight Item -->
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800">End-to-End Program Oversight</h3>
+                        <p class="text-lg text-gray-600">Provided strategic, end-to-end oversight for all clinical operations activities, from site feasibility and selection through to database lock for innovative North American trials. <span class="text-sm text-gray-500 font-medium block mt-1">(MAPS-PBC)</span></p>
+                    </div>
+                </div>
+            </div>
+ 
+            <!-- Skills Tab -->
+            <div id="skills" class="tab-content hidden bg-white p-8 rounded-xl shadow-md transition-all duration-300">
+ 
+                <h2 class="text-3xl font-bold text-primary mb-8">Skills & Expertise</h2>
+ 
+                <div class="grid md:grid-cols-2 gap-10">
+                    <!-- Core Competencies -->
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Core Competencies</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start text-lg"><span class="text-2xl mr-3">🌍</span> <strong>Global Trial Leadership & Cross-Functional Strategy</strong></li>
+                            <li class="flex items-start text-lg"><span class="text-2xl mr-3">🫱🏾‍🫲🏼</span> <strong>Patient-Centric Recruitment & DEI Strategy</strong></li>
+                            <li class="flex items-start text-lg"><span class="text-2xl mr-3">📋</span> <strong>Regulatory Strategy & Inspection Readiness</strong></li>
+                            <li class="flex items-start text-lg"><span class="text-2xl mr-3">📊</span> <strong>Data Integrity & Operational Efficiency</strong></li>
+                        </ul>
+                    </div>
+                    <!-- Technical Proficiencies -->
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Technical Proficiencies</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-3 py-1 rounded-full">Medidata Rave</span>
+                            <span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-3 py-1 rounded-full">Veeva Vault</span>
+                            <span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-3 py-1 rounded-full">IMPACT</span>
+                            <span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-3 py-1 rounded-full">Suvoda</span>
+                            <span class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-3 py-1 rounded-full">Asana</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Therapeutic Experience -->
+                <div class="mt-10">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Therapeutic Experience</h3>
+                    <p class="text-lg"><strong>CNS & Rare Disease, Oncology (Complex Biologics), Immunology & Vaccines, Dermatology, Gastroenterology, Infectious Diseases, Cardiology, Ophthalmology, Women's Health, Nephrology, Medical Devices.</strong></p>
+                </div>
+            </div>
+ 
+            <!-- About & Contact Tab -->
+            <div id="about" class="tab-content hidden bg-white p-8 rounded-xl shadow-md transition-all duration-300">
+                <h2 class="text-3xl font-bold text-primary mb-8">About & Contact</h2>
+                <div class="grid md:grid-cols-2 gap-10">
+                    <!-- Education & Publications -->
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Education</h3>
+                        <p class="text-lg"><strong>B.A. in Political Science</strong> | Concordia University, Montreal, Canada</p>
+ 
+                        <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Publications & Programs</h3>
+                        <ul class="list-disc list-inside space-y-1 text-lg">
+                            <li>Book: 8 Daily Practices for an Intentional Life</li>
+                            <li>Book: The Eight Limbs of Yoga Simplified</li>
+                            <li>Online Course: The Ultimate Clinical Research Toolbox</li>
+                        </ul>
+                    </div>
+                    <!-- Contact -->
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Contact Information</h3>
+                        <div class="space-y-3 text-lg">
+                            <p><strong>Email:</strong> <a href="mailto:sevacrp@gmail.com" class="text-secondary hover:underline">sevacrp@gmail.com</a></p>
+                            <p><strong>Phone:</strong> 913-391-3309</p>
+                            <p><strong>Location:</strong> Houston, TX</p>
+                            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/tengumuna/" target="_blank" class="text-secondary hover:underline">linkedin.com/in/tengumuna</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+ 
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white text-center py-8 mt-12">
+        <div class="container mx-auto px-6">
+            <p class="text-lg">For more details, please visit my <a href="https://www.notion.so/Global-Study-Manager-Patient-Advocacy-Consultant-Recruitment-Retention-Specialist-2559315af4bf80a7995fc3dbdc5c3c98?source=copy_link" target="_blank" class="text-blue-300 font-semibold hover:underline">Notion Portfolio</a></p>
+        </div>
+    </footer>
+ 
+    <script>
+        function changeTab(event, tabID) {
+            // Hide all tab content
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.add('hidden');
+            });
+ 
+            // Deactivate all tab links
+            document.querySelectorAll('.tab-link').forEach(link => {
+                link.classList.remove('border-primary', 'text-primary');
+                link.classList.add('border-transparent', 'text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300');
+            });
+ 
+            // Show the selected tab content
+            document.getElementById(tabID).classList.remove('hidden');
+ 
+            // Activate the selected tab link
+            event.currentTarget.classList.add('border-primary', 'text-primary');
+            event.currentTarget.classList.remove('border-transparent', 'text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300');
+        }
+    </script>
+ 
+</body>
+</html>
