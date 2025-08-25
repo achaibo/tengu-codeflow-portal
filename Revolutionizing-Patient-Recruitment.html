@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Revolutionizing Patient Recruitment and Retention in Oncology Trials. Data-driven, patient-centered recruitment strategies for rare diseases.">
+    <title>Patient Recruitment & Retention Strategies in Oncology Trials</title>
+    <!-- Google Fonts: Inter for a clean, modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS for utility-first styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Use Inter as the default font */
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth; /* Ensures smooth scrolling for all browsers */
+        }
+        /* Style for the sticky tab navigation */
+        .tab-nav-sticky {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: top 0.3s;
+        }
+        /* Custom animation for floating effect */
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+        /* Applying the animation to the bubble class */
+        .bubble-animation {
+            animation: float 5s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-gray-800 leading-relaxed">
+
+    <!-- Header Section -->
+    <header class="bg-blue-600 p-8 text-center text-white shadow-md">
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight">Revolutionizing Patient Recruitment and Retention</h1>
+        <h2 class="text-xl md:text-2xl font-light mt-2 max-w-3xl mx-auto">Targeted, Patient-Centered Strategies for Rare Diseases in Oncology Trials</h2>
+    </header>
+
+    <!-- Hero Section with Background Image -->
+    <section class="hero bg-cover bg-center h-96 flex flex-col justify-center items-center text-white text-center px-4 relative" style="background-image: url('https://placehold.co/1500x600/34495e/FFFFFF?text=A+New+Approach');">
+        <!-- Overlay for better text readability -->
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div class="relative z-10 bg-black bg-opacity-40 p-8 rounded-xl backdrop-blur-sm">
+            <h3 class="text-3xl md:text-4xl font-bold">A Patient-Centered Strategy for Modern Oncology Trials</h3>
+            <button class="mt-6 px-8 py-3 bg-green-500 text-white rounded-full text-lg font-semibold hover:bg-green-600 transition-all duration-300 shadow-lg transform hover:scale-105">
+                Discover My Strategy
+            </button>
+        </div>
+    </section>
+
+    <!-- Tab Navigation -->
+    <nav id="tab-nav" class="tab-nav-sticky py-4">
+        <div class="container mx-auto flex justify-center gap-4 md:gap-8">
+            <a href="#challenges" class="tab-link text-gray-600 font-semibold py-2 px-4 rounded-md transition-all duration-300 hover:bg-red-100">The Challenges</a>
+            <a href="#strategy" class="tab-link text-gray-600 font-semibold py-2 px-4 rounded-md transition-all duration-300 hover:bg-blue-100">My Strategic Approach</a>
+            <a href="#results" class="tab-link text-gray-600 font-semibold py-2 px-4 rounded-md transition-all duration-300 hover:bg-green-100">Results</a>
+        </div>
+    </nav>
+
+    <!-- Main Content: Case Study Section -->
+    <main class="container mx-auto max-w-screen-xl">
+
+        <!-- Challenges Section -->
+        <section id="challenges" class="text-center py-16 px-6 md:px-12 bg-red-50 rounded-b-xl">
+            <h3 class="text-3xl font-bold text-gray-800 mb-6">The Challenges I Faced</h3>
+            <p class="max-w-4xl mx-auto text-lg text-gray-600 mb-12">
+                In rare diseases and oncology, time is of the essence. The old recruitment model was insufficient for a global oncology trial. The challenges encountered were immense:
+            </p>
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="info-box bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-2xl transition-shadow duration-300">
+                    <h4 class="text-xl font-bold text-red-500 mb-4">Slow Recruitment</h4>
+                    <p class="text-gray-600">Recruitment at critical sites was lagging due to geographic, cultural, and logistical challenges.</p>
+                </div>
+                <div class="info-box bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-2xl transition-shadow duration-300">
+                    <h4 class="text-xl font-bold text-orange-500 mb-4">High Dropout Rates</h4>
+                    <p class="text-gray-600">Patients from underserved communities faced multiple barriers to trial participation and continuity.</p>
+                </div>
+                <div class="info-box bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-2xl transition-shadow duration-300">
+                    <h4 class="text-xl font-bold text-yellow-500 mb-4">Companion Diagnostic Delays</h4>
+                    <p class="text-gray-600">Patients waiting for diagnostic results were delayed, impacting recruitment and retention efforts.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strategic Approach Section -->
+        <section id="strategy" class="text-center py-16 px-6 md:px-12 bg-blue-50 rounded-b-xl mt-4">
+            <h3 class="text-3xl font-bold text-gray-800 mb-6">My Strategic Approach</h3>
+            <p class="max-w-4xl mx-auto text-lg text-gray-600 mb-12">
+                I took a 360-degree approach to ensure patient recruitment and retention were no longer an afterthought. Through data-driven strategies, community engagement, and a robust sample management system, I ensured success.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left mb-16 max-w-6xl mx-auto">
+                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+                    <div class="flex items-center mb-3"><svg class="w-8 h-8 text-blue-500 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 16.382V5.618a1 1 0 00-.553-.894L15 2m-6 5l6-3m0 0l6 3m-6-3v10"></path></svg><h4 class="text-lg font-bold">Site-by-Site Evaluation</h4></div><p class="text-gray-600">I began by assessing each site’s performance to pinpoint bottlenecks and rethink patient distribution.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+                    <div class="flex items-center mb-3"><svg class="w-8 h-8 text-teal-500 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.653-.124-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.653.124-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg><h4 class="text-lg font-bold">DEI-Centered Recruitment</h4></div><p class="text-gray-600">By partnering with key organizations, I built trust and tailored recruitment to diverse communities.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+                    <div class="flex items-center mb-3"><svg class="w-8 h-8 text-indigo-500 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg><h4 class="text-lg font-bold">Engagement with PIs</h4></div><p class="text-gray-600">I initiated regular meetings with Principal Investigators to align on goals and ensure accountability.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results" class="py-16 px-6 md:px-12 bg-green-50 rounded-b-xl mt-4">
+            <h3 class="text-3xl font-bold text-center text-gray-800 mb-12">Results: Impactful Outcomes</h3>
+            <div class="grid md:grid-cols-2 gap-8 mb-16 max-w-6xl mx-auto">
+                <div class="chart-container bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+                    <h4 class="text-xl font-bold text-gray-700 mb-4 text-center">Recruitment Speed</h4>
+                    <canvas id="recruitmentChart"></canvas>
+                </div>
+                <div class="chart-container bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+                    <h4 class="text-xl font-bold text-gray-700 mb-4 text-center">Retention Rates</h4>
+                    <canvas id="retentionChart"></canvas>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white p-8 text-center mt-12">
+        <p class="text-lg mb-4">
+            <a href="https://www.notion.so/Global-Study-Manager-Patient-Advocacy-Consultant-Recruitment-Retention-Specialist-2559315af4bf80a7995fc3dbdc5c3c98?source=copy_link" target="_blank" rel="noopener noreferrer" class="text-blue-400 font-semibold hover:underline">Contact me for a consultation.</a>
+        </p>
+        <p class="text-sm text-gray-400">&copy; 2025 Tengu Muna. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.tab-link');
+
+            // --- Color mapping for tabs and sections ---
+            const colorMap = {
+                challenges: { active: 'bg-red-500 text-white', inactive: 'text-gray-600' },
+                strategy: { active: 'bg-blue-500 text-white', inactive: 'text-gray-600' },
+                results: { active: 'bg-green-500 text-white', inactive: 'text-gray-600' }
+            };
+
+            // --- Smooth Scrolling for Tab Navigation ---
+            navLinks.forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Calculate offset for the sticky nav
+                        const navHeight = document.getElementById('tab-nav').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
+
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // --- Active Tab Highlighting on Scroll ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.id;
+                        navLinks.forEach(link => {
+                            const linkId = link.getAttribute('href').substring(1);
+                            // Reset all links to their inactive state
+                            link.classList.remove(...Object.values(colorMap).flatMap(c => c.active.split(' ')));
+                            link.classList.add(colorMap[linkId].inactive);
+
+                            // Apply active state to the correct link
+                            if (linkId === id) {
+                                link.classList.remove(colorMap[id].inactive);
+                                link.classList.add(...colorMap[id].active.split(' '));
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-40% 0px -60% 0px' }); // Adjusted rootMargin to better trigger highlights
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // --- Chart.js Initialization ---
+            new Chart(document.getElementById('recruitmentChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['Before Strategy', 'After Strategy'],
+                    datasets: [{
+                        label: 'Recruitment Speed (Patients/Month)',
+                        data: [25, 50],
+                        backgroundColor: 'rgba(46, 204, 113, 0.8)',
+                        borderColor: 'rgba(39, 174, 96, 1)',
+                        borderWidth: 2,
+                        borderRadius: 5
+                    }]
+                },
+                options: { responsive: true, plugins: { legend: { position: 'top' } }, scales: { y: { beginAtZero: true, title: { display: true, text: 'Patients Enrolled per Month' } } } }
+            });
+
+            new Chart(document.getElementById('retentionChart').getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: ['Week 1', 'Week 4', 'Week 8', 'Week 12'],
+                    datasets: [{
+                        label: 'Retention Rate (%)',
+                        data: [50, 65, 75, 80],
+                        borderColor: 'rgba(52, 152, 219, 1)',
+                        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                        fill: true,
+                        tension: 0.3
+                    }]
+                },
+                options: { responsive: true, plugins: { legend: { position: 'top' } }, scales: { y: { beginAtZero: true, max: 100, title: { display: true, text: 'Percentage of Patients Retained' } } } }
+            });
+        });
+    </script>
+</body>
+</html>
